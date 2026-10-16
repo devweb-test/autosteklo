@@ -1,0 +1,4 @@
+.offline-form-notice{font:400 16px/1.5 'Source Sans Pro',sans-serif;color:#333;background:#f6f6f6;border-left:3px solid #c92323;padding:12px;margin-top:16px;grid-column:1/-1;width:100%}
+.offline-map-host{position:relative!important;overflow:hidden}
+.offline-map-fallback{position:absolute;inset:0;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;background:#f1f1f1;color:#333;text-align:center;font:400 18px/1.45 'Source Sans Pro',sans-serif;z-index:2}
+.offline-map-fallback[hidden]{display:none}.offline-map-fallback button,.offline-map-fallback a{color:#a61d1d;font:inherit}.offline-map-fallback button{padding:8px 18px;border:1px solid #a61d1d;border-radius:20px;background:white;cursor:pointer}.offline-map-canvas{position:absolute;inset:0;width:100%;height:100%}

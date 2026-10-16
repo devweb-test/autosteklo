@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-16",
+  "browser": "Chromium 156, Linux",
+  "entryPoint": "index.html",
+  "pages": 4,
+  "assets": 175,
+  "staticVerifier": {
+    "passed": true,
+    "localReferences": 577,
+    "htmlAndCssFiles": 12,
+    "portabilityWarnings": 0
+  },
+  "pagesChecked": [
+    {
+      "page": "index.html",
+      "desktopWidth": 1440,
+      "desktopSourceHeight": 10700,
+      "desktopLocalHeight": 10700,
+      "mobileWidth": 390,
+      "mobileHeight": 15537,
+      "javascriptErrors": [],
+      "failedLocalRequests": [],
+      "undecodedImages": [],
+      "callbackDialogOpened": true,
+      "offlineFormNoticeShown": true
+    },
+    {
+      "page": "blog/index.html",
+      "desktopWidth": 1440,
+      "desktopSourceHeight": 4369,
+      "desktopLocalHeight": 4369,
+      "mobileWidth": 390,
+      "mobileHeight": 7698,
+      "javascriptErrors": [],
+      "failedLocalRequests": [],
+      "undecodedImages": [],
+      "callbackDialogOpened": true,
+      "offlineFormNoticeShown": true
+    },
+    {
+      "page": "blog/broneplenka-ili-keramika-na-avto-chto-vybrat/index.html",
+      "desktopWidth": 1440,
+      "desktopSourceHeight": 6894,
+      "desktopLocalHeight": 6894,
+      "mobileWidth": 390,
+      "mobileHeight": 10507,
+      "javascriptErrors": [],
+      "failedLocalRequests": [],
+      "undecodedImages": [],
+      "callbackDialogOpened": true,
+      "offlineFormNoticeShown": true
+    },
+    {
+      "page": "blog/kak-vybrat-lobovoe-steklo-dlya-avtomobilya-i-prove/index.html",
+      "desktopWidth": 1440,
+      "desktopSourceHeight": 6629,
+      "desktopLocalHeight": 6629,
+      "mobileWidth": 390,
+      "mobileHeight": 10035,
+      "javascriptErrors": [],
+      "failedLocalRequests": [],
+      "undecodedImages": [],
+      "callbackDialogOpened": true,
+      "offlineFormNoticeShown": true
+    }
+  ],
+  "interactions": {
+    "cookieDismiss": true,
+    "heroNextSlide": true,
+    "additionalSliderNext": true,
+    "catalogBoundary": true,
+    "cookiePersistence": true,
+    "blogToFirstArticle": true,
+    "articleBackToBlog": true,
+    "blogToSecondArticle": true,
+    "articleBackHome": true,
+    "mobileMenuOpen": true,
+    "mobileMenuClose": true,
+    "mobileCallbackAndEscape": true,
+    "tabletWidth": 768,
+    "errors": []
+  },
+  "portableRelocation": [
+    {
+      "width": 768,
+      "images": [],
+      "path": "index.html",
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "width": 768,
+      "images": [],
+      "path": "blog/index.html",
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "width": 768,
+      "images": [],
+      "path": "blog/kak-vybrat-lobovoe-steklo-dlya-avtomobilya-i-prove/index.html",
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "width": 768,
+      "images": [],
+      "path": "blog/broneplenka-ili-keramika-na-avto-chto-vybrat/index.html",
+      "errors": [],
+      "failedLocal": []
+    }
+  ],
+  "limitations": [
+    "Windows extraction was not tested.",
+    "Maps require internet; same-size fallbacks remain available offline.",
+    "Forms do not submit data.",
+    "Only the first blog listing and the two specified articles are saved. Other routes and backend catalogue queries require the original website.",
+    "Third-party rating widgets, tracking, advertising quizzes and chat are excluded."
+  ],
+  "maps": {
+    "online": {
+      "w": 635,
+      "h": 523,
+      "map": true,
+      "center": [
+        57.662845999991916,
+        39.84607199999998
+      ],
+      "zoom": 11,
+      "markers": 3,
+      "fallback": false,
+      "canvases": 1
+    },
+    "errors": [],
+    "zoomChanged": true,
+    "mobileOnline": {
+      "w": 360,
+      "h": 256,
+      "map": true,
+      "center": [
+        57.662845999991916,
+        39.84607199999998
+      ],
+      "zoom": 12,
+      "markers": 3,
+      "fallback": false,
+      "canvases": 1
+    },
+    "offlineMobile": {
+      "w": 360,
+      "h": 256,
+      "map": false,
+      "center": null,
+      "zoom": null,
+      "markers": null,
+      "fallback": true,
+      "canvases": 0
+    },
+    "reconnectedMobile": {
+      "w": 360,
+      "h": 256,
+      "map": true,
+      "center": [
+        57.662845999991916,
+        39.84607199999998
+      ],
+      "zoom": 11,
+      "markers": 3,
+      "fallback": false,
+      "canvases": 1
+    }
+  }
+}

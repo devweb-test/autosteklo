@@ -1,0 +1,315 @@
+{
+  "viewports": [
+    {
+      "viewport": 1440,
+      "width": 1440,
+      "photo": {
+        "x": 108,
+        "y": 365.359375,
+        "width": 200,
+        "height": 250,
+        "top": 365.359375,
+        "right": 308,
+        "bottom": 615.359375,
+        "left": 108
+      },
+      "headings": 1
+    },
+    {
+      "viewport": 768,
+      "width": 768,
+      "photo": {
+        "x": 48,
+        "y": 301.625,
+        "width": 200,
+        "height": 250,
+        "top": 301.625,
+        "right": 248,
+        "bottom": 551.625,
+        "left": 48
+      },
+      "headings": 1
+    },
+    {
+      "viewport": 390,
+      "width": 390,
+      "photo": {
+        "x": 38,
+        "y": 67.796875,
+        "width": 110,
+        "height": 138,
+        "top": 67.796875,
+        "right": 148,
+        "bottom": 205.796875,
+        "left": 38
+      },
+      "headings": 1
+    }
+  ],
+  "errors": [],
+  "failedLocal": [],
+  "failedNetwork": [
+    "https://api-maps.yandex.ru/2.1/?lang=ru_RU",
+    "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9ce1aa8f658e0201acb0598609870e71a667913ac340d2bc2ea79c692bc596e4&width=500&height=400&lang=ru_RU&scroll=true",
+    "https://api-maps.yandex.ru/2.1/?lang=ru_RU",
+    "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9ce1aa8f658e0201acb0598609870e71a667913ac340d2bc2ea79c692bc596e4&width=500&height=400&lang=ru_RU&scroll=true",
+    "https://api-maps.yandex.ru/2.1/?lang=ru_RU",
+    "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9ce1aa8f658e0201acb0598609870e71a667913ac340d2bc2ea79c692bc596e4&width=500&height=400&lang=ru_RU&scroll=true"
+  ],
+  "page": "blog/kak-vybrat-lobovoe-steklo-dlya-avtomobilya-i-prove/index.html",
+  "blocks": [
+    "author byline",
+    "publication date",
+    "local view counter",
+    "interactive local rating",
+    "summary and catalogue CTA",
+    "anchored table of contents",
+    "expert advice",
+    "mid-article consultation CTA",
+    "FAQ",
+    "final service and catalogue CTA",
+    "original homepage free-glass banner",
+    "service centre addresses",
+    "three homepage-style article cards after service centres and More Articles button",
+    "original homepage questions form"
+  ],
+  "expert": {
+    "name": "Алексей Морозов",
+    "experienceYears": 12,
+    "fictional": true,
+    "visibleDisclosure": false,
+    "portrait": "assets/article-expert-illustrative.png",
+    "role": "Автор статьи"
+  },
+  "staticReferences": 602,
+  "staticHtmlCssFiles": 14,
+  "catalogue": "https://autosteklo.pro/catalog/",
+  "forms": "Existing offline forms; no new server endpoint or submission handler added.",
+  "authorBylineVerifiedWidths": [
+    1440,
+    390
+  ],
+  "removedBlocks": [
+    "Не упустите детали",
+    "Сохраните себе",
+    "Следующий шаг"
+  ],
+  "nativeHomepageParity": {
+    "viewports": [
+      {
+        "width": 1440,
+        "home": {
+          ".free-voldemort": {
+            "w": 1440,
+            "h": 362.484375,
+            "background": "rgba(0, 0, 0, 0)",
+            "margin": "60px 0px 0px",
+            "padding": "0px",
+            "font": "700 44.2496px / 50.2496px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          },
+          ".questions": {
+            "w": 1440,
+            "h": 249.515625,
+            "background": "rgb(201, 35, 35)",
+            "margin": "80px 0px 0px",
+            "padding": "0px",
+            "font": "700 36px / 41.5008px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        "article": {
+          ".free-voldemort": {
+            "w": 1440,
+            "h": 362.484375,
+            "background": "rgba(0, 0, 0, 0)",
+            "margin": "60px 0px 0px",
+            "padding": "0px",
+            "font": "700 44.2496px / 50.2496px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          },
+          ".questions": {
+            "w": 1440,
+            "h": 249.515625,
+            "background": "rgb(201, 35, 35)",
+            "margin": "80px 0px 0px",
+            "padding": "0px",
+            "font": "700 36px / 41.5008px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        "ratingPersists": true,
+        "viewsIncrement": true
+      },
+      {
+        "width": 768,
+        "home": {
+          ".free-voldemort": {
+            "w": 768,
+            "h": 192.390625,
+            "background": "rgba(0, 0, 0, 0)",
+            "margin": "60px 0px 0px",
+            "padding": "0px",
+            "font": "700 22.2013px / 36.6013px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          },
+          ".questions": {
+            "w": 768,
+            "h": 382.1875,
+            "background": "rgb(201, 35, 35)",
+            "margin": "80px 0px 0px",
+            "padding": "0px",
+            "font": "700 24px / 28px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        "article": {
+          ".free-voldemort": {
+            "w": 768,
+            "h": 192.390625,
+            "background": "rgba(0, 0, 0, 0)",
+            "margin": "60px 0px 0px",
+            "padding": "0px",
+            "font": "700 22.2013px / 36.6013px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          },
+          ".questions": {
+            "w": 768,
+            "h": 382.1875,
+            "background": "rgb(201, 35, 35)",
+            "margin": "80px 0px 0px",
+            "padding": "0px",
+            "font": "700 24px / 28px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        "ratingPersists": true,
+        "viewsIncrement": true
+      },
+      {
+        "width": 390,
+        "home": {
+          ".free-voldemort": {
+            "w": 390,
+            "h": 566.71875,
+            "background": "rgba(0, 0, 0, 0)",
+            "margin": "60px 0px 0px",
+            "padding": "50px 15px 225px",
+            "font": "700 31px / 37px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          },
+          ".questions": {
+            "w": 390,
+            "h": 439,
+            "background": "rgb(201, 35, 35)",
+            "margin": "80px 0px 0px",
+            "padding": "0px",
+            "font": "700 24px / 28px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        "article": {
+          ".free-voldemort": {
+            "w": 390,
+            "h": 566.71875,
+            "background": "rgba(0, 0, 0, 0)",
+            "margin": "60px 0px 0px",
+            "padding": "50px 15px 225px",
+            "font": "700 31px / 37px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          },
+          ".questions": {
+            "w": 390,
+            "h": 439,
+            "background": "rgb(201, 35, 35)",
+            "margin": "80px 0px 0px",
+            "padding": "0px",
+            "font": "700 24px / 28px \"Source Sans Pro\", sans-serif",
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        "ratingPersists": true,
+        "viewsIncrement": true
+      }
+    ],
+    "questionsFormNotice": "Остались вопросы?\n\nМы перезвоним и детально вас проконсультируем\n\nОтправить заявку\n\nЭто локальная копия сайта. Данные не отправлены. Для записи позвоните по телефону 8 (800) 707-37-72 или откройте оригинальный сайт.\n\n Я согласен(на) на  обработку моих персональных данных",
+    "errors": [],
+    "failedLocal": [],
+    "posts": []
+  },
+  "publicationDate": "2026-09-09",
+  "readerActivity": {
+    "views": "Number of page opens in this browser, labeled on the page.",
+    "rating": "Reader personal 1–5 score, persisted in localStorage; no aggregate rating is invented."
+  },
+  "relatedArticleCount": 3,
+  "relatedArticlesStyle": "Original homepage Blog markup and CSS; three cards visible at all tested widths.",
+  "relatedArticlesVerification": {
+    "viewports": [
+      {
+        "width": 1440,
+        "visibleCards": 3,
+        "cardStyleMatchesHome": true,
+        "sourceStyle": {
+          "width": 416.65625,
+          "padding": "24px 24px 17px",
+          "border": "2px solid rgb(226, 226, 226)",
+          "radius": "7.5px",
+          "font": "16px \"Source Sans Pro\", sans-serif"
+        },
+        "actualStyle": {
+          "width": 416.65625,
+          "padding": "24px 24px 17px",
+          "border": "2px solid rgb(226, 226, 226)",
+          "radius": "7.5px",
+          "font": "16px \"Source Sans Pro\", sans-serif"
+        }
+      },
+      {
+        "width": 768,
+        "visibleCards": 3,
+        "cardStyleMatchesHome": true,
+        "sourceStyle": {
+          "width": 359,
+          "padding": "15px 15px 30px",
+          "border": "2px solid rgb(226, 226, 226)",
+          "radius": "7.5px",
+          "font": "16px \"Source Sans Pro\", sans-serif"
+        },
+        "actualStyle": {
+          "width": 359,
+          "padding": "15px 15px 30px",
+          "border": "2px solid rgb(226, 226, 226)",
+          "radius": "7.5px",
+          "font": "16px \"Source Sans Pro\", sans-serif"
+        }
+      },
+      {
+        "width": 390,
+        "visibleCards": 3,
+        "cardStyleMatchesHome": true,
+        "sourceStyle": {
+          "width": 360,
+          "padding": "15px 15px 30px",
+          "border": "2px solid rgb(226, 226, 226)",
+          "radius": "7.5px",
+          "font": "16px \"Source Sans Pro\", sans-serif"
+        },
+        "actualStyle": {
+          "width": 360,
+          "padding": "15px 15px 30px",
+          "border": "2px solid rgb(226, 226, 226)",
+          "radius": "7.5px",
+          "font": "16px \"Source Sans Pro\", sans-serif"
+        }
+      }
+    ],
+    "moreArticlesNavigation": true,
+    "errors": [],
+    "failedLocal": []
+  },
+  "robots": {
+    "content": "noindex, nofollow",
+    "verifiedHtmlPages": 4
+  }
+}

@@ -1,0 +1,27 @@
+.footer-yandex-widget {
+    width: 150px;
+    height: 50px;
+    margin-top: 50px;
+    flex-shrink: 0;
+}
+
+.footer-yandex-widget iframe {
+    display: block;
+    width: 150px;
+    height: 50px;
+    border: 0;
+}
+
+@media (max-width: 979px) {
+    .footer-yandex-widget {
+        margin-top: 0;
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-yandex-widget {
+        margin-top: 30px;
+        margin-left: 0;
+    }
+}
