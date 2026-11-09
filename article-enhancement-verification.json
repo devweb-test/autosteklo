@@ -78,8 +78,17 @@
     "experienceYears": 12,
     "fictional": true,
     "visibleDisclosure": false,
-    "portrait": "assets/article-expert-illustrative.png",
-    "role": "Автор статьи"
+    "portrait": "assets/article-expert-illustrative.webp",
+    "role": "Автор статьи",
+    "imageOptimization": {
+      "format": "WebP",
+      "width": 560,
+      "height": 700,
+      "quality": 82,
+      "originalBytes": 2326639,
+      "optimizedBytes": 30434,
+      "reductionPercent": 98.69
+    }
   },
   "staticReferences": 602,
   "staticHtmlCssFiles": 14,
