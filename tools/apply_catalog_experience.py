@@ -43,7 +43,8 @@ def help_block():
 
 def picker(kind):
     brand='Audi' if kind!='catalog' else ''
-    return f'''<form id="cr-picker" class="cr-picker"><h2>Подберите стекло для своего автомобиля</h2><div class="cr-picker-fields">
+    title='Подберите стекло для своего автомобиля'+(' в Ярославле' if kind=='catalog' else '')
+    return f'''<form id="cr-picker" class="cr-picker"><h2>{title}</h2><div class="cr-picker-fields">
     <label>Марка<select name="carBrand" id="cr-brand"><option value="">Выберите марку</option>{''.join(f'<option {"selected" if x["name"]=="AUDI" and brand else ""} value="{h(x["name"])}">{h(x["name"])}</option>' for x in data['brands'])}</select></label>
     <label>Модель<select name="carModel" id="cr-model"><option value="">Выберите модель</option></select></label>
     <label>Год выпуска<select name="year" id="cr-year"><option value="">Не знаю</option>{''.join(f'<option>{y}</option>' for y in range(2026,2017,-1))}</select></label>
