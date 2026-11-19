@@ -58,9 +58,14 @@ def directory_block(kind,rel):
         local=x['name']=='Q8' if isbrand else x['name']=='AUDI'
         url=rel+('catalog/audi/q8/index.html' if isbrand else 'catalog/audi/index.html') if local else x['url']
         image=f'<img class="catalog-mark__img" src="{rel+h(x["image"])}" alt="" loading="lazy">' if not isbrand and x['image'] else ''
-        links.append(f'<a class="cr-tile catalog-mark{ " catalog-model" if isbrand else ""}" href="{h(url)}" data-directory-name="{h(x["name"])}">{image}<span class="catalog-mark__title">{h(x["name"])}</span><small>{"Офлайн" if local else "Онлайн"}</small></a>')
+        if isbrand:
+            links.append(f'<a class="cr-tile catalog-model" href="{h(url)}" data-directory-name="{h(x["name"])}"><p class="catalog-mark__title">{h(x["name"])}</p></a>')
+        else:
+            links.append(f'<a class="cr-tile catalog-mark" href="{h(url)}" data-directory-name="{h(x["name"])}">{image}<span class="catalog-mark__title">{h(x["name"])}</span><small>{"Офлайн" if local else "Онлайн"}</small></a>')
     noun='модели' if isbrand else 'марки'
-    return f'''<section class="cr-section" aria-labelledby="cr-directory-title"><div class="cr-row cr-between"><h2 id="cr-directory-title">{'Модели Audi' if isbrand else 'Все марки'}</h2><label class="cr-search"><span class="cr-sr">Поиск {noun}</span><input id="cr-directory-search" type="search" placeholder="{'Модель, например Q8' if isbrand else 'Марка, например Ауди или Audi'}" autocomplete="off"></label></div><p class="cr-small cr-muted">Названия с отметкой «Онлайн» открываются на основном сайте и требуют интернета.</p><p id="cr-directory-count" class="cr-small" role="status"></p><div class="cr-tiles" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
+    online_note='' if isbrand else '<p class="cr-small cr-muted">Названия с отметкой «Онлайн» открываются на основном сайте и требуют интернета.</p>'
+    tiles_class='catalog-items' if isbrand else 'cr-tiles'
+    return f'''<section class="cr-section" aria-labelledby="cr-directory-title"><div class="cr-row cr-between"><h2 id="cr-directory-title">{'Модели Audi' if isbrand else 'Все марки'}</h2><label class="cr-search"><span class="cr-sr">Поиск {noun}</span><input id="cr-directory-search" type="search" placeholder="{'Модель, например Q8' if isbrand else 'Марка, например Ауди или Audi'}" autocomplete="off"></label></div>{online_note}<p id="cr-directory-count" class="cr-small" role="status"></p><div class="{tiles_class}" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
 def filters():
     opts=''.join(f'<label>{name}<select name="{key}"><option value="any">Любой вариант</option><option value="yes">Есть</option><option value="no">Нет</option><option value="unknown">Не знаю</option></select></label>' for key,name in [('hud','Проекция HUD'),('camera','Камера'),('rain','Датчик дождя'),('heating','Обогрев'),('athermal','Атермальное стекло')])
@@ -85,7 +90,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=catalog-landing-20261119' if kind=='catalog' else ''
+    asset_version='?v=catalog-landing-20261119' if kind=='catalog' else '?v=audi-catalog-20261119' if kind=='brand' else ''
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     for name in ['catalog-experience-data.js','catalog-experience.js']:
         t=soup.new_tag('script',src=rel+'assets/'+name+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
@@ -110,9 +115,11 @@ for path,kind in ROUTES.items():
     if kind=='product':content+=help_block()
     content+=f'<p class="cr-snapshot">Офлайн-копия · каталог от 19.11.2026. Актуальные цены, наличие и условия подтвердит менеджер. <a href="https://autosteklo.pro/{path.removesuffix("index.html")}" target="_blank" rel="noopener">Страница на сайте онлайн</a></p></div>{dialogs()}</main>'
     fragment=BeautifulSoup(content,'html.parser')
-    if kind=='catalog':
-        # The catalogue landing page uses the original site's three lower blocks.
-        for selector in ['.cr-heading>p','#cr-picker-note','#cr-directory-count','#cr-centers']:
+    if kind in ['catalog','brand']:
+        # Catalogue directories reuse the original form, addresses and content.
+        selectors=['.cr-heading>p','#cr-directory-count','#cr-centers']
+        if kind=='catalog':selectors.append('#cr-picker-note')
+        for selector in selectors:
             element=fragment.select_one(selector)
             if element:element.decompose()
         fragment.select_one('#cr-directory-empty')['role']='status'
@@ -128,12 +135,19 @@ for path,kind in ROUTES.items():
         control['class']+=['a-btn',variant]
     for control in fragment.select('#cr-order-form input:not([type="file"]):not([type="checkbox"])'):
         control['class']=['form-group__input']
-    if kind=='catalog':
+    if kind in ['catalog','brand']:
         outer=soup.new_tag('main',id='main',attrs={'class':'main catalog-main'})
         enhanced=fragment.select_one('main')
         enhanced.name='div';enhanced.attrs.pop('id',None)
         outer.append(enhanced)
         native=BeautifulSoup((ROOT/'tools/catalog_native_blocks.html.txt').read_text(),'html.parser')
+        if kind=='brand':
+            for element in native.select('[src],[data-src],[href]'):
+                for attr in ['src','data-src','href']:
+                    value=element.get(attr,'')
+                    if value.startswith('../'):element[attr]=rel+value[3:]
+            brand_content=BeautifulSoup((ROOT/'tools/audi_native_content.html.txt').read_text(),'html.parser')
+            native.select_one('.seo').replace_with(brand_content.select_one('.seo'))
         outer.append(native)
         soup.select_one('#main').replace_with(outer)
     else:

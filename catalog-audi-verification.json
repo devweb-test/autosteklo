@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "page": "catalog/audi/index.html",
+  "cases": [
+    {
+      "viewport": 1920,
+      "models": 23,
+      "nativeTileStylesMatch": true,
+      "nativeTitleStylesMatch": true,
+      "requestedLinesRemoved": true,
+      "formWorks": true,
+      "centersAndMobileService": 3,
+      "textBlocksWithImages": 3,
+      "imagesLoadOffline": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 1440,
+      "models": 23,
+      "nativeTileStylesMatch": true,
+      "nativeTitleStylesMatch": true,
+      "requestedLinesRemoved": true,
+      "formWorks": true,
+      "centersAndMobileService": 3,
+      "textBlocksWithImages": 3,
+      "imagesLoadOffline": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 1280,
+      "models": 23,
+      "nativeTileStylesMatch": true,
+      "nativeTitleStylesMatch": true,
+      "requestedLinesRemoved": true,
+      "formWorks": true,
+      "centersAndMobileService": 3,
+      "textBlocksWithImages": 3,
+      "imagesLoadOffline": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 768,
+      "models": 23,
+      "nativeTileStylesMatch": true,
+      "nativeTitleStylesMatch": true,
+      "requestedLinesRemoved": true,
+      "formWorks": true,
+      "centersAndMobileService": 3,
+      "textBlocksWithImages": 3,
+      "imagesLoadOffline": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 390,
+      "models": 23,
+      "nativeTileStylesMatch": true,
+      "nativeTitleStylesMatch": true,
+      "requestedLinesRemoved": true,
+      "formWorks": true,
+      "centersAndMobileService": 3,
+      "textBlocksWithImages": 3,
+      "imagesLoadOffline": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 320,
+      "models": 23,
+      "nativeTileStylesMatch": true,
+      "nativeTitleStylesMatch": true,
+      "requestedLinesRemoved": true,
+      "formWorks": true,
+      "centersAndMobileService": 3,
+      "textBlocksWithImages": 3,
+      "imagesLoadOffline": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "javascriptErrors": []
+}

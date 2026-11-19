@@ -19,8 +19,8 @@
 .cr-root button {cursor:pointer}
 .cr-root button:disabled {cursor:default;opacity:.5}
 .cr-root :focus-visible {outline:2px solid #5a4c66;outline-offset:3px}
-.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark) {color:var(--cr-red);text-decoration:none}
-.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):hover {color:#e11408}
+.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model) {color:var(--cr-red);text-decoration:none}
+.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model):hover {color:#e11408}
 .cr-root p {margin:0 0 16px}
 .cr-root h2.base__title {text-align:left;margin-bottom:20px}
 .cr-root h3:not(.product-card__title) {font-size:20px;line-height:26px;font-weight:700;margin:0 0 15px;color:#333}
@@ -67,9 +67,6 @@
 .cr-root .cr-tile.catalog-mark {width:100%;margin:0;display:flex;flex-direction:column;align-items:center;color:#333;text-decoration:none;overflow:hidden}
 .cr-tile .catalog-mark__img {display:block;width:100%;object-fit:contain}
 .cr-tile small {display:block;font-size:13px;line-height:20px;color:#878787;margin:-18px 0 12px}
-.cr-tile.catalog-model {padding:25px 10px}
-.cr-tile.catalog-model .catalog-mark__title {padding:0;margin:0}
-.cr-tile.catalog-model small {margin:8px 0 0}
 .cr-card {border:1px solid var(--cr-line);border-radius:8px;padding:25px;background:#fff}
 .cr-badge {display:inline-block;font-size:15px;line-height:24px;color:#878787}
 .cr-list-layout {display:grid;grid-template-columns:320px minmax(0,1fr);gap:30px;align-items:start}
@@ -228,7 +225,6 @@
   .cr-small {font-size:13px;line-height:20px}
   .cr-tiles {gap:15px;margin-top:25px}
   .cr-tile small {font-size:12px;line-height:16px;margin:-5px 0 10px}
-  .cr-tile.catalog-model {padding:20px 5px}
   .cr-search {width:100%}
   .cr-search input:not([type=checkbox]):not([type=file]) {font-size:calc(12px + (100vw - 320px) * .00893);line-height:calc(22px + (100vw - 320px) * .00446);padding-left:15px}
   .cr-filters {padding:20px}
