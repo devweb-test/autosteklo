@@ -1,0 +1,286 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "page": "catalog/index.html",
+      "viewport": 1920,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1620,
+      "actualWidth": 1620,
+      "nativeX": 150,
+      "actualX": 150
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "viewport": 1920,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1620,
+      "actualWidth": 1620,
+      "nativeX": 150,
+      "actualX": 150
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "viewport": 1920,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1620,
+      "actualWidth": 1620,
+      "nativeX": 150,
+      "actualX": 150
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "viewport": 1920,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1620,
+      "actualWidth": 1620,
+      "nativeX": 150,
+      "actualX": 150
+    },
+    {
+      "page": "product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html",
+      "viewport": 1920,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1620,
+      "actualWidth": 1620,
+      "nativeX": 150,
+      "actualX": 150
+    },
+    {
+      "page": "catalog/index.html",
+      "viewport": 1440,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1290,
+      "actualWidth": 1290,
+      "nativeX": 75,
+      "actualX": 75
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "viewport": 1440,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1290,
+      "actualWidth": 1290,
+      "nativeX": 75,
+      "actualX": 75
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "viewport": 1440,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1290,
+      "actualWidth": 1290,
+      "nativeX": 75,
+      "actualX": 75
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "viewport": 1440,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1290,
+      "actualWidth": 1290,
+      "nativeX": 75,
+      "actualX": 75
+    },
+    {
+      "page": "product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html",
+      "viewport": 1440,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1290,
+      "actualWidth": 1290,
+      "nativeX": 75,
+      "actualX": 75
+    },
+    {
+      "page": "catalog/index.html",
+      "viewport": 1280,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1170,
+      "actualWidth": 1170,
+      "nativeX": 55,
+      "actualX": 55
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "viewport": 1280,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1170,
+      "actualWidth": 1170,
+      "nativeX": 55,
+      "actualX": 55
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "viewport": 1280,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1170,
+      "actualWidth": 1170,
+      "nativeX": 55,
+      "actualX": 55
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "viewport": 1280,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1170,
+      "actualWidth": 1170,
+      "nativeX": 55,
+      "actualX": 55
+    },
+    {
+      "page": "product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html",
+      "viewport": 1280,
+      "nativeStylesMatch": true,
+      "nativeWidth": 1170,
+      "actualWidth": 1170,
+      "nativeX": 55,
+      "actualX": 55
+    },
+    {
+      "page": "catalog/index.html",
+      "viewport": 768,
+      "nativeStylesMatch": true,
+      "nativeWidth": 768,
+      "actualWidth": 768,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "viewport": 768,
+      "nativeStylesMatch": true,
+      "nativeWidth": 768,
+      "actualWidth": 768,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "viewport": 768,
+      "nativeStylesMatch": true,
+      "nativeWidth": 768,
+      "actualWidth": 768,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "viewport": 768,
+      "nativeStylesMatch": true,
+      "nativeWidth": 768,
+      "actualWidth": 768,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html",
+      "viewport": 768,
+      "nativeStylesMatch": true,
+      "nativeWidth": 768,
+      "actualWidth": 768,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/index.html",
+      "viewport": 390,
+      "nativeStylesMatch": true,
+      "nativeWidth": 390,
+      "actualWidth": 390,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "viewport": 390,
+      "nativeStylesMatch": true,
+      "nativeWidth": 390,
+      "actualWidth": 390,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "viewport": 390,
+      "nativeStylesMatch": true,
+      "nativeWidth": 390,
+      "actualWidth": 390,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "viewport": 390,
+      "nativeStylesMatch": true,
+      "nativeWidth": 390,
+      "actualWidth": 390,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html",
+      "viewport": 390,
+      "nativeStylesMatch": true,
+      "nativeWidth": 390,
+      "actualWidth": 390,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/index.html",
+      "viewport": 320,
+      "nativeStylesMatch": true,
+      "nativeWidth": 320,
+      "actualWidth": 320,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "viewport": 320,
+      "nativeStylesMatch": true,
+      "nativeWidth": 320,
+      "actualWidth": 320,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "viewport": 320,
+      "nativeStylesMatch": true,
+      "nativeWidth": 320,
+      "actualWidth": 320,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "viewport": 320,
+      "nativeStylesMatch": true,
+      "nativeWidth": 320,
+      "actualWidth": 320,
+      "nativeX": 0,
+      "actualX": 0
+    },
+    {
+      "page": "product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html",
+      "viewport": 320,
+      "nativeStylesMatch": true,
+      "nativeWidth": 320,
+      "actualWidth": 320,
+      "nativeX": 0,
+      "actualX": 0
+    }
+  ],
+  "compared": [
+    "native container dimensions",
+    "page and section heading typography",
+    "body typography",
+    "breadcrumb links/current item/separator",
+    "primary and secondary button palette",
+    "form field typography and border",
+    "horizontal overflow"
+  ],
+  "source": "Native CSS from autosteklo.pro, verified against live pages on 2026-11-19.",
+  "originalPageComparisons": 30
+}

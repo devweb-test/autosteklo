@@ -56,7 +56,8 @@ def directory_block(kind,rel):
     for x in items:
         local=x['name']=='Q8' if isbrand else x['name']=='AUDI'
         url=rel+('catalog/audi/q8/index.html' if isbrand else 'catalog/audi/index.html') if local else x['url']
-        links.append(f'<a class="cr-tile" href="{h(url)}" data-directory-name="{h(x["name"])}">{h(x["name"])}{("<span>Офлайн</span>" if local else "<small>Онлайн</small>")}</a>')
+        image=f'<img class="catalog-mark__img" src="{rel+h(x["image"])}" alt="" loading="lazy">' if not isbrand and x['image'] else ''
+        links.append(f'<a class="cr-tile catalog-mark{ " catalog-model" if isbrand else ""}" href="{h(url)}" data-directory-name="{h(x["name"])}">{image}<span class="catalog-mark__title">{h(x["name"])}</span><small>{"Офлайн" if local else "Онлайн"}</small></a>')
     noun='модели' if isbrand else 'марки'
     return f'''<section class="cr-section" aria-labelledby="cr-directory-title"><div class="cr-row cr-between"><h2 id="cr-directory-title">{'Модели Audi' if isbrand else 'Все марки'}</h2><label class="cr-search"><span class="cr-sr">Поиск {noun}</span><input id="cr-directory-search" type="search" placeholder="{'Модель, например Q8' if isbrand else 'Марка, например Ауди или Audi'}" autocomplete="off"></label></div><p class="cr-small cr-muted">Названия с отметкой «Онлайн» открываются на основном сайте и требуют интернета.</p><p id="cr-directory-count" class="cr-small" role="status"></p><div class="cr-tiles" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
@@ -87,11 +88,18 @@ for path,kind in ROUTES.items():
     for name in ['catalog-experience-data.js','catalog-experience.js']:
         t=soup.new_tag('script',src=rel+'assets/'+name,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
     title={'catalog':'Каталог автостёкол','brand':'Автостёкла для Audi','model':'Лобовые стёкла Audi Q8','generation':'Лобовые стёкла Audi Q8 · 2018–','product':'Стекло Audi Q8 · AGC'}[kind]
-    crumbs=f'<a href="{rel}index.html">Главная</a><span>/</span><a href="{rel}catalog/index.html">Каталог</a>'
-    if kind!='catalog':crumbs+=f'<span>/</span><a href="{rel}catalog/audi/index.html">Audi</a>'
-    if kind in ['model','generation','product']:crumbs+=f'<span>/</span><a href="{rel}catalog/audi/q8/index.html">Q8</a>'
-    if kind=='product':crumbs+='<span>/</span><span>AGC · 92644</span>'
-    content=f'<main id="main" class="cr-root" data-kind="{kind}" data-root="{rel}"><div class="cr-wrap"><a class="cr-skip" href="#cr-content">Перейти к подбору</a><nav class="cr-breadcrumbs" aria-label="Хлебные крошки">{crumbs}</nav><div id="cr-content" class="cr-heading"><h1>{title}</h1><p>Ярославль · подбор, покупка и установка автостёкол</p></div>'
+    trail=[('Главная','index.html'),('Каталог автостекол','catalog/index.html')]
+    if kind!='catalog':trail.append(('Audi','catalog/audi/index.html'))
+    if kind in ['model','generation','product']:trail.append(('Audi Q8','catalog/audi/q8/index.html'))
+    if kind=='generation':trail.append(('5D RANGER (2018 - )',path))
+    if kind=='product':trail.append(('AGC · 92644',path))
+    crumbs=''
+    for index,(label,target) in enumerate(trail):
+        last=index==len(trail)-1
+        item=f'<span class="breadcrumbs-item__text breadcrumbs-item__current" itemprop="name" aria-current="page">{h(label)}</span>' if last else f'<meta itemprop="name" content="{h(label)}"><a itemprop="item" class="breadcrumbs-item__text breadcrumbs-item__link" href="{rel+target}">{h(label)}</a>'
+        crumbs+=f'<div class="breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">{item}<meta itemprop="position" content="{index+1}"></div>'
+    title_class='product__title base__title' if kind=='product' else 'catalog__title' if kind=='generation' else 'catalog__title base__title'
+    content=f'<main id="main" class="cr-root" data-kind="{kind}" data-root="{rel}"><div class="cr-wrap base-container"><a class="cr-skip" href="#cr-content">Перейти к подбору</a><nav class="breadcrumbs cr-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList" aria-label="Хлебные крошки">{crumbs}</nav><div id="cr-content" class="cr-heading"><h1 class="{title_class}">{title}</h1><p>Ярославль · подбор, покупка и установка автостёкол</p></div>'
     if kind=='product':content+=product(rel)
     else:
         if kind in ['catalog','brand']:content+=picker(kind)+help_block()+directory_block(kind,rel)
@@ -99,7 +107,20 @@ for path,kind in ROUTES.items():
     content+=services().replace('PLACEHOLDER_PROCESS',rel+'assets/typical2banner-665ad213bc04.png')
     if kind=='product':content+=help_block()
     content+=f'<p class="cr-snapshot">Офлайн-копия · каталог от 19.11.2026. Актуальные цены, наличие и условия подтвердит менеджер. <a href="https://autosteklo.pro/{path.removesuffix("index.html")}" target="_blank" rel="noopener">Страница на сайте онлайн</a></p></div>{dialogs()}</main>'
-    soup.select_one('#main').replace_with(BeautifulSoup(content,'html.parser'))
+    fragment=BeautifulSoup(content,'html.parser')
+    picker_form=fragment.select_one('#cr-picker')
+    if picker_form:
+        picker_form['class']+=['filter-block-typical1-wrapper','typ2']
+        picker_form.h2['class']=['filter-block-typical1__title']
+    for heading in fragment.select('h2'):
+        if heading.find_parent('dialog'):heading['class']=['modal-typical__header']
+        elif heading.find_parent('form',id='cr-picker') is None:heading['class']=['base__title']
+    for control in fragment.select('button.cr-btn'):
+        variant='a-btn-black' if control.find_parent('form',id='cr-picker') else 'a-btn-outline' if 'cr-outline' in control['class'] else 'a-btn-red2'
+        control['class']+=['a-btn',variant]
+    for control in fragment.select('#cr-order-form input:not([type="file"]):not([type="checkbox"])'):
+        control['class']=['form-group__input']
+    soup.select_one('#main').replace_with(fragment)
     soup.body['class']=list(set(soup.body.get('class',[])+['cro-page']))
     # Keep the original chrome, while correcting unusable tel formatting.
     for a in soup.select('a[href]'):

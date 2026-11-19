@@ -80,3 +80,9 @@ product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/ind
 Формы остаются локальными и явно сообщают, что данные не отправлены.
 Код: assets/catalog-experience.*. Сборка: tools/apply_catalog_experience.py.
 Описание и ограничения: README.md. Проверка: catalog-experience-verification.json.
+
+ОФОРМЛЕНИЕ В СТИЛЕ ИСХОДНОГО САЙТА
+Восстановлены штатная ширина контейнера, размеры заголовков, основной текст,
+хлебные крошки, кнопки, поля и оформление карточек. Фон подбора — исходный
+фирменный фон сайта. Результаты сравнения на шести ширинах экрана:
+catalog-style-verification.json.

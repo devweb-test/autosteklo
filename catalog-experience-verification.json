@@ -120,5 +120,6 @@
   "javascriptErrors": [],
   "snapshotDate": "2026-11-19",
   "localLinksValid": true,
-  "preservedHtmlPages": 9
+  "preservedHtmlPages": 9,
+  "styleVerification": "catalog-style-verification.json"
 }
