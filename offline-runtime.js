@@ -21,7 +21,7 @@
     if (!form.reportValidity()) return;
     notice(form, 'Это локальная копия сайта. Данные не отправлены. Для записи позвоните по телефону 8 (800) 707-37-72 или откройте оригинальный сайт.');
   }
-  document.addEventListener('submit', e => { e.preventDefault(); e.stopImmediatePropagation(); handleForm(e.target); }, true);
+  document.addEventListener('submit', e => { if(e.target.closest('.cr-root'))return; e.preventDefault(); e.stopImmediatePropagation(); handleForm(e.target); }, true);
   document.addEventListener('click', e => {
     const filterItem=e.target.closest('#FBGlass .--filter-children-item');
     if(filterItem){
@@ -43,7 +43,8 @@
     if (e.key === 'Escape') { try { window.modalsStream?.close(); } catch {} }
   }, true);
   function localSearch(query) {
-    const target = window.OFFLINE_ROOT + 'blog/index.html';
-    location.href = target + '?offline-search=' + encodeURIComponent(query);
+    const catalogue = Boolean(document.querySelector('.cr-root'));
+    const target = window.OFFLINE_ROOT + (catalogue ? 'catalog/index.html' : 'blog/index.html');
+    location.href = target + (catalogue ? '?q=' : '?offline-search=') + encodeURIComponent(query);
   }
 })();
