@@ -135,7 +135,8 @@
   function updateCenter() {
     $$('[data-center-label]').forEach(el => { el.textContent = centers[center] || 'выбрать центр'; });
     $$('[data-center]').forEach(el => { const on = el.dataset.center === center; el.textContent = on ? 'Центр выбран' : 'Выбрать центр'; el.setAttribute('aria-pressed',String(on)); });
-    $('#cr-center-status').textContent = center ? `Выбран центр: ${centers[center]}. Наличие и время установки нужно подтвердить.` : 'Наличие на складе поставщика не означает наличие в центре.';
+    const status=$('#cr-center-status');
+    if(status)status.textContent = center ? `Выбран центр: ${centers[center]}. Наличие и время установки нужно подтвердить.` : 'Наличие на складе поставщика не означает наличие в центре.';
   }
   function refresh() { syncModes(); renderProducts(); renderProduct(); syncCompare(); updateCenter(); persist(); }
 
@@ -155,7 +156,8 @@
       el.hidden = q && !text.includes(q) && !transliterate(text).includes(transliterate(q));
       if (!el.hidden) visible++;
     });
-    $('#cr-directory-count').textContent = `Найдено: ${visible}`;
+    const counter=$('#cr-directory-count');
+    if(counter)counter.textContent = `Найдено: ${visible}`;
     $('#cr-directory-empty').hidden = visible > 0;
     save('search:'+kind,directorySearch.value);
   }
@@ -170,7 +172,8 @@
     const model = $('#cr-model');
     model.innerHTML = brand === 'AUDI' ? '<option value="">Выберите модель</option>'+data.models.map(m => `<option value="${escape(m.name)}">${escape(m.name)}</option>`).join('') : '<option value="">Модели доступны онлайн</option>';
     model.disabled = brand !== 'AUDI'; model.value = selected;
-    $('#cr-picker-note').textContent = brand && brand !== 'AUDI' ? 'Для этой марки каталог доступен на основном сайте. Кнопка откроет его онлайн.' : 'Для Audi Q8 сохранён полный список из 33 лобовых стёкол. Другие модели доступны на сайте онлайн.';
+    const note=$('#cr-picker-note');
+    if(note)note.textContent = brand && brand !== 'AUDI' ? 'Для этой марки каталог доступен на основном сайте. Кнопка откроет его онлайн.' : 'Для Audi Q8 сохранён полный список из 33 лобовых стёкол. Другие модели доступны на сайте онлайн.';
     $('#cr-year').disabled = brand !== 'AUDI' || model.value !== 'Q8';
   }
   if (picker) {

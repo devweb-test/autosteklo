@@ -84,9 +84,10 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css',attrs={'data-cro-resource':'true'});soup.head.append(css)
+    asset_version='?v=catalog-landing-20261119' if kind=='catalog' else ''
+    css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     for name in ['catalog-experience-data.js','catalog-experience.js']:
-        t=soup.new_tag('script',src=rel+'assets/'+name,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
+        t=soup.new_tag('script',src=rel+'assets/'+name+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
     title={'catalog':'Каталог автостёкол','brand':'Автостёкла для Audi','model':'Лобовые стёкла Audi Q8','generation':'Лобовые стёкла Audi Q8 · 2018–','product':'Стекло Audi Q8 · AGC'}[kind]
     trail=[('Главная','index.html'),('Каталог автостекол','catalog/index.html')]
     if kind!='catalog':trail.append(('Audi','catalog/audi/index.html'))
@@ -108,6 +109,12 @@ for path,kind in ROUTES.items():
     if kind=='product':content+=help_block()
     content+=f'<p class="cr-snapshot">Офлайн-копия · каталог от 19.11.2026. Актуальные цены, наличие и условия подтвердит менеджер. <a href="https://autosteklo.pro/{path.removesuffix("index.html")}" target="_blank" rel="noopener">Страница на сайте онлайн</a></p></div>{dialogs()}</main>'
     fragment=BeautifulSoup(content,'html.parser')
+    if kind=='catalog':
+        # The catalogue landing page uses the original site's three lower blocks.
+        for selector in ['.cr-heading>p','#cr-picker-note','#cr-directory-count','#cr-centers']:
+            element=fragment.select_one(selector)
+            if element:element.decompose()
+        fragment.select_one('#cr-directory-empty')['role']='status'
     picker_form=fragment.select_one('#cr-picker')
     if picker_form:
         picker_form['class']+=['filter-block-typical1-wrapper','typ2']
@@ -120,7 +127,16 @@ for path,kind in ROUTES.items():
         control['class']+=['a-btn',variant]
     for control in fragment.select('#cr-order-form input:not([type="file"]):not([type="checkbox"])'):
         control['class']=['form-group__input']
-    soup.select_one('#main').replace_with(fragment)
+    if kind=='catalog':
+        outer=soup.new_tag('main',id='main',attrs={'class':'main catalog-main'})
+        enhanced=fragment.select_one('main')
+        enhanced.name='div';enhanced.attrs.pop('id',None)
+        outer.append(enhanced)
+        native=BeautifulSoup((ROOT/'tools/catalog_native_blocks.html.txt').read_text(),'html.parser')
+        outer.append(native)
+        soup.select_one('#main').replace_with(outer)
+    else:
+        soup.select_one('#main').replace_with(fragment)
     soup.body['class']=list(set(soup.body.get('class',[])+['cro-page']))
     # Keep the original chrome, while correcting unusable tel formatting.
     for a in soup.select('a[href]'):

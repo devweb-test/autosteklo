@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "width": 1440,
+      "removedLinesAbsent": true,
+      "nativeBlocks": 3,
+      "centersAndMobileService": 3,
+      "searchWorks": true,
+      "formNotice": "Это локальная копия сайта. Данные не отправлены. Для записи позвоните по телефону 8 (800) 707-37-72 или откройте оригинальный сайт.",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "removedLinesAbsent": true,
+      "nativeBlocks": 3,
+      "centersAndMobileService": 3,
+      "searchWorks": true,
+      "formNotice": "Это локальная копия сайта. Данные не отправлены. Для записи позвоните по телефону 8 (800) 707-37-72 или откройте оригинальный сайт.",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "removedLinesAbsent": true,
+      "nativeBlocks": 3,
+      "centersAndMobileService": 3,
+      "searchWorks": true,
+      "formNotice": "Это локальная копия сайта. Данные не отправлены. Для записи позвоните по телефону 8 (800) 707-37-72 или откройте оригинальный сайт.",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "removedLinesAbsent": true,
+      "nativeBlocks": 3,
+      "centersAndMobileService": 3,
+      "searchWorks": true,
+      "formNotice": "Это локальная копия сайта. Данные не отправлены. Для записи позвоните по телефону 8 (800) 707-37-72 или откройте оригинальный сайт.",
+      "horizontalOverflow": false
+    }
+  ],
+  "javascriptErrors": []
+}

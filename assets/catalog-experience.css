@@ -11,6 +11,9 @@
 .cr-root * {box-sizing:border-box}
 .cr-root [hidden] {display:none!important}
 .cr-wrap {margin:0 auto;display:flow-root}
+.catalog-main>.cr-root {padding-bottom:0}
+.catalog-original-blocks .questions-form {flex-wrap:wrap}
+.catalog-original-blocks .questions-form>.offline-form-notice {flex:0 0 100%;width:100%;margin:16px 0 0}
 .cr-breadcrumbs {font-size:16px;line-height:normal;color:#000}
 .cr-root button,.cr-root input,.cr-root select {font-family:inherit}
 .cr-root button {cursor:pointer}

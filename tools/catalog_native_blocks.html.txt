@@ -1,0 +1,161 @@
+<div class="catalog-original-blocks" id="catalog-original-blocks"><div class="questions">
+<div class="base-wrapper">
+<div class="questions__container base-container --cb-form-block">
+<img alt="autosteklo.pro" class="questions__car js_lazy-load" data-src="../assets/55617b05705e669a591e7aeb3af25aeb-da15c5632546.webp" loading="eager" src="../assets/55617b05705e669a591e7aeb3af25aeb-da15c5632546.webp"/>
+<div class="questions__content">
+<p class="questions__title">
+                    Не нашли что искали? Оставьте заявку
+                </p>
+<p class="questions__description">
+                    Мы перезвоним и детально вас проконсультируем
+                </p>
+<form action="#" class="questions-form --cb-form" data-offline-form="true">
+<input name="dataFormName" type="hidden" value="Форма остались вопросы"/>
+<input name="event" type="hidden" value="form_zakazZvonok"/>
+<div class="questions-form-input form-input">
+<input class="questions-form-input__input form-input__input" name="name" placeholder="Ваше имя" required="" type="text"/>
+</div>
+<div class="questions-form-input questions-form-input_phone form-input">
+<input class="questions-form-input__input form-input__input" name="phone" placeholder="+7 (___) ___-__-__" required="" type="tel"/>
+</div>
+<button class="questions-form__btn a-btn a-btn-black --cb-form__btn btn-disabled">
+                        Отправить заявку
+                    </button>
+</form>
+<p class="questions__personal">
+<input class="agree-checkbox" name="checkbox" required="" type="checkbox"/>
+                    Я согласен(на) на  <a class="question-personal__link" href="https://autosteklo.pro/personal-data/">обработку моих персональных данных</a>
+</p>
+</div>
+</div>
+</div>
+</div><div class="base-wrapper" id="cr-centers">
+<div class="departments base-container">
+<div class="base__title">Адреса центров и мобильных бригад в городе <b>Ярославль</b></div>
+<div class="departments__description">
+            Найдите ближайший сервисный центр ремонта автостекол по вашему адресу
+        </div>
+<div class="departments-map" id="dynamicDepartmentsMap">
+<div class="departments-map-list --departments-shops">
+<div class="departments-map-list-address --departments-shop" data-shop="467">
+<div class="departments-map-list-address__head">
+<p class="departments-map-list-address__text">
+<svg><use xlink:href="#offline-sprite-geo"></use></svg>
+            ​Улица Громова, 1Ж
+        </p>
+<div class="departments-map-list-address__reviews">
+<a href="https://yandex.ru/maps/-/CPfznP4N" rel="nofollow noopener" target="_blank">
+<img alt="" loading="eager" src="../assets/ya_reviews-6d48f3a03b60.png"/>
+</a>
+<a href="https://go.2gis.com/Ktlgs" rel="nofollow noopener" target="_blank">
+<img alt="" loading="eager" src="../assets/2g_reviews-cee636547a6b.png"/>
+</a>
+</div>
+</div>
+<div class="departments-map-list-address-content">
+<div class="departments-map-list-address-content__inner">
+<a class="departments-map-list-phone footer-phone mgo-number-yar" href="tel:+78007073772">
+<svg class="departments-map-list-phone__icon footer-phone__icon">
+<use xlink:href="#offline-sprite-phone"></use>
+</svg>
+<span>8 (800) 707-37-72</span>
+</a>
+<p class="departments-map-list__time">
+                Пн–сб — с 9:00 до 18:00, вс — выходной
+            </p>
+<div class="departments-map-list__widget">
+<div class="offline-constructor-map" data-map-src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9ce1aa8f658e0201acb0598609870e71a667913ac340d2bc2ea79c692bc596e4&amp;width=500&amp;height=400&amp;lang=ru_RU&amp;scroll=true" style="width:100%;height:400px"></div>
+<a class="a-btn a-btn-red2" href="https://yandex.ru/maps/-/CPfznP4N" rel="nofollow noopener" target="_blank">Оставить отзыв</a>
+</div>
+</div>
+</div>
+</div>
+<div class="departments-map-list-address --departments-shop" data-shop="465">
+<div class="departments-map-list-address__head">
+<p class="departments-map-list-address__text">
+<svg><use xlink:href="#offline-sprite-geo"></use></svg>
+            Городской Вал 2
+        </p>
+<div class="departments-map-list-address__reviews">
+<a href="https://ya.cc/t/L_qQiqgtgbUVa" rel="nofollow noopener" target="_blank">
+<img alt="" loading="eager" src="../assets/ya_reviews-6d48f3a03b60.png"/>
+</a>
+<a href="https://go.2gis.com/splr0" rel="nofollow noopener" target="_blank">
+<img alt="" loading="eager" src="../assets/2g_reviews-cee636547a6b.png"/>
+</a>
+<a href="https://g.page/r/CeyvBYDn0ZeREBM/review" rel="nofollow noopener" target="_blank">
+<img alt="" loading="eager" src="../assets/ggl_reviews-b243679fd927.png"/>
+</a>
+</div>
+</div>
+<div class="departments-map-list-address-content">
+<div class="departments-map-list-address-content__inner">
+<a class="departments-map-list-phone footer-phone mgo-number-yar" href="tel:+78007073772">
+<svg class="departments-map-list-phone__icon footer-phone__icon">
+<use xlink:href="#offline-sprite-phone"></use>
+</svg>
+<span>8 (800) 707-37-72</span>
+</a>
+<p class="departments-map-list__time">
+                Без выходных 9:00 - 18:00
+            </p>
+<div class="departments-map-list__widget">
+<a class="a-btn a-btn-red2" href="https://ya.cc/t/L_qQiqgtgbUVa" rel="nofollow noopener" target="_blank">Оставить отзыв</a>
+</div>
+</div>
+</div>
+</div>
+<div class="departments-map-list-address --departments-shop" data-shop="464">
+<div class="departments-map-list-address__head">
+<p class="departments-map-list-address__text">
+<svg><use xlink:href="#offline-sprite-geo"></use></svg>
+            Мобильный сервис
+        </p>
+<div class="departments-map-list-address__reviews">
+<a href="https://ya.cc/t/L_qQiqgtgbUVa" rel="nofollow noopener" target="_blank">
+<img alt="" loading="eager" src="../assets/ya_reviews-6d48f3a03b60.png"/>
+</a>
+<a href="https://go.2gis.com/splr0" rel="nofollow noopener" target="_blank">
+<img alt="" loading="eager" src="../assets/2g_reviews-cee636547a6b.png"/>
+</a>
+<a href="https://g.page/r/CeyvBYDn0ZeREBM/review" rel="nofollow noopener" target="_blank">
+<img alt="" loading="eager" src="../assets/ggl_reviews-b243679fd927.png"/>
+</a>
+</div>
+</div>
+<div class="departments-map-list-address-content">
+<div class="departments-map-list-address-content__inner">
+<a class="departments-map-list-phone footer-phone mgo-number-yar" href="tel:+78007073772">
+<svg class="departments-map-list-phone__icon footer-phone__icon">
+<use xlink:href="#offline-sprite-phone"></use>
+</svg>
+<span>8 (800) 707-37-72</span>
+</a>
+<p class="departments-map-list__time">
+                пн-пт 9:00 - 18:00
+            </p>
+<div class="departments-map-list__widget">
+<a class="a-btn a-btn-red2" href="https://ya.cc/t/L_qQiqgtgbUVa" rel="nofollow noopener" target="_blank">Оставить отзыв</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="departments-map__map" id="departmentsMap"></div>
+</div>
+</div>
+</div><div class="base-wrapper">
+<div class="seo base-container">
+<div class="seo__list">
+<div class="seo__item 789">
+<img alt="" class="seo__image" loading="eager" src="../assets/seo-b7c6328587e9.png"/>
+<div class="content-text" id="seoBlock">
+<h2><strong>Что вы найдете в нашем каталоге</strong></h2>
+<p>Наша сеть центров, оказывающих услуги по замене автомобильных стекол и их ремонту, предлагает владельцам транспортных средств купить автостекло в ассортименте. Установим их по цене, доступной любому водителю.</p>
+<p>Мы отвечаем за качество работ, предоставляем соответствующую гарантию на выполненные работы до 36 месяцев. Мы предлагаем только качественные автостекла от ведущих мировых производителей, таких как AGC Automotive, Pilkington, Saint Gobain Sekurit, Fuyao Glass (FYG), NordGlass, Бор (Борский стекольный завод), Benson, Xinyi Glass (XYG) и т.д. На все стекла, имеется сертификат соответствия требованиям международных стандартов качества и безопасности. Всю реализуемую продукцию приобретаем напрямую от производителя. </p>
+<p> </p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
