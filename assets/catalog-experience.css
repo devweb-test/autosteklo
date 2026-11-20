@@ -42,7 +42,7 @@
 .cr-btn.cr-outline:hover {background:var(--cr-red);border-color:var(--cr-red);color:#fff}
 .cr-full {width:100%}
 .cr-root label {display:block;font-size:16px;line-height:24px;font-weight:400;color:#333}
-.cr-root input:not([type=checkbox]):not([type=file]),.cr-root select {
+.cr-root input:not([type=checkbox]):not([type=file]):not(.catalog-search__input),.cr-root select {
   display:block;width:100%;min-width:0;height:53px;margin-top:8px;padding:0 24px;
   border:1px solid var(--cr-line);border-radius:180px;background:#fff;color:#333;
   font-size:16px;line-height:24px;font-weight:400;
@@ -210,7 +210,7 @@
 @media(max-width:979px) {.cr-tiles {grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:767px) {
   .cr-root label {font-size:14px;line-height:20px}
-  .cr-root input:not([type=checkbox]):not([type=file]),.cr-root select {height:42px;padding-left:20px;font-size:16px;line-height:20px}
+  .cr-root input:not([type=checkbox]):not([type=file]):not(.catalog-search__input),.cr-root select {height:42px;padding-left:20px;font-size:16px;line-height:20px}
   .cr-root .cr-dialog input.form-group__input {font-size:16px;line-height:20px;height:42px}
   .cr-heading {margin:0 0 25px}
   .cr-heading>p {font-size:16px;line-height:20px;text-align:center;margin-top:12px}

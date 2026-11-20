@@ -65,7 +65,11 @@ def directory_block(kind,rel):
     noun='модели' if isbrand else 'марки'
     online_note='' if isbrand else '<p class="cr-small cr-muted">Названия с отметкой «Онлайн» открываются на основном сайте и требуют интернета.</p>'
     tiles_class='catalog-items' if isbrand else 'cr-tiles'
-    return f'''<section class="cr-section" aria-labelledby="cr-directory-title"><div class="cr-row cr-between"><h2 id="cr-directory-title">{'Модели Audi' if isbrand else 'Все марки'}</h2><label class="cr-search"><span class="cr-sr">Поиск {noun}</span><input id="cr-directory-search" type="search" placeholder="{'Модель, например Q8' if isbrand else 'Марка, например Ауди или Audi'}" autocomplete="off"></label></div>{online_note}<p id="cr-directory-count" class="cr-small" role="status"></p><div class="{tiles_class}" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
+    if isbrand:
+        search='''<label class="catalog-search" for="cr-directory-search"><span class="cr-sr">Поиск моделей Audi</span><input class="catalog-search__input" id="cr-directory-search" type="search" placeholder="Начните вводить название" autocomplete="off"><span class="catalog-search-btn" aria-hidden="true"><svg class="catalog-search-btn__svg" focusable="false"><use href="#offline-sprite-search"></use></svg></span></label>'''
+    else:
+        search=f'<label class="cr-search"><span class="cr-sr">Поиск {noun}</span><input id="cr-directory-search" type="search" placeholder="Марка, например Ауди или Audi" autocomplete="off"></label>'
+    return f'''<section class="cr-section" aria-labelledby="cr-directory-title"><div class="cr-row cr-between"><h2 id="cr-directory-title">{'Модели Audi' if isbrand else 'Все марки'}</h2>{search}</div>{online_note}<p id="cr-directory-count" class="cr-small" role="status"></p><div class="{tiles_class}" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
 def filters():
     opts=''.join(f'<label>{name}<select name="{key}"><option value="any">Любой вариант</option><option value="yes">Есть</option><option value="no">Нет</option><option value="unknown">Не знаю</option></select></label>' for key,name in [('hud','Проекция HUD'),('camera','Камера'),('rain','Датчик дождя'),('heating','Обогрев'),('athermal','Атермальное стекло')])
@@ -90,7 +94,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=catalog-landing-20261119' if kind=='catalog' else '?v=audi-catalog-20261119' if kind=='brand' else ''
+    asset_version='?v=catalog-landing-20261119' if kind=='catalog' else '?v=audi-search-20261120' if kind=='brand' else ''
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     for name in ['catalog-experience-data.js','catalog-experience.js']:
         t=soup.new_tag('script',src=rel+'assets/'+name+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
