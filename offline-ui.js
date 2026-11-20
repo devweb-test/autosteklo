@@ -105,7 +105,7 @@
     });
     document.querySelectorAll('.offline-constructor-map').forEach(host=>connectedMap(host,host.dataset.mapSrc));
   };
-  if (document.querySelector('.cr-root[data-kind="model"]') && document.querySelector('#catalog-original-blocks .departments')) window.offlineInitDepartments();
+  if (document.querySelector('.cr-root[data-kind="model"],.cr-root[data-kind="generation"]') && document.querySelector('#catalog-original-blocks .departments')) window.offlineInitDepartments();
   // Keep the modal's original responsive map box.
   connectedMap(document.querySelector('#nearMap'));
   document.querySelector('#nearSearch')?.addEventListener('input', e => {

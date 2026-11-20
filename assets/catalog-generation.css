@@ -12,11 +12,6 @@
 .cr-native-generation .cr-chips:empty {display:none}
 .cr-native-generation .cr-empty {width:100%}
 .cr-native-generation #cr-products {margin-top:20px}
-.cr-native-generation .cr-extra-filter {padding:20px;border-top:1px solid #e2e2e2}
-.cr-native-generation .cr-extra-filter>summary {cursor:pointer;font-size:16px;font-weight:700;color:#5a4c66}
-.cr-native-generation .cr-extra-filter label {margin-top:16px}
-.cr-native-generation .cr-extra-filter select {height:42px;font-size:16px;line-height:24px;padding-left:15px}
-.cr-native-generation .cr-extra-filter .cr-small {font-size:13px;line-height:19px;margin:15px 0 0}
 .cr-native-generation .catalog-filters-bottom {position:static}
 .cr-native-generation .cr-native-tags {margin-top:15px}
 .cr-native-generation .cr-native-tags span {font-size:14px;line-height:20px;color:#5a4c66}

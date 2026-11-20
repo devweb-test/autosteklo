@@ -1,0 +1,60 @@
+<div class="base-wrapper">
+<div class="base-container">
+<div class="different-categories-wrapper">
+<h2 class="catalog__title">Другие типы стекол на Audi Q8</h2>
+<div class="catalog-items">
+<a class="catalog-model" href="https://autosteklo.pro/catalog/audi/q8/bokovye-stekla/">
+<p class="catalog-mark__title f-20">Боковые стекла</p>
+</a>
+</div>
+</div>
+
+<div class="different-categories-wrapper">
+<h2 class="catalog__title">Стекла для других автомобилей</h2>
+<div class="catalog-items">
+<a class="catalog-model" href="https://autosteklo.pro/catalog/nissan/">
+<p class="catalog-mark__title f-20">NISSAN</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/vaz-lada/">
+<p class="catalog-mark__title f-20">ВАЗ/LADA</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/dodge/">
+<p class="catalog-mark__title f-20">DODGE</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/skoda/">
+<p class="catalog-mark__title f-20">SKODA</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/ford/">
+<p class="catalog-mark__title f-20">FORD</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/ford/">
+<p class="catalog-mark__title f-20">FORD</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/suzuki/">
+<p class="catalog-mark__title f-20">SUZUKI</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/mercedes/">
+<p class="catalog-mark__title f-20">MERCEDES</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/mercedes/">
+<p class="catalog-mark__title f-20">MERCEDES</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/hyundai/">
+<p class="catalog-mark__title f-20">HYUNDAI</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/vaz-lada/">
+<p class="catalog-mark__title f-20">ВАЗ/LADA</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/infiniti/">
+<p class="catalog-mark__title f-20">INFINITI</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/volvo/">
+<p class="catalog-mark__title f-20">VOLVO</p>
+</a>
+<a class="catalog-model" href="https://autosteklo.pro/catalog/renault/">
+<p class="catalog-mark__title f-20">RENAULT</p>
+</a>
+</div>
+</div>
+</div>
+</div>

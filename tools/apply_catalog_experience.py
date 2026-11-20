@@ -90,14 +90,11 @@ def generation_block(rel):
     return f'''<section class="cr-section cr-native-model-products" aria-labelledby="cr-generation-title"><div class="catalog__description" id="cr-generation-title">Выберите модель вашего автомобиля</div>{search}<div class="catalog-items" id="cr-generations"><a class="catalog-model generation" data-directory-name="5D RANGER (2018 - )" href="{rel}catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html"><p class="catalog-mark__title">5D RANGER (2018 - )</p></a>{native_products}</div><div id="cr-directory-empty" class="cr-card" role="status" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
 def filters():
-    opts=''.join(f'<label>{name}<select name="{key}"><option value="any">Любой вариант</option><option value="yes">Есть</option><option value="no">Нет</option><option value="unknown">Не знаю</option></select></label>' for key,name in [('hud','Проекция HUD'),('camera','Камера'),('rain','Датчик дождя'),('heating','Пленочный обогрев'),('vin','Окно под VIN'),('athermal','Обогрев')])
-    brands=sorted({p['brand'] for p in products})
-    extra=f'''<details id="cr-extra-filter" class="cr-extra-filter"><summary>Дополнительные параметры</summary><label>Год выпуска<select name="year" id="cr-year"><option value="">2018 и новее</option>{''.join(f'<option>{y}</option>' for y in range(2026,2017,-1))}</select></label><div id="cr-side-options" hidden><label>Сторона<select name="side"><option value="any">Не знаю</option><option value="left">Левая</option><option value="right">Правая</option></select></label><label>Дверь<select name="door"><option value="any">Не знаю</option><option value="front">Передняя</option><option value="back">Задняя</option></select></label><label>Исполнение<select name="movement"><option value="any">Не знаю</option><option value="moving">Опускное</option><option value="fixed">Неподвижное</option></select></label></div>{opts}<label>Производитель<select name="brand"><option value="">Все производители</option>{''.join(f'<option>{h(b)}</option>' for b in brands)}</select></label><label class="cr-check"><input type="checkbox" name="stock"> С ценой и наличием в снимке</label><p class="cr-small cr-muted">«Нет» покажет только подтверждённое отсутствие опции. «Не знаю» не исключает варианты: комплектацию нужно проверить.</p></details>'''
-    return (ROOT/'tools/generation_native_filters.html.txt').read_text().replace('{{EXTRA_FILTERS}}',extra)
+    return (ROOT/'tools/generation_native_filters.html.txt').read_text()
 
 def listing():
     sort=(ROOT/'tools/generation_native_sort.html.txt').read_text()
-    return f'''<section class="catalog-wrapper cr-native-generation" aria-label="Стёкла Audi Q8">{filters()}<div class="catalog-content">{sort}<div class="cr-native-list-controls"><a class="catalog-filters__btn a-btn a-btn-outline --mobile" href="#" id="catalogFiltersOpen" role="button" aria-controls="catalogFiltersBlock" aria-expanded="false">Фильтр</a><label class="cr-native-sort-select">Сортировка<select id="cr-sort"><option value="recommended">Сначала с ценой</option><option value="price">Цена по возрастанию</option><option value="price-desc">Цена по убыванию</option><option value="stock">По наличию</option><option value="brand">Производитель</option></select></label></div><div class="cr-mode" role="group" aria-label="Способ покупки">{button('Стекло с установкой','data-mode="install" aria-pressed="true"')}{button('Только стекло','data-mode="glass" aria-pressed="false"',True)}</div><p class="cr-native-note">Подытог включает стекло и замену. Калибровку, молдинги и другие работы согласуем после проверки автомобиля.</p><div id="cr-filter-chips" class="cr-chips"></div><div id="cr-products" class="catalog-items"></div><p class="cr-native-note" id="cr-shown"></p><button class="cr-btn cr-outline" id="cr-more" type="button">Показать ещё</button><noscript><p>Для фильтрации включите JavaScript. <a href="../../../../../product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html">Стекло AGC</a>.</p></noscript></div></section>'''
+    return f'''<section class="catalog-wrapper cr-native-generation" aria-label="Стёкла Audi Q8">{filters()}<div class="catalog-content">{sort}<div class="cr-native-list-controls"><a class="catalog-filters__btn a-btn a-btn-outline --mobile" href="#" id="catalogFiltersOpen" role="button" aria-controls="catalogFiltersBlock" aria-expanded="false">Фильтр</a><label class="cr-native-sort-select">Сортировка<select id="cr-sort"><option value="recommended">Сначала с ценой</option><option value="price">Цена по возрастанию</option><option value="price-desc">Цена по убыванию</option><option value="stock">По наличию</option><option value="brand">Производитель</option></select></label></div><div class="cr-mode" role="group" aria-label="Способ покупки">{button('Стекло с установкой','data-mode="install" aria-pressed="true"')}{button('Только стекло','data-mode="glass" aria-pressed="false"',True)}</div><p class="cr-native-note">Подытог включает стекло и замену. Калибровку, молдинги и другие работы согласуем после проверки автомобиля.</p><div id="cr-filter-chips" class="cr-chips"></div><div id="cr-products" class="catalog-items"></div><div class="catalog-pagination"><button class="show-more a-btn a-btn-outline" id="cr-more" type="button">Показать еще</button></div><noscript><p>Для фильтрации включите JavaScript. <a href="../../../../../product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html">Стекло AGC</a>.</p></noscript></div></section>'''
 
 def product(rel):
     return f'''<section class="cr-product-top" aria-label="Стекло и стоимость"><figure class="cr-product-image"><img src="{rel}assets/ph-05c7eb3402ec.png" width="720" height="505" alt="Схематичное изображение лобового стекла"><figcaption>Схема стекла · не фотография артикула</figcaption></figure><div class="cr-buy"><div class="cr-row cr-between"><span class="cr-badge">AGC · арт. 92644</span><a href="#cr-specs">Характеристики</a></div><h2>Лобовое стекло с HUD и камерой</h2><p>Датчик дождя · окно VIN · Audi Q8, 2018–</p><div class="cr-mode" role="group" aria-label="Способ покупки">{button('Стекло с установкой','data-mode="install" aria-pressed="true"')}{button('Только стекло','data-mode="glass" aria-pressed="false"',True)}</div><div id="cr-product-estimate" class="cr-estimate"><dl><div><dt>Стекло</dt><dd>44 650 ₽</dd></div><div><dt>Замена</dt><dd>6 000 ₽</dd></div><div class="cr-total"><dt>Подытог</dt><dd>50 650 ₽</dd></div></dl></div><p class="cr-small">Калибровку, молдинги и дополнительные работы согласуем после проверки автомобиля.</p><p class="cr-stock">Цена и наличие — снимок от 19.11.2026. Наличие в выбранном центре и срок подтвердит менеджер.</p><div class="cr-actions">{button('Заявка на установку','data-order="92644"')}{button('Подобрать по VIN / фото','data-help',True)}</div><div class="cr-row cr-between"><a href="#cr-centers">Ярославль · <span data-center-label>выбрать центр</span></a>{button('В сравнение','data-compare="92644" aria-pressed="false"',True)}</div></div></section><section class="cr-section" id="cr-specs"><h2>Характеристики и совместимость</h2><p>Опции указаны в каталоге. Точную применимость проверяют по комплектации автомобиля.</p><dl class="cr-specs"><div><dt>Автомобиль</dt><dd>Audi Q8 · 5 дверей · 2018–</dd></div><div><dt>Производитель</dt><dd>AGC</dd></div><div><dt>Eurocode</dt><dd>8645AGACMUVZ1B</dd></div><div><dt>Номер OEM</dt><dd>4M8845099PNVB</dd></div><div><dt>Опции по каталогу</dt><dd>HUD, камера, датчик дождя, окно VIN</dd></div><div><dt>Обогрев / атермальность</dt><dd>Не подтверждены · уточните по VIN</dd></div></dl></section><section class="cr-section"><h2>Варианты с теми же кодами в каталоге</h2><p>Совпадают Eurocode и OEM. Это кандидаты для проверки по VIN; дополнительные опции и применимость нужно подтвердить.</p><div id="cr-alternatives" class="cr-products"></div><a class="cr-text-link" href="{rel}catalog/audi/q8/index.html">Все стёкла Audi Q8</a></section>'''
@@ -114,7 +111,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=generation-native-20261120' if kind=='generation' else '?v=q8-native-layout-20261120' if kind=='model' else '?v=audi-native-catalog-20261120' if kind=='brand' else '?v=catalog-native-picker-20261120' if kind=='catalog' else ''
+    asset_version='?v=generation-native-blocks-20261120' if kind=='generation' else '?v=q8-native-layout-20261120' if kind=='model' else '?v=audi-native-catalog-20261120' if kind=='brand' else '?v=catalog-native-picker-20261120' if kind=='catalog' else ''
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     if kind=='generation':
         css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-generation.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
@@ -122,9 +119,10 @@ for path,kind in ROUTES.items():
     if kind=='generation':script_paths[1:1]=['offline-catalog-data.js','assets/catalog-generation.js']
     for path_to_script in script_paths:
         t=soup.new_tag('script',src=rel+path_to_script+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
-    if kind=='model':
+    if kind in ['model','generation']:
         for tag in soup.select('script[src]'):
-            if tag['src'].split('?')[0].endswith('/offline-ui.js'):tag['src']=rel+'offline-ui.js?v=q8-native-content-20261120'
+            if tag['src'].split('?')[0].endswith('/offline-ui.js'):
+                tag['src']=rel+'offline-ui.js?v='+('generation-native-blocks-20261120' if kind=='generation' else 'q8-native-content-20261120')
     title={'catalog':'Каталог автостёкол','brand':'Автостёкла для Audi','model':'Лобовые стёкла Audi Q8','generation':'Лобовые стёкла Audi Q8 · 2018–','product':'Стекло Audi Q8 · AGC'}[kind]
     trail=[('Главная','index.html'),('Каталог автостекол','catalog/index.html')]
     if kind!='catalog':trail.append(('Audi','catalog/audi/index.html'))
@@ -156,7 +154,7 @@ for path,kind in ROUTES.items():
     if kind=='product':content+=help_block()
     content+=f'<p class="cr-snapshot">Офлайн-копия · каталог от 19.11.2026. Актуальные цены, наличие и условия подтвердит менеджер. <a href="https://autosteklo.pro/{path.removesuffix("index.html")}" target="_blank" rel="noopener">Страница на сайте онлайн</a></p></div>{dialogs()}</main>'
     fragment=BeautifulSoup(content,'html.parser')
-    if kind=='model':fragment.select_one('#cr-centers').decompose()
+    if kind in ['model','generation']:fragment.select_one('#cr-centers').decompose()
     if kind in ['catalog','brand']:
         # Catalogue directories reuse the original form, addresses and content.
         selectors=['#cr-directory-count','#cr-centers','#cr-picker-note']
@@ -175,19 +173,24 @@ for path,kind in ROUTES.items():
         control['class']+=['a-btn',variant]
     for control in fragment.select('#cr-order-form input:not([type="file"]):not([type="checkbox"])'):
         control['class']=['form-group__input']
-    if kind in ['catalog','brand','model']:
+    if kind in ['catalog','brand','model','generation']:
         outer=soup.new_tag('main',id='main',attrs={'class':'main catalog-main'})
         enhanced=fragment.select_one('main')
         enhanced.name='div';enhanced.attrs.pop('id',None)
         outer.append(enhanced)
         native=BeautifulSoup((ROOT/'tools/catalog_native_blocks.html.txt').read_text(),'html.parser')
-        if kind in ['brand','model']:
+        if kind in ['brand','model','generation']:
             for element in native.select('[src],[data-src],[href]'):
                 for attr in ['src','data-src','href']:
                     value=element.get(attr,'')
                     if value.startswith('../'):element[attr]=rel+value[3:]
-            brand_content=BeautifulSoup((ROOT/'tools'/('q8_native_content.html.txt' if kind=='model' else 'audi_native_content.html.txt')).read_text(),'html.parser')
-            native.select_one('.seo').replace_with(brand_content.select_one('.seo'))
+            if kind=='generation':
+                native.select_one('.seo').parent.decompose()
+                links=BeautifulSoup((ROOT/'tools/generation_native_links.html.txt').read_text(),'html.parser')
+                native.select_one('#catalog-original-blocks').append(links)
+            else:
+                brand_content=BeautifulSoup((ROOT/'tools'/('q8_native_content.html.txt' if kind=='model' else 'audi_native_content.html.txt')).read_text(),'html.parser')
+                native.select_one('.seo').replace_with(brand_content.select_one('.seo'))
         outer.append(native)
         soup.select_one('#main').replace_with(outer)
     else:

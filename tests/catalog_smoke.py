@@ -30,7 +30,10 @@ async def run(executable):
    await click(f'[data-native-field="{field}"]')
    await click(f'[data-native-field="{field}"] [data-native-value="{value}"]')
   await click('#cr-native-button');await page.wait_for_url('**/5d-ranger-2018/index.html*')
-  assert await page.locator('#cr-year').input_value()=='2020'
+  assert 'year=2020' in page.url
+  await page.goto(page.url.split('?')[0]+'?brand=AGC&stock=true&hud=no&side=right',wait_until='load')
+  assert '33 ' in await page.locator('#cr-count').inner_text()
+  assert not any(key+'=' in page.url for key in ['brand','stock','hud','side'])
   await page.evaluate('sessionStorage.clear()');await open(PAGES[0])
   await page.locator('#cr-directory-search').fill('ауди')
   assert await page.locator('.cr-tile:visible').count()==1
@@ -74,15 +77,7 @@ async def run(executable):
   assert await page.locator('[data-native-option]').count()==6
   await click('[data-native-option="hud"]');assert '24 ' in await page.locator('#cr-count').inner_text()
   await click('[data-native-option="hud"]');assert '33 ' in await page.locator('#cr-count').inner_text()
-  await page.locator('#cr-extra-filter').evaluate('e=>e.open=true')
-  await page.locator('[name="hud"]').select_option('yes')
-  assert '24 ' in await page.locator('#cr-count').inner_text()
-  await page.locator('[name="hud"]').select_option('no')
-  assert await page.locator('.cr-native-card').count()==0
-  assert await page.locator('.cr-empty').is_visible()
-  await page.locator('[name="hud"]').select_option('unknown')
-  assert '33 ' in await page.locator('#cr-count').inner_text()
-  await page.locator('[name="heating"]').select_option('yes')
+  await click('[data-native-option="heating"]')
   assert '2 ' in await page.locator('#cr-count').inner_text()
   await click('#catalogClear')
   await click('[data-native-sort="price"]')
@@ -97,16 +92,13 @@ async def run(executable):
   await page.keyboard.press('Escape');assert await page.evaluate('document.body.style.overflow')==''
   await page.set_viewport_size({'width':1440,'height':1000})
   await click('[data-native-glass="side"]')
-  assert await page.locator('#cr-side-options').is_visible()
   assert 'не сохранён' in await page.locator('.cr-empty').inner_text()
-  await page.locator('[name="side"]').select_option('right')
   await click('.cr-empty [data-help]')
   assert 'Боковое' in await page.locator('#cr-order-summary').inner_text()
   await page.keyboard.press('Escape')
   await click('#catalogClear')
-  await page.locator('[name="hud"]').select_option('yes')
-  await page.locator('[name="stock"]').check()
-  cards=page.locator('.cr-native-card');assert await cards.count()==4
+  await click('[data-native-option="hud"]')
+  cards=page.locator('.cr-native-card');assert await cards.count()==6
   ids=[await cards.nth(i).get_attribute('data-product') for i in range(4)]
   for product_id in ids[:3]:await click(f'[data-compare="{product_id}"]')
   await click(f'[data-compare="{ids[3]}"]')
@@ -154,8 +146,7 @@ async def run(executable):
   assert 'Только стекло' in summary and 'Громова' in summary and '6 000' not in summary
   await page.keyboard.press('Escape')
   await page.go_back(wait_until='load')
-  assert await page.locator('[name="hud"]').input_value()=='yes'
-  assert await page.locator('[name="stock"]').is_checked()
+  assert await page.locator('[data-native-option="hud"]').get_attribute('aria-checked')=='true'
   layout=[]
   for width in [1440,768,390,320]:
    await page.set_viewport_size({'width':width,'height':844 if width<760 else 1000})
@@ -175,7 +166,7 @@ async def run(executable):
       await page.keyboard.press('Escape')
     layout.append({'page':route,'viewport':width,'overflow':False})
   assert not errors,errors
-  print(json.dumps({'passed':True,'offline':True,'products':33,'checks':['native five-field picker, keyboard and local generation navigation','Russian search and local navigation','positive, negative and unknown options','stable sorting and load more','side-glass empty state','comparison up to 3 products','context and price calculation','phone/VIN/photo validation','no form requests or PII storage','back navigation state','20 responsive page/viewport checks','mobile price bar and dialog focus'],'layouts':layout,'javascriptErrors':errors},ensure_ascii=False,indent=2))
+  print(json.dumps({'passed':True,'offline':True,'products':33,'checks':['native five-field picker, keyboard and local generation navigation','Russian search and local navigation','native option filters and removed-filter migration','stable sorting and load more','side-glass empty state','comparison up to 3 products','context and price calculation','phone/VIN/photo validation','no form requests or PII storage','back navigation state','20 responsive page/viewport checks','mobile price bar and dialog focus'],'layouts':layout,'javascriptErrors':errors},ensure_ascii=False,indent=2))
   await browser.close()
 
 if __name__=='__main__':

@@ -92,7 +92,7 @@
 </div>
 </div>
 </div>
-{{EXTRA_FILTERS}}<div class="catalog-filters-bottom">
+<div class="catalog-filters-bottom">
 <div class="catalog-filters-bottom__apply a-btn a-btn-black" id="catalogApply" role="button" tabindex="0">
                     Подобрать стекло
                 </div>

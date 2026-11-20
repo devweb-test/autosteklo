@@ -1,0 +1,68 @@
+{
+  "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+  "passed": true,
+  "reference": "https://autosteklo.pro/catalog/audi/q8/lobovye-stekla/5d-ranger-2018/",
+  "changes": [
+    "Removed advanced filter controls and migrated saved values",
+    "Removed custom installation-center block and shown-item count",
+    "Restored native load-more button styles",
+    "Added native callback form, service-center addresses and mobile service",
+    "Added native links to other glass types and other cars"
+  ],
+  "checks": {
+    "styles": [
+      {
+        "viewport": 1440,
+        "moreStyleDifferences": {},
+        "formStyleDifferences": {
+          ".questions__title": {},
+          ".questions-form": {},
+          ".questions-form-input__input": {},
+          ".questions-form .a-btn": {}
+        },
+        "overflow": false
+      },
+      {
+        "viewport": 768,
+        "moreStyleDifferences": {},
+        "formStyleDifferences": {
+          ".questions__title": {},
+          ".questions-form": {},
+          ".questions-form-input__input": {},
+          ".questions-form .a-btn": {}
+        },
+        "overflow": false
+      },
+      {
+        "viewport": 390,
+        "moreStyleDifferences": {},
+        "formStyleDifferences": {
+          ".questions__title": {},
+          ".questions-form": {},
+          ".questions-form-input__input": {},
+          ".questions-form .a-btn": {}
+        },
+        "overflow": false
+      },
+      {
+        "viewport": 320,
+        "moreStyleDifferences": {},
+        "formStyleDifferences": {
+          ".questions__title": {},
+          ".questions-form": {},
+          ".questions-form-input__input": {},
+          ".questions-form .a-btn": {}
+        },
+        "overflow": false
+      }
+    ],
+    "oldFiltersCleared": true,
+    "addressAccordion": true,
+    "callbackFormNoPost": true,
+    "productsRetained": 33,
+    "javascriptErrors": [],
+    "generatorIdempotent": true,
+    "sharedSmokePassed": true,
+    "sharedLayoutsChecked": 20
+  }
+}

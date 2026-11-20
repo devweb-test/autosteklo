@@ -23,6 +23,11 @@
   for (const [key, values] of Object.entries(enumValues)) if (!values.includes(state[key])) state[key] = defaults[key];
   if (!data.products.some(p => p.brand === state.brand)) state.brand = '';
   if (state.year && !/^(201[89]|202[0-6])$/.test(state.year)) state.year = '';
+  if (nativeGeneration) {
+    // Removed advanced controls must not leave invisible filters in saved links or sessions.
+    for (const key of ['side','door','movement','brand','stock']) state[key] = defaults[key];
+    for (const key of ['hud','camera','rain','heating','athermal','vin']) if (state[key] !== 'yes') state[key] = 'any';
+  }
   let mode = (params.get('mode') || read('mode')) === 'glass' ? 'glass' : 'install';
   let center = params.get('center') || read('center') || '';
   const centers = {val:'Городской Вал, 2',gromova:'Громова, 1Ж'};
@@ -89,7 +94,6 @@
       if (el.type === 'checkbox') el.checked = state[el.name]; else el.value = state[el.name];
     }
     $('#cr-sort').value = state.sort;
-    $('#cr-side-options').hidden = state.glass !== 'side';
     if ($('#cr-glass')) $('#cr-glass').value=state.glass;
     if ($('#cr-year')) $('#cr-year').value=state.year;
     nativeGeneration?.sync(state);
@@ -100,7 +104,6 @@
     $('#cr-count').textContent = nativeGeneration ? `Найдено ${records.length} товаров` : `${records.length} ${records.length === 1 ? 'вариант' : 'вариантов'} по вашему подбору`;
     $('#cr-products').innerHTML = records.length ? records.slice(0,state.limit).map(card).join('') : `<div class="cr-empty"><h3>${state.glass !== 'windshield' ? 'Этот тип стекла не сохранён в офлайн-каталоге' : 'Стёкла по этим условиям не найдены'}</h3><p>${state.glass !== 'windshield' ? 'Здесь доступны 33 лобовых стекла Audi Q8. Боковое или заднее стекло можно подобрать по VIN / фото.' : 'Попробуйте убрать один фильтр. «Нет» исключает товары, у которых отсутствие опции не подтверждено.'}</p><button type="button" class="cr-btn cr-outline a-btn a-btn-outline" data-reset>Сбросить фильтры</button> <button type="button" class="cr-btn a-btn a-btn-red2" data-help>Помочь с подбором</button></div>`;
     $('#cr-more').hidden = records.length <= state.limit;
-    $('#cr-shown').textContent = records.length ? `Показано ${Math.min(records.length,state.limit)} из ${records.length}` : 'Выбранные условия сохранены.';
     const chips = [];
     for (const key of Object.keys(defaults)) {
       if (['sort','limit','side','door','movement'].includes(key) || state[key] === defaults[key]) continue;
