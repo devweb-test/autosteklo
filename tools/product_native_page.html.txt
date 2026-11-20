@@ -105,7 +105,7 @@
 <!-- конец вывода среднего рейтинга -->
 </div>
 </div>
-<div class="product-content-info-attrs">
+<div class="product-content-info-prices" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer"><meta content="RUB" itemprop="priceCurrency"/><link href="https://schema.org/InStock" itemprop="availability"/><meta content="44650" itemprop="price"/></div><div class="product-content-info-attrs">
 <div class="product-content-info-attrs-header">
                         Характеристики
                     </div>
@@ -134,7 +134,7 @@
 <div class="product-content-info-attrs-row__value">Камера, Датчик дождя/света, Окно под VIN, H.U.D (проекционный экран)</div>
 </div>
 </div>
-<div class="product-content-info-prices" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer"><meta content="RUB" itemprop="priceCurrency"/><link href="https://schema.org/InStock" itemprop="availability"/><meta content="44650" itemprop="price"/></div>
+
 </div>
 </div>
 <div class="product-similar">
@@ -657,7 +657,6 @@
 <!-- форма отправки -->
 <div>
 <form action="#" class="reviews-product__form" data-offline-form="true" data-product="92644" method="post">
-
 <p class="reviews-product__subtitle">Добавить отзыв</p>
 <input name="product" type="hidden" value="92644"/>
 <input class="form-group__input" name="name" placeholder="Ваше имя" required="" type="text"/>
@@ -1009,3 +1008,4 @@
 </div>
 </div>
 </div>
+
