@@ -1,7 +1,8 @@
 /* Original product sections use the saved site styles; additions stay in the price box. */
 .cro-page .cr-native-price {width:100%;padding:0;background:transparent}
 .cr-native-price .cr-mode {margin-top:0}
-.cr-native-price .cr-buy .cr-actions {margin-bottom:0}
+.cr-native-price .cr-buy .cr-actions {grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:0}
+.cr-native-price .cr-buy .cr-actions .cr-btn {min-width:0;white-space:normal;height:auto;min-height:53px;padding-top:10px;padding-bottom:10px}
 .cr-native-price .cr-small {font-size:14px;line-height:21px;margin-top:15px}
 .cr-native-price .cr-dialog .cr-small {font-size:15px;line-height:24px}
 .cr-native-product .product-content-info-prices {min-width:0}
@@ -9,5 +10,6 @@
 @media(max-width:767px) {
  .cr-native-price .cr-mode {gap:8px}
  .cr-native-price .cr-mode .cr-btn {flex:1 1 190px;font-size:14px;line-height:20px;padding:0 14px;white-space:nowrap}
- .cr-native-price .cr-buy .cr-actions .cr-btn {font-size:16px;line-height:24px;padding:0 15px}
+ .cr-native-price .cr-buy .cr-actions {gap:8px}
+ .cr-native-price .cr-buy .cr-actions .cr-btn {font-size:16px;line-height:24px;padding:10px 15px}
 }
