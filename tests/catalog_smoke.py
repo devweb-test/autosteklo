@@ -128,18 +128,6 @@ async def run(executable):
   await page.keyboard.press('Escape')
   await click('.cr-native-card[data-product="92644"] .product-card__title')
   await page.wait_for_url('**/product/**/index.html*')
-  ids=await page.locator('[data-compare]').evaluate_all('(xs)=>xs.map(x=>x.dataset.compare)')
-  assert len(ids)==4
-  for product_id in ids[:3]:await click(f'[data-compare="{product_id}"]')
-  await click(f'[data-compare="{ids[3]}"]')
-  assert '3 из 3' in await page.locator('#cr-bottom').inner_text()
-  assert 'до 3' in await page.locator('#cr-toast').inner_text()
-  await click('[data-open-compare]')
-  assert await page.locator('#cr-compare-dialog').is_visible()
-  assert await page.locator('.cr-compare-table thead th').count()==4
-  assert 'Не подтверждено' in await page.locator('.cr-compare-table').inner_text()
-  await page.keyboard.press('Escape')
-  await click('[data-clear-compare]')
   assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-total dd').inner_text() if x.isdigit())=='50650'
   await click('.cr-buy [data-mode="glass"]')
   assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-total dd').inner_text() if x.isdigit())=='44650'
@@ -159,7 +147,7 @@ async def run(executable):
     assert await page.locator('meta[name="robots"][content="noindex, nofollow"]').count()==1
     assert not await page.locator('.cr-root img').evaluate_all('(xs)=>xs.some(x=>x.complete&&!x.naturalWidth)')
     if width<760:
-     assert await page.locator('.cr-breadcrumbs').evaluate('(el)=>el.getBoundingClientRect().top')>=120
+     assert await page.locator('#main .breadcrumbs').evaluate('(el)=>el.getBoundingClientRect().top')>=120
      if route==PRODUCT:
       assert await page.locator('.cr-product-bar').is_visible()
       await click('.cr-product-bar [data-order]')
@@ -168,7 +156,7 @@ async def run(executable):
       await page.keyboard.press('Escape')
     layout.append({'page':route,'viewport':width,'overflow':False})
   assert not errors,errors
-  print(json.dumps({'passed':True,'offline':True,'products':33,'checks':['native five-field picker, keyboard and local generation navigation','Russian search and local navigation','native option filters and removed-filter migration','stable sorting and load more','side-glass empty state','comparison up to 3 products','context and price calculation','phone/VIN/photo validation','no form requests or PII storage','back navigation state','20 responsive page/viewport checks','mobile price bar and dialog focus'],'layouts':layout,'javascriptErrors':errors},ensure_ascii=False,indent=2))
+  print(json.dumps({'passed':True,'offline':True,'products':33,'checks':['native five-field picker, keyboard and local generation navigation','Russian search and local navigation','native option filters and removed-filter migration','stable sorting and load more','side-glass empty state','native product details and price selection','context and price calculation','phone/VIN/photo validation','no form requests or PII storage','back navigation state','20 responsive page/viewport checks','mobile price bar and dialog focus'],'layouts':layout,'javascriptErrors':errors},ensure_ascii=False,indent=2))
   await browser.close()
 
 if __name__=='__main__':

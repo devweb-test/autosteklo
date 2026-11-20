@@ -18,14 +18,16 @@ async def run(executable):
     await page.goto((ROOT/route).as_uri());await page.evaluate('document.fonts.ready')
     await page.evaluate('(html)=>document.body.insertAdjacentHTML("beforeend",html)',REFERENCE)
     font=['fontFamily','fontSize','lineHeight','fontWeight','color']
-    pairs=[('.breadcrumbs-item__link','.cr-breadcrumbs .breadcrumbs-item__link',font+['textDecorationLine']),('.breadcrumbs-item__current','.cr-breadcrumbs .breadcrumbs-item__current',font+['textDecorationLine']),('h2.base__title','#cr-centers h2',font),('.content-text p','.cr-faq details p',font),('.a-btn-red2','.cr-root .a-btn-red2',['color','backgroundColor','borderColor','borderRadius']),('.a-btn-outline','.cr-root .a-btn-outline',['color','backgroundColor','borderColor','borderRadius'])]
-    pairs.append(('.breadcrumbs','.cr-breadcrumbs',['fontSize','lineHeight','color','margin']))
-    pairs.append(('#native-product-title' if route.startswith('product/') else '#native-generation-title' if '/5d-ranger-' in route else 'h1.base__title','.cr-heading h1',font+['textAlign']))
+    native_product=route.startswith('product/')
+    crumbs='#main .breadcrumbs' if native_product else '.cr-breadcrumbs'
+    pairs=[('.breadcrumbs-item__link',crumbs+' .breadcrumbs-item__link',font+['textDecorationLine']),('.breadcrumbs-item__current',crumbs+' .breadcrumbs-item__current',font+['textDecorationLine']),('h2.base__title','#cr-centers h2',font),('.content-text p','.cr-faq details p',font),('.a-btn-red2','.cr-root .a-btn-red2',['color','backgroundColor','borderColor','borderRadius']),('.a-btn-outline','.cr-root .a-btn-outline',['color','backgroundColor','borderColor','borderRadius'])]
+    pairs.append(('.breadcrumbs',crumbs,['fontSize','lineHeight','color','margin']))
+    pairs.append(('#native-product-title' if route.startswith('product/') else '#native-generation-title' if '/5d-ranger-' in route else 'h1.base__title','.product__title' if native_product else '.cr-heading h1',font+['textAlign']))
     errors=await page.evaluate(COMPARE,pairs)
-    dimensions=await page.evaluate('''()=>{const a=document.querySelector('#native-style-reference .base-container').getBoundingClientRect(),b=document.querySelector('.cr-wrap').getBoundingClientRect();return {nativeWidth:a.width,actualWidth:b.width,nativeX:a.x,actualX:b.x}}''')
+    dimensions=await page.evaluate('''selector=>{const a=document.querySelector('#native-style-reference .base-container').getBoundingClientRect(),b=document.querySelector(selector).getBoundingClientRect();return {nativeWidth:a.width,actualWidth:b.width,nativeX:a.x,actualX:b.x}}''','.cr-native-product .page' if native_product else '.cr-wrap')
     assert dimensions['nativeWidth']==dimensions['actualWidth'] and dimensions['nativeX']==dimensions['actualX'],(width,route,dimensions)
     assert not errors,(width,route,errors)
-    separator=await page.locator('.cr-breadcrumbs .breadcrumbs-item').nth(1).evaluate("e=>getComputedStyle(e,'::before').content")
+    separator=await page.locator(crumbs+' .breadcrumbs-item').nth(1).evaluate("e=>getComputedStyle(e,'::before').content")
     assert separator=='"—"',separator
     assert await page.evaluate('document.documentElement.scrollWidth===innerWidth')
     if route.startswith('product/'):

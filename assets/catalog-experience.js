@@ -5,6 +5,7 @@
   if (!root || !window.CRO_DATA) return;
   const data = window.CRO_DATA, base = root.dataset.root, kind = root.dataset.kind;
   const nativeGeneration = kind === 'generation' ? window.CRO_GENERATION : null;
+  const nativeProduct = kind === 'product' && root.classList.contains('cr-native-price');
   const $ = (selector, parent = root) => parent.querySelector(selector);
   const $$ = (selector, parent = root) => [...parent.querySelectorAll(selector)];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -117,8 +118,10 @@
     if (kind !== 'product') return;
     $('#cr-product-estimate').innerHTML = estimate(current);
     $('[data-order="92644"]', $('.cr-buy')).textContent = actionLabel(current);
-    const alternatives = data.products.filter(p => p.id !== current.id && p.eurocode === current.eurocode && p.oem === current.oem).sort((a,b) => (a.price ?? Infinity)-(b.price ?? Infinity));
-    $('#cr-alternatives').innerHTML = alternatives.slice(0,3).map(card).join('');
+    if ($('#cr-alternatives')) {
+      const alternatives = data.products.filter(p => p.id !== current.id && p.eurocode === current.eurocode && p.oem === current.oem).sort((a,b) => (a.price ?? Infinity)-(b.price ?? Infinity));
+      $('#cr-alternatives').innerHTML = alternatives.slice(0,3).map(card).join('');
+    }
   }
   function syncModes() {
     $$('[data-mode]').forEach(el => { const active = el.dataset.mode === mode; el.setAttribute('aria-pressed',String(active)); el.classList.toggle('cr-outline',!active); el.classList.toggle('a-btn-outline',!active); el.classList.toggle('a-btn-red2',active); });
@@ -129,7 +132,7 @@
     if (kind === 'generation') {
       bottom.hidden = true;document.body.classList.remove('cr-has-bottom');return;
     }
-    if (compared.length) {
+    if (compared.length && !nativeProduct) {
       bottom.hidden = false; bottom.classList.remove('cr-product-bar');
       bottom.innerHTML = `<div><strong>В сравнении: ${compared.length} из 3</strong><span class="cr-small">${compared.map(id => escape(get(id).brand)).join(' · ')}</span></div><button type="button" class="cr-btn a-btn a-btn-red2" data-open-compare ${compared.length < 2 ? 'disabled' : ''}>Сравнить${compared.length < 2 ? ' · выберите ещё' : ''}</button><button type="button" class="cr-clear-compare" data-clear-compare aria-label="Очистить сравнение">×</button>`;
     } else if (kind === 'product') {
@@ -379,6 +382,11 @@
     $('#cr-form-status').textContent=''; orderSummary(); openDialog(orderDialog);
     emit(p?'order_open':'vin_help_open',p);
   }
+  if (nativeProduct) root.addEventListener('catalog:product-order',event => {
+    const product = get(event.detail?.productId);if (!product) return;
+    if (event.detail.mode === 'install') {mode='install';refresh();}
+    openOrder(product);
+  });
   orderForm.addEventListener('input',event => {
     event.target.setCustomValidity?.(''); event.target.removeAttribute('aria-invalid');
     $('#cr-form-status').textContent='';

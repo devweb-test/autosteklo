@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "originalTextMatches": true,
+  "similarProducts": 3,
+  "benefitBlocks": 3,
+  "additionalServices": 8,
+  "reviews": 5,
+  "serviceCenters": 3,
+  "priceWithInstallation": 50650,
+  "priceGlassOnly": 44650,
+  "nativeOrderButtons": true,
+  "reviewRatingAndOfflineSubmission": true,
+  "noPostRequests": true,
+  "layouts": [
+    {
+      "width": 1920,
+      "nativeStylesMatch": true,
+      "imagesLoaded": true,
+      "overflow": false,
+      "sourceComponents": 16
+    },
+    {
+      "width": 1440,
+      "nativeStylesMatch": true,
+      "imagesLoaded": true,
+      "overflow": false,
+      "sourceComponents": 16
+    },
+    {
+      "width": 1280,
+      "nativeStylesMatch": true,
+      "imagesLoaded": true,
+      "overflow": false,
+      "sourceComponents": 16
+    },
+    {
+      "width": 768,
+      "nativeStylesMatch": true,
+      "imagesLoaded": true,
+      "overflow": false,
+      "sourceComponents": 16
+    },
+    {
+      "width": 390,
+      "nativeStylesMatch": true,
+      "imagesLoaded": true,
+      "overflow": false,
+      "sourceComponents": 16
+    },
+    {
+      "width": 320,
+      "nativeStylesMatch": true,
+      "imagesLoaded": true,
+      "overflow": false,
+      "sourceComponents": 16
+    }
+  ],
+  "javascriptErrors": [],
+  "generatorIdempotent": true,
+  "servicesSliderAndNavigation": true,
+  "sharedSmokePassed": true,
+  "sharedLayoutsChecked": 20
+}
