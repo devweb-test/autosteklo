@@ -28,6 +28,11 @@ async def run(executable):
   await page.locator('#cr-directory-search').fill('ку8')
   assert await page.locator('.cr-tile:visible').count()==1
   await click('.cr-tile:visible');await page.wait_for_url('**/catalog/audi/q8/index.html*')
+  await page.get_by_role('link',name='5D RANGER (2018 - )',exact=True).click()
+  await page.wait_for_url('**/5d-ranger-2018/index.html*')
+  assert await page.locator('.cr-root').get_attribute('data-kind')=='generation'
+  await page.go_back(wait_until='load')
+  await page.wait_for_url('**/catalog/audi/q8/index.html*')
   assert await page.locator('.cr-glass-card').count()==6
   await page.locator('[name="hud"]').select_option('yes')
   assert '24 ' in await page.locator('#cr-count').inner_text()

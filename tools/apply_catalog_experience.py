@@ -68,6 +68,9 @@ def directory_block(kind,rel):
     search=f'''<label class="catalog-search" for="cr-directory-search"><span class="cr-sr">{search_label}</span><input class="catalog-search__input" id="cr-directory-search" type="search" placeholder="Начните вводить название" autocomplete="off"><span class="catalog-search-btn" aria-hidden="true"><svg class="catalog-search-btn__svg" focusable="false"><use href="#offline-sprite-search"></use></svg></span></label>'''
     return f'''<section class="cr-section" aria-labelledby="cr-directory-title"><div class="cr-row cr-between"><h2 id="cr-directory-title">{'Модели Audi' if isbrand else 'Все марки'}</h2>{search}</div>{online_note}<p id="cr-directory-count" class="cr-small" role="status"></p><div class="{tiles_class}" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
+def generation_block(rel):
+    return f'''<nav class="catalog-items" id="cr-generations" aria-label="Поколения Audi Q8"><a class="catalog-model generation" href="{rel}catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html"><p class="catalog-mark__title">5D RANGER (2018 - )</p></a></nav>'''
+
 def filters():
     opts=''.join(f'<label>{name}<select name="{key}"><option value="any">Любой вариант</option><option value="yes">Есть</option><option value="no">Нет</option><option value="unknown">Не знаю</option></select></label>' for key,name in [('hud','Проекция HUD'),('camera','Камера'),('rain','Датчик дождя'),('heating','Обогрев'),('athermal','Атермальное стекло')])
     brands=sorted({p['brand'] for p in products})
@@ -112,7 +115,10 @@ for path,kind in ROUTES.items():
     if kind=='product':content+=product(rel)
     else:
         if kind in ['catalog','brand']:content+=picker(kind)+help_block()+directory_block(kind,rel)
-        else:content+=picker(kind)+'<p class="cr-inline-help"><button type="button" class="cr-text-button" data-help>Не уверены в комплектации? Подберём по VIN / фото</button></p>'+listing()
+        else:
+            content+=picker(kind)+'<p class="cr-inline-help"><button type="button" class="cr-text-button" data-help>Не уверены в комплектации? Подберём по VIN / фото</button></p>'
+            if kind=='model':content+=generation_block(rel)
+            content+=listing()
     content+=services().replace('PLACEHOLDER_PROCESS',rel+'assets/typical2banner-665ad213bc04.png')
     if kind=='product':content+=help_block()
     content+=f'<p class="cr-snapshot">Офлайн-копия · каталог от 19.11.2026. Актуальные цены, наличие и условия подтвердит менеджер. <a href="https://autosteklo.pro/{path.removesuffix("index.html")}" target="_blank" rel="noopener">Страница на сайте онлайн</a></p></div>{dialogs()}</main>'
