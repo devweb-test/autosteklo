@@ -99,17 +99,8 @@ async def run(executable):
   await click('#catalogClear')
   await click('[data-native-option="hud"]')
   cards=page.locator('.cr-native-card');assert await cards.count()==6
-  ids=[await cards.nth(i).get_attribute('data-product') for i in range(4)]
-  for product_id in ids[:3]:await click(f'[data-compare="{product_id}"]')
-  await click(f'[data-compare="{ids[3]}"]')
-  assert '3 из 3' in await page.locator('#cr-bottom').inner_text()
-  assert 'до 3' in await page.locator('#cr-toast').inner_text()
-  await click('[data-open-compare]')
-  assert await page.locator('#cr-compare-dialog').is_visible()
-  assert await page.locator('.cr-compare-table thead th').count()==4
-  assert 'Не подтверждено' in await page.locator('.cr-compare-table').inner_text()
-  chosen=ids[0]
-  await click(f'#cr-compare-content [data-order="{chosen}"]')
+  chosen=await cards.first.get_attribute('data-product')
+  await click(f'.cr-native-card[data-product="{chosen}"] [data-order]')
   assert await page.locator('#cr-order-dialog').is_visible()
   assert f'арт. {chosen}' in await page.locator('#cr-order-summary').inner_text()
   await page.locator('#cr-order-form [name="phone"]',).fill('123')
@@ -135,9 +126,20 @@ async def run(executable):
   assert 'WAUZZZ4M0JD000001' not in await page.evaluate('JSON.stringify(sessionStorage)')
   assert 'WAUZZZ4M0JD000001' not in page.url
   await page.keyboard.press('Escape')
-  await click('[data-clear-compare]')
   await click('.cr-native-card[data-product="92644"] .product-card__title')
   await page.wait_for_url('**/product/**/index.html*')
+  ids=await page.locator('[data-compare]').evaluate_all('(xs)=>xs.map(x=>x.dataset.compare)')
+  assert len(ids)==4
+  for product_id in ids[:3]:await click(f'[data-compare="{product_id}"]')
+  await click(f'[data-compare="{ids[3]}"]')
+  assert '3 из 3' in await page.locator('#cr-bottom').inner_text()
+  assert 'до 3' in await page.locator('#cr-toast').inner_text()
+  await click('[data-open-compare]')
+  assert await page.locator('#cr-compare-dialog').is_visible()
+  assert await page.locator('.cr-compare-table thead th').count()==4
+  assert 'Не подтверждено' in await page.locator('.cr-compare-table').inner_text()
+  await page.keyboard.press('Escape')
+  await click('[data-clear-compare]')
   assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-total dd').inner_text() if x.isdigit())=='50650'
   await click('.cr-buy [data-mode="glass"]')
   assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-total dd').inner_text() if x.isdigit())=='44650'

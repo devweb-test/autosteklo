@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "products": 33,
+  "availabilityLabels": [
+    "В наличии",
+    "Под заказ"
+  ],
+  "removedElementsAbsent": true,
+  "cachedComparisonHidden": true,
+  "sortAndOrder": true,
+  "layouts": [
+    {
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "overflow": false
+    }
+  ],
+  "javascriptErrors": [],
+  "sharedSmokePassed": true,
+  "sharedLayoutsChecked": 20,
+  "generatorIdempotent": true
+}

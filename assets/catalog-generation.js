@@ -54,7 +54,7 @@
     sync(api.state);
   }
   function card(p,view) {
-    const {base,escape,money,link,mode,total,actionLabel,labels,selected,date}=view;
+    const {base,escape,money,link,mode,total,actionLabel}=view;
     const original=window.OFFLINE_CATALOG_DATA.products.find(record=>record.key===p.path);
     const holder=document.createElement('div');holder.innerHTML=original.html;
     const node=holder.firstElementChild;node.classList.add('cr-native-card');node.dataset.product=p.id;
@@ -63,14 +63,11 @@
     });
     node.querySelectorAll('a[href]').forEach(a=>{a.href=p.id==='92644'?link(window.CRO_DATA.productPage):'https://autosteklo.pro'+p.path;});
     const availability=node.querySelector('.product-card-content-available');
-    availability.textContent=p.stock?'В наличии в снимке':'Под заказ в снимке';
-    const content=node.querySelector('.product-card-content');
-    const tags=Object.entries(labels).filter(([key])=>p.options[key]===true).map(([,name])=>`<span>${escape(name)}</span>`).join('');
-    content.insertAdjacentHTML('beforeend',`<div class="cr-tags cr-native-tags">${tags}</div><p class="cr-native-note">Данные на ${escape(date)}. Наличие в центре и срок уточняются.</p><details class="cr-card-details"><summary>Параметры и совместимость</summary><p>${escape(p.title)}</p><p>Неуказанные опции требуют проверки. Точную применимость проверяют по VIN.</p></details>`);
+    availability.textContent=p.stock?'В наличии':'Под заказ';
     const order=node.querySelector('.product-card__order');
     const prices=order.querySelector('.product-card__prices').outerHTML;
     const metadata=[...order.querySelectorAll('meta,link')].map(el=>el.outerHTML).join('');
-    order.innerHTML=metadata+prices+`<p class="product-card__replace">${mode==='install'?'Услуга по замене: '+money(p.service):'Без установки'}</p><div class="cr-estimate cr-native-estimate"><dl><div class="cr-total"><dt>${mode==='install'?'С установкой':'Только стекло'}</dt><dd>${money(total)}</dd></div></dl></div><button type="button" class="${p.price===null?'product-card__order__callback a-btn a-btn-outline':'product-card__order__main-btn a-btn a-btn-red2'}" data-order="${escape(p.id)}">${escape(actionLabel)}</button><button type="button" class="cr-compare-toggle" data-compare="${escape(p.id)}" aria-pressed="${selected}">${selected?'Убрать из сравнения':'Добавить в сравнение'}</button>`;
+    order.innerHTML=metadata+prices+`<p class="product-card__replace">${mode==='install'?'Услуга по замене: '+money(p.service):'Без установки'}</p><div class="cr-estimate cr-native-estimate"><dl><div class="cr-total"><dt>${mode==='install'?'С установкой':'Только стекло'}</dt><dd>${money(total)}</dd></div></dl></div><button type="button" class="${p.price===null?'product-card__order__callback a-btn a-btn-outline':'product-card__order__main-btn a-btn a-btn-red2'}" data-order="${escape(p.id)}">${escape(actionLabel)}</button>`;
     return node.outerHTML;
   }
   window.CRO_GENERATION={init,sync,card};

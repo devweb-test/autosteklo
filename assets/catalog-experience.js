@@ -126,6 +126,9 @@
   function syncCompare() {
     $$('[data-compare]').forEach(el => { const on = compared.includes(el.dataset.compare); el.setAttribute('aria-pressed',String(on)); el.textContent = on ? 'Убрать из сравнения' : 'Добавить в сравнение'; });
     const bottom = $('#cr-bottom');
+    if (kind === 'generation') {
+      bottom.hidden = true;document.body.classList.remove('cr-has-bottom');return;
+    }
     if (compared.length) {
       bottom.hidden = false; bottom.classList.remove('cr-product-bar');
       bottom.innerHTML = `<div><strong>В сравнении: ${compared.length} из 3</strong><span class="cr-small">${compared.map(id => escape(get(id).brand)).join(' · ')}</span></div><button type="button" class="cr-btn a-btn a-btn-red2" data-open-compare ${compared.length < 2 ? 'disabled' : ''}>Сравнить${compared.length < 2 ? ' · выберите ещё' : ''}</button><button type="button" class="cr-clear-compare" data-clear-compare aria-label="Очистить сравнение">×</button>`;

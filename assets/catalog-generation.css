@@ -8,21 +8,14 @@
 .cr-native-generation .cr-native-list-controls {display:flex;align-items:center;gap:15px}
 .cr-native-generation .cr-native-sort-select {max-width:280px;margin:0 0 15px}
 .cr-native-generation .cr-mode {margin:10px 0 15px}
-.cr-native-generation .cr-native-note {font-size:14px;line-height:20px;color:dimgray;margin:12px 0}
 .cr-native-generation .cr-chips:empty {display:none}
 .cr-native-generation .cr-empty {width:100%}
 .cr-native-generation #cr-products {margin-top:20px}
 .cr-native-generation .catalog-filters-bottom {position:static}
-.cr-native-generation .cr-native-tags {margin-top:15px}
-.cr-native-generation .cr-native-tags span {font-size:14px;line-height:20px;color:#5a4c66}
-.cr-native-generation .product-card-content .cr-native-note {font-size:13px;line-height:19px;margin:10px 0}
-.cr-native-generation .cr-card-details {font-size:14px;line-height:20px;margin-top:10px}
-.cr-native-generation .cr-card-details p {margin-top:10px}
 .cr-native-generation .cr-native-estimate {width:100%;margin:5px 0 12px}
 .cr-native-generation .cr-native-estimate .cr-total {padding-top:8px;margin-top:8px!important;align-items:center}
 .cr-native-generation .cr-native-estimate dt {font-size:14px;line-height:20px;text-align:left}
 .cr-native-generation .cr-native-estimate dd {font-size:22px;line-height:28px}
-.cr-native-generation .cr-compare-toggle {font-size:14px;line-height:20px;margin-top:6px}
 .cr-root[data-kind=generation] .cr-heading.catalog-header {margin-bottom:30px}
 @media(min-width:768px) and (max-width:1320px) {
   .cr-native-generation .product-card__order {display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;align-items:center}
@@ -30,7 +23,6 @@
   .cr-native-generation .product-card__replace {margin:0;justify-self:end}
   .cr-native-generation .cr-native-estimate {margin:0}
   .cr-native-generation .product-card__order__main-btn,.cr-native-generation .product-card__order__callback {justify-self:end;margin:0}
-  .cr-native-generation .cr-compare-toggle {grid-column:1/-1}
 }
 @media(min-width:1171px) {
   .cr-native-generation .cr-native-list-controls {display:none}
@@ -47,5 +39,4 @@
   .cr-native-generation .cr-native-sort-select {margin:0;min-width:0}
   .cr-native-generation .cr-mode {gap:8px}
   .cr-native-generation .cr-mode .cr-btn {font-size:14px;padding:0 15px}
-  .cr-native-generation .cr-native-note {font-size:13px;line-height:19px}
 }
