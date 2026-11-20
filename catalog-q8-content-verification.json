@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "viewport": 1440,
+      "mismatches": [],
+      "nativeForm": true,
+      "addresses": 3,
+      "addressAccordionWorks": true,
+      "mapAndOfflineFallbackInitialized": true,
+      "textBlocksWithImages": 3,
+      "imagesLoaded": true,
+      "existingBlocksPreserved": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 768,
+      "mismatches": [],
+      "nativeForm": true,
+      "addresses": 3,
+      "addressAccordionWorks": true,
+      "mapAndOfflineFallbackInitialized": true,
+      "textBlocksWithImages": 3,
+      "imagesLoaded": true,
+      "existingBlocksPreserved": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 390,
+      "mismatches": [],
+      "nativeForm": true,
+      "addresses": 3,
+      "addressAccordionWorks": true,
+      "mapAndOfflineFallbackInitialized": true,
+      "textBlocksWithImages": 3,
+      "imagesLoaded": true,
+      "existingBlocksPreserved": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 320,
+      "mismatches": [],
+      "nativeForm": true,
+      "addresses": 3,
+      "addressAccordionWorks": true,
+      "mapAndOfflineFallbackInitialized": true,
+      "textBlocksWithImages": 3,
+      "imagesLoaded": true,
+      "existingBlocksPreserved": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "formCheckedWithoutSending": true,
+  "javascriptErrors": [],
+  "offlineRegression": {
+    "passed": true,
+    "layouts": 20,
+    "javascriptErrors": []
+  },
+  "textMatchesCurrentOriginal": true
+}

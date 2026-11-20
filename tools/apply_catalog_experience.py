@@ -122,6 +122,9 @@ for path,kind in ROUTES.items():
     if kind=='generation':script_paths[1:1]=['offline-catalog-data.js','assets/catalog-generation.js']
     for path_to_script in script_paths:
         t=soup.new_tag('script',src=rel+path_to_script+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
+    if kind=='model':
+        for tag in soup.select('script[src]'):
+            if tag['src'].split('?')[0].endswith('/offline-ui.js'):tag['src']=rel+'offline-ui.js?v=q8-native-content-20261120'
     title={'catalog':'Каталог автостёкол','brand':'Автостёкла для Audi','model':'Лобовые стёкла Audi Q8','generation':'Лобовые стёкла Audi Q8 · 2018–','product':'Стекло Audi Q8 · AGC'}[kind]
     trail=[('Главная','index.html'),('Каталог автостекол','catalog/index.html')]
     if kind!='catalog':trail.append(('Audi','catalog/audi/index.html'))
@@ -172,18 +175,18 @@ for path,kind in ROUTES.items():
         control['class']+=['a-btn',variant]
     for control in fragment.select('#cr-order-form input:not([type="file"]):not([type="checkbox"])'):
         control['class']=['form-group__input']
-    if kind in ['catalog','brand']:
+    if kind in ['catalog','brand','model']:
         outer=soup.new_tag('main',id='main',attrs={'class':'main catalog-main'})
         enhanced=fragment.select_one('main')
         enhanced.name='div';enhanced.attrs.pop('id',None)
         outer.append(enhanced)
         native=BeautifulSoup((ROOT/'tools/catalog_native_blocks.html.txt').read_text(),'html.parser')
-        if kind=='brand':
+        if kind in ['brand','model']:
             for element in native.select('[src],[data-src],[href]'):
                 for attr in ['src','data-src','href']:
                     value=element.get(attr,'')
                     if value.startswith('../'):element[attr]=rel+value[3:]
-            brand_content=BeautifulSoup((ROOT/'tools/audi_native_content.html.txt').read_text(),'html.parser')
+            brand_content=BeautifulSoup((ROOT/'tools'/('q8_native_content.html.txt' if kind=='model' else 'audi_native_content.html.txt')).read_text(),'html.parser')
             native.select_one('.seo').replace_with(brand_content.select_one('.seo'))
         outer.append(native)
         soup.select_one('#main').replace_with(outer)

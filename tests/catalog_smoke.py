@@ -52,7 +52,7 @@ async def run(executable):
   assert await page.locator('.cr-tile:visible').count()==1
   await click('.cr-tile:visible');await page.wait_for_url('**/catalog/audi/q8/index.html*')
   assert await page.locator('.cr-heading').evaluate("e=>e.nextElementSibling.classList.contains('cr-help')")
-  assert await page.locator('#cr-centers').count()==0
+  assert await page.locator('.cr-root #cr-centers').count()==0
   assert await page.locator('.cr-assurances').count()==1 and await page.locator('.cr-process').count()==1
   assert await page.locator('.cr-native-model-products .product-card').count()==10
   assert await page.locator('#cr-native-picker [data-native-field]').count()==5
