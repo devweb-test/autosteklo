@@ -58,7 +58,7 @@ def help_block():
 def picker(kind):
     brand='Audi' if kind!='catalog' else ''
     title='Подберите стекло для своего автомобиля'+(' в Ярославле' if kind=='catalog' else '')
-    if kind in ['catalog','brand']:
+    if kind in ['catalog','brand','model']:
         return (ROOT/'tools/catalog_native_picker.html.txt').read_text().replace('{{PICKER_TITLE}}',h(title))
     return f'''<form id="cr-picker" class="cr-picker"><p class="filter-block-typical1__title">{title}</p><div class="cr-picker-fields">
     <label>Марка<select name="carBrand" id="cr-brand"><option value="">Выберите марку</option>{''.join(f'<option {"selected" if x["name"]=="AUDI" and brand else ""} value="{h(x["name"])}">{h(x["name"])}</option>' for x in data['brands'])}</select></label>
@@ -85,7 +85,9 @@ def directory_block(kind,rel):
     return f'''<section class="cr-section" aria-labelledby="cr-directory-title">{header}<p id="cr-directory-count" class="cr-small" role="status"></p><div class="{tiles_class}" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
 def generation_block(rel):
-    return f'''<nav class="catalog-items" id="cr-generations" aria-label="Поколения Audi Q8"><a class="catalog-model generation" href="{rel}catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html"><p class="catalog-mark__title">5D RANGER (2018 - )</p></a></nav>'''
+    search='''<label class="catalog-search" for="cr-directory-search"><span class="cr-sr">Поиск поколения Audi Q8</span><input class="catalog-search__input" id="cr-directory-search" type="search" placeholder="Начните вводить название" autocomplete="off"><span class="catalog-search-btn" aria-hidden="true"><svg class="catalog-search-btn__svg" focusable="false"><use href="#offline-sprite-search"></use></svg></span></label>'''
+    native_products=(ROOT/'tools/q8_native_products.html.txt').read_text().replace('{{ROOT}}',rel)
+    return f'''<section class="cr-section cr-native-model-products" aria-labelledby="cr-generation-title"><div class="catalog__description" id="cr-generation-title">Выберите модель вашего автомобиля</div>{search}<div class="catalog-items" id="cr-generations"><a class="catalog-model generation" data-directory-name="5D RANGER (2018 - )" href="{rel}catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html"><p class="catalog-mark__title">5D RANGER (2018 - )</p></a>{native_products}</div><div id="cr-directory-empty" class="cr-card" role="status" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
 def filters():
     opts=''.join(f'<label>{name}<select name="{key}"><option value="any">Любой вариант</option><option value="yes">Есть</option><option value="no">Нет</option><option value="unknown">Не знаю</option></select></label>' for key,name in [('hud','Проекция HUD'),('camera','Камера'),('rain','Датчик дождя'),('heating','Обогрев'),('athermal','Атермальное стекло')])
@@ -110,7 +112,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=audi-native-catalog-20261120' if kind=='brand' else '?v=catalog-native-picker-20261120' if kind=='catalog' else '?v=picker-paragraph-20261120' if kind!='product' else ''
+    asset_version='?v=q8-native-layout-20261120' if kind=='model' else '?v=audi-native-catalog-20261120' if kind=='brand' else '?v=catalog-native-picker-20261120' if kind=='catalog' else '?v=picker-paragraph-20261120' if kind!='product' else ''
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     for name in ['catalog-experience-data.js','catalog-experience.js']:
         t=soup.new_tag('script',src=rel+'assets/'+name+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
@@ -134,14 +136,17 @@ for path,kind in ROUTES.items():
         if kind in ['catalog','brand']:
             content+=picker(kind)+help_block()+directory_block(kind,rel)
             if kind=='brand':content+=brand_listing_template.replace('{{ROOT}}',rel)
+        elif kind=='model':
+            content+=help_block()+generation_block(rel)
+            content+='<div class="filter-block-typical2 base-wrapper" style="margin-top:50px">'+picker(kind)+'</div>'
         else:
             content+=picker(kind)+'<p class="cr-inline-help"><button type="button" class="cr-text-button" data-help>Не уверены в комплектации? Подберём по VIN / фото</button></p>'
-            if kind=='model':content+=generation_block(rel)
             content+=listing()
     content+=services().replace('PLACEHOLDER_PROCESS',rel+'assets/typical2banner-665ad213bc04.png')
     if kind=='product':content+=help_block()
     content+=f'<p class="cr-snapshot">Офлайн-копия · каталог от 19.11.2026. Актуальные цены, наличие и условия подтвердит менеджер. <a href="https://autosteklo.pro/{path.removesuffix("index.html")}" target="_blank" rel="noopener">Страница на сайте онлайн</a></p></div>{dialogs()}</main>'
     fragment=BeautifulSoup(content,'html.parser')
+    if kind=='model':fragment.select_one('#cr-centers').decompose()
     if kind in ['catalog','brand']:
         # Catalogue directories reuse the original form, addresses and content.
         selectors=['#cr-directory-count','#cr-centers','#cr-picker-note']

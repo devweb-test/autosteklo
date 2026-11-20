@@ -350,7 +350,8 @@
   function openOrder(p=null) {
     ordered=p;
     $('#cr-order-title').textContent=p ? actionLabel(p) : 'Подбор по VIN или фото';
-    const selectedBrand=$('#cr-brand')?.value || $('#cr-native-brand')?.value || (kind==='product'?'Audi':''), selectedModel=$('#cr-model')?.value || $('#cr-native-model')?.value || (kind==='product'?'Q8':'');
+    const q8Page=['model','generation','product'].includes(kind);
+    const selectedBrand=$('#cr-brand')?.value || $('#cr-native-brand')?.value || (q8Page?'Audi':''), selectedModel=$('#cr-model')?.value || $('#cr-native-model')?.value || (q8Page?'Q8':'');
     const nativeYear=$('#cr-native-year')?.value;
     assistance={glass:({windshield:'Лобовое',rear:'Заднее',side:'Боковое'}[$('#cr-glass')?.value || $('#cr-native-glass')?.value || state.glass]),year:$('#cr-year')?.value || (nativeYear!=='unknown' ? nativeYear : '') || state.year,details:[]};
     if(filterForm) {
@@ -396,7 +397,10 @@
     const el=event.target.closest('button,a'); if(!el)return;
     if(el.matches('[data-mode]')) {mode=el.dataset.mode;refresh();emit('purchase_mode_change');}
     else if(el.matches('[data-help]'))openOrder();
-    else if(el.matches('[data-order]'))openOrder(get(el.dataset.order));
+    else if(el.matches('[data-order]')) {
+      if(el.closest('.cr-native-model-products')) {mode='install';persist();}
+      openOrder(get(el.dataset.order));
+    }
     else if(el.matches('[data-brand-order]'))openOrder(data.brandProducts.find(p=>p.id===el.dataset.brandOrder));
     else if(el.matches('[data-close]'))el.closest('dialog').close();
     else if(el.matches('[data-center]')) {center=el.dataset.center;updateCenter();persist();toast('Выбран центр: '+centers[center]+'.');emit('center_select');}

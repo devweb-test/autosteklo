@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "viewport": 1440,
+      "mismatches": [],
+      "helpAfterH1": true,
+      "centersRemoved": true,
+      "guaranteesAndProcessPreserved": true,
+      "cards": 10,
+      "nativeFormAndSearchWork": true,
+      "orderCorrect": true,
+      "fullCatalogueAccessible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 768,
+      "mismatches": [],
+      "helpAfterH1": true,
+      "centersRemoved": true,
+      "guaranteesAndProcessPreserved": true,
+      "cards": 10,
+      "nativeFormAndSearchWork": true,
+      "orderCorrect": true,
+      "fullCatalogueAccessible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 390,
+      "mismatches": [],
+      "helpAfterH1": true,
+      "centersRemoved": true,
+      "guaranteesAndProcessPreserved": true,
+      "cards": 10,
+      "nativeFormAndSearchWork": true,
+      "orderCorrect": true,
+      "fullCatalogueAccessible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 320,
+      "mismatches": [],
+      "helpAfterH1": true,
+      "centersRemoved": true,
+      "guaranteesAndProcessPreserved": true,
+      "cards": 10,
+      "nativeFormAndSearchWork": true,
+      "orderCorrect": true,
+      "fullCatalogueAccessible": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "javascriptErrors": [],
+  "offlineRegression": {
+    "passed": true,
+    "checks": [
+      "native five-field picker, keyboard and local generation navigation",
+      "Russian search and local navigation",
+      "positive, negative and unknown options",
+      "stable sorting and load more",
+      "side-glass empty state",
+      "comparison up to 3 products",
+      "context and price calculation",
+      "phone/VIN/photo validation",
+      "no form requests or PII storage",
+      "back navigation state",
+      "20 responsive page/viewport checks",
+      "mobile price bar and dialog focus"
+    ],
+    "layouts": 20,
+    "javascriptErrors": [],
+    "nativeOrderIncludesInstallation": true
+  },
+  "nativeSpacing": [
+    {
+      "viewport": 1440,
+      "nativeGap": 35,
+      "actualGap": 35
+    },
+    {
+      "viewport": 390,
+      "nativeGap": 27.5,
+      "actualGap": 27.5
+    }
+  ]
+}
