@@ -67,8 +67,12 @@
     if (compared.length) url.searchParams.set('compare',compared.join(','));
     return url.href;
   }
+  function glassPrice(p) {
+    if (!Number.isFinite(p.price) || !Number.isFinite(p.oldPrice) || p.oldPrice <= p.price) return money(p.price);
+    return `<span class="cr-price-pair"><s class="cr-price-old" aria-label="Цена до скидки">${money(p.oldPrice)}</s><span class="cr-price-current" aria-label="Цена со скидкой">${money(p.price)}</span></span>`;
+  }
   function estimate(p) {
-    return `<dl><div><dt>Стекло</dt><dd>${money(p.price)}</dd></div>${mode === 'install' ? `<div><dt>Замена</dt><dd>${money(p.service)}</dd></div>` : ''}<div class="cr-total"><dt>${mode === 'install' ? 'Подытог' : 'Только стекло'}</dt><dd>${money(total(p))}</dd></div></dl>`;
+    return `<dl><div><dt>Стекло</dt><dd>${glassPrice(p)}</dd></div>${mode === 'install' ? `<div><dt>Замена</dt><dd>${money(p.service)}</dd></div>` : ''}<div class="cr-total"><dt>${mode === 'install' ? 'Подытог' : 'Только стекло'}</dt><dd>${money(total(p))}</dd></div></dl>`;
   }
   function actionLabel(p) { return p.price === null ? 'Уточнить цену и срок' : mode === 'install' ? 'Заявка на установку' : 'Заявка на стекло'; }
   function card(p) {

@@ -34,6 +34,12 @@ async def run(executable):
    assert await page.locator('#cr-order-form a[href^="tel:"]').count()==0
    labels=await page.locator('#cr-order-summary dt').all_text_contents()
    assert labels==(['Стекло','Замена','Подытог'] if purchase=='install' else ['Стекло','Только стекло'])
+   discounted=expected['price'] is not None and expected.get('oldPrice') is not None and expected['oldPrice']>expected['price']
+   assert await page.locator('#cr-order-summary .cr-price-old').count()==int(discounted)
+   if discounted:
+    assert ''.join(x for x in await page.locator('#cr-order-summary .cr-price-old').inner_text() if x.isdigit())==str(expected['oldPrice'])
+    assert ''.join(x for x in await page.locator('#cr-order-summary .cr-price-current').inner_text() if x.isdigit())==str(expected['price'])
+    assert await page.locator('#cr-order-summary .cr-price-old').evaluate("e=>getComputedStyle(e).textDecorationLine")=='line-through'
    total=None if expected['price'] is None or (purchase=='install' and expected['service'] is None) else expected['price']+(expected['service'] if purchase=='install' else 0)
    amount=await page.locator('#cr-order-summary .cr-total dd').inner_text()
    assert (''.join(x for x in amount if x.isdigit())==str(total)) if total is not None else amount=='Уточнить цену'
@@ -168,6 +174,8 @@ async def run(executable):
   await page.keyboard.press('Escape')
   await click('.cr-native-card[data-product="92644"] .product-card__title')
   await page.wait_for_url('**/product/**/index.html*')
+  assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-price-old').inner_text() if x.isdigit())=='49115'
+  assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-price-current').inner_text() if x.isdigit())=='44650'
   assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-total dd').inner_text() if x.isdigit())=='50650'
   await click('.cr-buy [data-mode="glass"]')
   assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-total dd').inner_text() if x.isdigit())=='44650'

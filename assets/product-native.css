@@ -1,6 +1,8 @@
 /* Original product sections use the saved site styles; additions stay in the price box. */
 .cro-page .cr-native-price {width:100%;padding:0;background:transparent}
 .cr-native-price .cr-mode {margin-top:0}
+.cr-native-price .cr-buy .cr-price-old {font-size:18px;line-height:18px;margin-bottom:-5px}
+.cr-native-price .cr-buy .cr-price-current {font-size:calc(18px + (100vw - 768px) * .00868);line-height:calc(24px + (100vw - 768px) * .00694)}
 .cr-native-price .cr-buy .cr-actions {grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:0}
 .cr-native-price .cr-buy .cr-actions .cr-btn {min-width:0;white-space:normal;height:auto;min-height:53px;padding-top:10px;padding-bottom:10px}
 .cr-native-price .cr-small {font-size:14px;line-height:21px;margin-top:15px}

@@ -24,11 +24,14 @@ for p in source['products']:
     title=s.select_one('.product-card__title').get_text(' ',strip=True)
     codes=[x.get_text(' ',strip=True) for x in s.select('.product-card-content-eurocode')]
     order=s.select_one('[data-id]')
+    old_price_node=s.select_one('.product-card__prices__old')
+    old_price=int(re.sub(r'\D','',old_price_node.get_text())) if old_price_node else None
     # A missing positive option does not establish that the option is absent.
     opts={k:(True if p['key'] in source['options'][v] else None) for k,v in
           {'rain':'1','hud':'14','camera':'7','heating':'12','vin':'9','athermal':'8'}.items()}
     products.append({'id':order['data-id'], 'path':p['key'], 'brand':brand, 'title':title,
         'price':int(p['price']) if p['price'] is not None else None, 'stock':p['available'],
+        'oldPrice':old_price,
         'eurocode':codes[0] if codes else '', 'oem':codes[1] if len(codes)>1 else '',
         'options':opts, 'service':6000,
         'brandImage':'assets/'+Path(s.select_one('.product-card-content-brand img')['src']).name})
@@ -46,6 +49,7 @@ for card in BeautifulSoup(brand_listing_template,'html.parser').select('.product
     brand_products.append({'id':card.select_one('[data-brand-order]')['data-brand-order'],
         'title':title,'car':title,'brand':logo.get('alt','') if logo else '',
         'price':amount('.product-card__prices__main'),'service':amount('.product-card__replace'),
+        'oldPrice':amount('.product-card__prices__old'),
         'options':{},'native':True})
 data['brandProducts']=brand_products
 (ROOT/'assets/catalog-experience-data.js').write_text('window.CRO_DATA='+json.dumps(data,ensure_ascii=False)+';\n')
@@ -98,7 +102,10 @@ def listing():
     return f'''<section class="catalog-wrapper cr-native-generation" aria-label="Стёкла Audi Q8">{filters()}<div class="catalog-content">{sort}<div class="cr-native-list-controls"><a class="catalog-filters__btn a-btn a-btn-outline --mobile" href="#" id="catalogFiltersOpen" role="button" aria-controls="catalogFiltersBlock" aria-expanded="false">Фильтр</a><label class="cr-native-sort-select">Сортировка<select id="cr-sort"><option value="recommended">Сначала с ценой</option><option value="price">Цена по возрастанию</option><option value="price-desc">Цена по убыванию</option><option value="stock">По наличию</option><option value="brand">Производитель</option></select></label></div><div class="cr-mode" role="group" aria-label="Способ покупки">{button('Стекло с установкой','data-mode="install" aria-pressed="true"')}{button('Только стекло','data-mode="glass" aria-pressed="false"',True)}</div><div id="cr-filter-chips" class="cr-chips"></div><div id="cr-products" class="catalog-items"></div><div class="catalog-pagination"><button class="show-more a-btn a-btn-outline" id="cr-more" type="button">Показать еще</button></div><noscript><p>Для фильтрации включите JavaScript. <a href="../../../../../product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html">Стекло AGC</a>.</p></noscript></div></section>'''
 
 def product(rel):
-    return f'''<section class="cr-buy" aria-label="Стоимость и способ покупки"><div class="cr-mode" role="group" aria-label="Способ покупки">{button('Стекло с установкой','data-mode="install" aria-pressed="true"')}{button('Только стекло','data-mode="glass" aria-pressed="false"',True)}</div><div id="cr-product-estimate" class="cr-estimate"><dl><div><dt>Стекло</dt><dd>44 650 ₽</dd></div><div><dt>Замена</dt><dd>6 000 ₽</dd></div><div class="cr-total"><dt>Подытог</dt><dd>50 650 ₽</dd></div></dl></div><p class="cr-small">Калибровку, молдинги и дополнительные работы согласуем после проверки автомобиля.</p><div class="cr-actions">{button('Заявка на установку','data-order="92644"')}{button('Подобрать по VIN / фото','data-help',True)}</div></section>'''
+    selected=next(p for p in products if p['id']=='92644')
+    rub=lambda value: f'{value:,}'.replace(',',' ')+' ₽'
+    price_pair=f'<span class="cr-price-pair"><s class="cr-price-old" aria-label="Цена до скидки">{rub(selected["oldPrice"])}</s><span class="cr-price-current" aria-label="Цена со скидкой">{rub(selected["price"])}</span></span>' if selected['oldPrice'] and selected['oldPrice']>selected['price'] else rub(selected['price'])
+    return f'''<section class="cr-buy" aria-label="Стоимость и способ покупки"><div class="cr-mode" role="group" aria-label="Способ покупки">{button('Стекло с установкой','data-mode="install" aria-pressed="true"')}{button('Только стекло','data-mode="glass" aria-pressed="false"',True)}</div><div id="cr-product-estimate" class="cr-estimate"><dl><div><dt>Стекло</dt><dd>{price_pair}</dd></div><div><dt>Замена</dt><dd>6 000 ₽</dd></div><div class="cr-total"><dt>Подытог</dt><dd>50 650 ₽</dd></div></dl></div><p class="cr-small">Калибровку, молдинги и дополнительные работы согласуем после проверки автомобиля.</p><div class="cr-actions">{button('Заявка на установку','data-order="92644"')}{button('Подобрать по VIN / фото','data-help',True)}</div></section>'''
 
 def services():
     return f'''<section class="cr-section" id="cr-centers"><div class="cr-row cr-between"><h2>Где установить стекло</h2><span class="cr-badge">Ярославль</span></div><p>Выберите удобный центр. Сначала проверим комплектацию и наличие, затем согласуем стоимость и время.</p><div class="cr-centers"><article class="cr-card"><h3>Городской Вал, 2</h3><p>Ежедневно, 9:00–18:00</p><a href="tel:+78007073772">8 (800) 707-37-72</a><div class="cr-row cr-between">{button('Выбрать центр','data-center="val"',True)}<a href="https://yandex.ru/maps/?text=Ярославль%20Городской%20Вал%202" target="_blank" rel="noopener">Маршрут онлайн</a></div></article><article class="cr-card"><h3>Улица Громова, 1Ж</h3><p>Пн–сб, 9:00–18:00 · вс — выходной</p><a href="tel:+78007073772">8 (800) 707-37-72</a><div class="cr-row cr-between">{button('Выбрать центр','data-center="gromova"',True)}<a href="https://yandex.ru/maps/?text=Ярославль%20Громова%201Ж" target="_blank" rel="noopener">Маршрут онлайн</a></div></article></div><p id="cr-center-status" class="cr-small" role="status">Наличие на складе поставщика не означает наличие в центре.</p></section>{(ROOT/'tools/catalog_native_benefits.html.txt').read_text()}<section class="cr-section cr-process"><div><div class="base__title">Как проходит замена</div><ol><li>Проверяем VIN, опции стекла и комплектацию автомобиля.</li><li>Подтверждаем наличие, работы и смету до заказа.</li><li>Согласуем центр и время, устанавливаем стекло.</li><li>Проверяем результат, выдаём документы и рекомендации.</li></ol></div><img src="PLACEHOLDER_PROCESS" alt="Процесс установки автостекла в сервисном центре" width="1280" height="853" loading="lazy"></section><section class="cr-section cr-faq"><div class="base__title">Частые вопросы</div><details><summary>Что входит в указанную стоимость?</summary><p>Подытог складывается из цены стекла и услуги замены, если она выбрана. Калибровка камеры, молдинги, крепления и другие необходимые работы согласуются отдельно после проверки. Автоматически платные дополнения не выбираются.</p></details><details><summary>Как узнать, нужны ли HUD, камера и обогрев?</summary><p>Посмотрите комплектацию автомобиля или приложите фото зоны камеры и маркировки стекла. VIN помогает проверить применимость; при выборе «Не знаю» варианты не исключаются.</p>{button('Проверить по VIN / фото','data-help',True)}</details><details><summary>Можно купить стекло без установки?</summary><p>Да, выберите «Только стекло». Подытог и состав заявки изменятся. Возможность выдачи, упаковку и срок нужно подтвердить для выбранного товара.</p></details><details><summary>Как оплатить и получить стекло?</summary><p>Способ оплаты, самовывоз или доставку и её стоимость согласуют с центром до заказа.</p></details><details><summary>Можно записаться на точное время?</summary><p>Время подтверждает менеджер после проверки комплектации и наличия.</p></details></section>'''
@@ -112,7 +119,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=native-form-style-20261120'
+    asset_version='?v=product-discount-20261120'
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     if kind=='generation':
         css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-generation.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)

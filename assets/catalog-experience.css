@@ -106,6 +106,9 @@
 .cr-estimate dl {margin:0}
 .cr-estimate dl>div {display:flex;justify-content:space-between;gap:15px;margin:8px 0;font-size:16px;line-height:24px}
 .cr-root dd {margin:0;font-weight:700;color:#333}
+.cr-price-pair {display:inline-flex;flex-direction:column;align-items:flex-end}
+.cr-price-old {font-size:15px;line-height:20px;font-weight:400;color:dimgray;text-decoration:line-through;white-space:nowrap}
+.cr-price-current {white-space:nowrap}
 .cr-total {font-weight:700;border-top:1px solid var(--cr-line);padding-top:12px;margin-top:12px!important}
 .cr-estimate .cr-total dd {font-size:24px;line-height:30px;color:#333;white-space:nowrap}
 .cr-glass-buy>.cr-btn {margin-top:15px;font-size:20px;line-height:22px}
