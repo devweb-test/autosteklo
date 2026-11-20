@@ -122,8 +122,7 @@ for path,kind in ROUTES.items():
     fragment=BeautifulSoup(content,'html.parser')
     if kind in ['catalog','brand']:
         # Catalogue directories reuse the original form, addresses and content.
-        selectors=['.cr-heading>p','#cr-directory-count','#cr-centers']
-        if kind=='catalog':selectors.append('#cr-picker-note')
+        selectors=['.cr-heading>p','#cr-directory-count','#cr-centers','#cr-picker-note']
         for selector in selectors:
             element=fragment.select_one(selector)
             if element:element.decompose()
