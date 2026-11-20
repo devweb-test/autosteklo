@@ -112,7 +112,7 @@ for path,kind in ROUTES.items():
         item=f'<span class="breadcrumbs-item__text breadcrumbs-item__current" itemprop="name" aria-current="page">{h(label)}</span>' if last else f'<meta itemprop="name" content="{h(label)}"><a itemprop="item" class="breadcrumbs-item__text breadcrumbs-item__link" href="{rel+target}">{h(label)}</a>'
         crumbs+=f'<div class="breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">{item}<meta itemprop="position" content="{index+1}"></div>'
     title_class='product__title base__title' if kind=='product' else 'catalog__title' if kind=='generation' else 'catalog__title base__title'
-    heading_title={'brand':'Каталог автостекол Audi в Ярославле','model':'Каталог автостекол Audi Q8 в Ярославле'}.get(kind,title)
+    heading_title={'catalog':'Каталог автостекол','brand':'Каталог автостекол Audi в Ярославле','model':'Каталог автостекол Audi Q8 в Ярославле'}.get(kind,title)
     heading_subtitle='<p>Ярославль · подбор, покупка и установка автостёкол</p>' if kind in ['generation','product'] else ''
     content=f'<main id="main" class="cr-root" data-kind="{kind}" data-root="{rel}"><div class="cr-wrap base-container"><a class="cr-skip" href="#cr-content">Перейти к подбору</a><nav class="breadcrumbs cr-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList" aria-label="Хлебные крошки">{crumbs}</nav><div id="cr-content" class="cr-heading"><h1 class="{title_class}">{heading_title}</h1>{heading_subtitle}</div>'
     if kind=='product':content+=product(rel)
