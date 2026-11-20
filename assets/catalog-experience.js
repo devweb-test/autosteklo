@@ -344,27 +344,37 @@
   }
   nativeGeneration?.init({root,state,change:()=>{state.limit=6;renderProducts();persist();emit('filter_change');},reset:()=>{Object.assign(state,defaults);renderProducts();persist();}});
 
-  const orderDialog=$('#cr-order-dialog'), compareDialog=$('#cr-compare-dialog'), orderForm=$('#cr-order-form');
+  const orderDialog=$('#cr-order-dialog'), helpDialog=$('#cr-help-dialog'), compareDialog=$('#cr-compare-dialog');
+  const orderForm=$('#cr-order-form'), helpForm=$('#cr-help-form');
   let ordered=null, previousFocus=null, objectUrls=[], assistance={glass:'Лобовое',year:'',details:[]};
   function openDialog(dialog) {
-    if (compareDialog.open) compareDialog.close();
+    $$('dialog[open]').forEach(open => { if (open !== dialog) open.close(); });
     previousFocus=document.activeElement; dialog.showModal(); document.body.classList.add('cr-dialog-open');
   }
-  [orderDialog,compareDialog].forEach(dialog => {
+  [orderDialog,helpDialog,compareDialog].forEach(dialog => {
     dialog.addEventListener('close',() => {
-      if (!$('dialog[open]')) document.body.classList.remove('cr-dialog-open');
+      if ($('dialog[open]')) return;
+      document.body.classList.remove('cr-dialog-open');
       if (previousFocus?.isConnected) previousFocus.focus({preventScroll:true});
     });
     dialog.addEventListener('click',event => { if(event.target===dialog) { const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close(); } });
   });
   function orderSummary() {
-    const car=ordered ? ordered.native ? `${ordered.title} · арт. ${ordered.id}` : `Audi Q8 · ${ordered.brand} · арт. ${ordered.id}` : (orderForm.elements.car.value || 'Подбор по VIN / фото');
-    const options=ordered ? Object.entries(labels).filter(([key])=>ordered.options[key]===true).map(([,label])=>label).join(' · ') : `${assistance.glass} стекло · ${assistance.year || 'год уточняется'}${assistance.details.length ? ' · '+assistance.details.join(' · ') : ''}`;
-    $('#cr-order-summary').innerHTML=`<strong>${escape(car)}</strong><p>${escape(options)}</p><p>Ярославль · ${escape(centers[center] || 'центр выберем с менеджером')}</p><p>${mode === 'install' ? 'Стекло с установкой' : 'Только стекло'}</p>${ordered ? '<div class="cr-estimate">'+estimate(ordered)+'</div><p class="cr-small">Калибровка, молдинги и другие работы согласуются после проверки.</p>' : '<p class="cr-small">Стоимость рассчитают после подбора стекла.</p>'}`;
+    $('#cr-order-summary').innerHTML=`<strong>${escape(ordered.title)}</strong><p>${mode === 'install' ? 'Стекло с установкой' : 'Стекло без установки'}</p><div class="cr-estimate">${estimate(ordered)}</div>`;
   }
   function openOrder(p=null) {
+    if (!p) { openHelp();return; }
     ordered=p;
-    $('#cr-order-title').textContent=p ? actionLabel(p) : 'Подбор по VIN или фото';
+    $('#cr-order-title').textContent=mode === 'install' ? 'Заказать стекло с установкой' : 'Заказать стекло без установки';
+    $('#cr-form-status').textContent='';orderSummary();openDialog(orderDialog);
+    emit('order_open',p);
+  }
+  function helpSummary() {
+    const car=helpForm.elements.car.value || 'Подбор по VIN / фото';
+    const options=`${assistance.glass} стекло · ${assistance.year || 'год уточняется'}${assistance.details.length ? ' · '+assistance.details.join(' · ') : ''}`;
+    $('#cr-help-summary').innerHTML=`<strong>${escape(car)}</strong><p>${escape(options)}</p><p>Ярославль · ${escape(centers[center] || 'центр выберем с менеджером')}</p><p class="cr-small">Стоимость рассчитают после подбора стекла.</p>`;
+  }
+  function openHelp() {
     const q8Page=['model','generation','product'].includes(kind);
     const selectedBrand=$('#cr-brand')?.value || $('#cr-native-brand')?.value || (q8Page?'Audi':''), selectedModel=$('#cr-model')?.value || $('#cr-native-model')?.value || (q8Page?'Q8':'');
     const nativeYear=$('#cr-native-year')?.value;
@@ -377,41 +387,43 @@
         if(state.movement!=='any')assistance.details.push(state.movement==='moving'?'опускное':'неподвижное');
       }
     }
-    orderForm.elements.car.value=p ? p.native ? p.car : `Audi Q8, ${state.year || '2018–'}, лобовое стекло` : [selectedBrand,selectedModel,assistance.year,assistance.glass.toLowerCase()+' стекло'].filter(Boolean).join(' ');
-    orderForm.elements.center.value=center;
-    $('#cr-form-status').textContent=''; orderSummary(); openDialog(orderDialog);
-    emit(p?'order_open':'vin_help_open',p);
+    helpForm.elements.car.value=[selectedBrand,selectedModel,assistance.year,assistance.glass.toLowerCase()+' стекло'].filter(Boolean).join(' ');
+    helpForm.elements.center.value=center;
+    $('#cr-help-status').textContent='';helpSummary();openDialog(helpDialog);
+    emit('vin_help_open');
   }
   if (nativeProduct) root.addEventListener('catalog:product-order',event => {
     const product = get(event.detail?.productId);if (!product) return;
     if (event.detail.mode === 'install') {mode='install';refresh();}
     openOrder(product);
   });
-  orderForm.addEventListener('input',event => {
-    event.target.setCustomValidity?.(''); event.target.removeAttribute('aria-invalid');
-    $('#cr-form-status').textContent='';
-    if(event.target.name==='car'&&!ordered)orderSummary();
-  });
-  orderForm.elements.center.addEventListener('change',event => { center=event.target.value;updateCenter();persist();orderSummary(); });
-  orderForm.elements.photos.addEventListener('change',event => {
+  helpForm.elements.center.addEventListener('change',event => { center=event.target.value;updateCenter();persist();helpSummary(); });
+  helpForm.elements.photos.addEventListener('change',event => {
     objectUrls.forEach(URL.revokeObjectURL);objectUrls=[];$('#cr-photo-preview').replaceChildren();
     const files=[...event.target.files];
     if(files.length>3||files.some(f=>f.size>10*1024*1024||!['image/jpeg','image/png','image/webp'].includes(f.type))) {
-      event.target.value='';$('#cr-form-status').textContent='Выберите до 3 фото JPG, PNG или WebP, каждое до 10 МБ.';return;
+      event.target.value='';$('#cr-help-status').textContent='Выберите до 3 фото JPG, PNG или WebP, каждое до 10 МБ.';return;
     }
     files.forEach(file => { const url=URL.createObjectURL(file);objectUrls.push(url);const img=document.createElement('img');img.src=url;img.alt=file.name;$('#cr-photo-preview').append(img); });
   });
-  orderForm.addEventListener('submit',event => {
-    event.preventDefault();event.stopImmediatePropagation();
-    const phone=orderForm.elements.phone,vin=orderForm.elements.vin;
-    phone.setCustomValidity('');vin.setCustomValidity('');
-    if(!/^[78]\d{10}$/.test(phone.value.replace(/\D/g,''))) {phone.setCustomValidity('Введите полный номер: 11 цифр, начиная с 7 или 8.');phone.setAttribute('aria-invalid','true');}
-    if(vin.value && !/^[A-HJ-NPR-Z0-9]{17}$/i.test(vin.value)) {vin.setCustomValidity('Проверьте VIN: 17 латинских букв и цифр, без I, O, Q.');vin.setAttribute('aria-invalid','true');}
-    if(!orderForm.reportValidity())return;
-    const submit=$('#cr-form-submit');if(submit.disabled)return;submit.disabled=true;
-    $('#cr-form-status').textContent='Форма заполнена. Данные не отправлены: это офлайн-копия. Для реального подбора или заказа позвоните 8 (800) 707-37-72. Введённые поля сохранены в открытой форме.';
-    $('#cr-form-status').focus();emit('offline_form_checked',ordered);
-    setTimeout(()=>{submit.disabled=false;},400);
+  [orderForm,helpForm].forEach(form => {
+    const status=$('#'+form.dataset.status);
+    form.addEventListener('input',event => {
+      event.target.setCustomValidity?.('');event.target.removeAttribute('aria-invalid');status.textContent='';
+      if(form===helpForm && event.target.name==='car')helpSummary();
+    });
+    form.addEventListener('submit',event => {
+      event.preventDefault();event.stopImmediatePropagation();
+      const phone=form.elements.phone,vin=form.elements.vin;
+      phone.setCustomValidity('');vin?.setCustomValidity('');
+      if(!/^[78]\d{10}$/.test(phone.value.replace(/\D/g,''))) {phone.setCustomValidity('Введите полный номер: 11 цифр, начиная с 7 или 8.');phone.setAttribute('aria-invalid','true');}
+      if(vin?.value && !/^[A-HJ-NPR-Z0-9]{17}$/i.test(vin.value)) {vin.setCustomValidity('Проверьте VIN: 17 латинских букв и цифр, без I, O, Q.');vin.setAttribute('aria-invalid','true');}
+      if(!form.reportValidity())return;
+      const submit=form.querySelector('[type="submit"]');if(submit.disabled)return;submit.disabled=true;
+      status.textContent='Форма заполнена. Данные не отправлены: это офлайн-копия. Введённые поля сохранены в открытой форме.';
+      status.focus();emit('offline_form_checked',form===orderForm ? ordered : null);
+      setTimeout(()=>{submit.disabled=false;},400);
+    });
   });
   root.addEventListener('click',event => {
     const el=event.target.closest('button,a'); if(!el)return;

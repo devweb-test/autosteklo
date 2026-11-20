@@ -21,6 +21,21 @@ async def run(executable):
    await page.goto((ROOT/route).as_uri(),wait_until='load')
   async def click(selector):
    await page.locator(selector).click()
+  async def check_order(product_id,purchase='install',brand=False):
+   expected=await page.evaluate("([id,brand])=>(brand?CRO_DATA.brandProducts:CRO_DATA.products).find(p=>p.id===id)",[product_id,brand])
+   assert await page.locator('#cr-order-dialog').is_visible()
+   assert await page.locator('#cr-order-title').evaluate("e=>e.tagName==='DIV'")
+   assert await page.locator('#cr-order-title').inner_text()==('Заказать стекло с установкой' if purchase=='install' else 'Заказать стекло без установки')
+   assert ' '.join((await page.locator('#cr-order-summary>strong').inner_text()).split())==' '.join(expected['title'].split())
+   summary=await page.locator('#cr-order-summary').inner_text()
+   assert 'арт.' not in summary and 'центр' not in summary and 'Калибровка' not in summary
+   assert await page.locator('#cr-order-form').evaluate("f=>[...f.elements].filter(e=>e.name).map(e=>e.name).join(',')")=='phone,customerName,consent'
+   assert await page.locator('#cr-order-form a[href^="tel:"]').count()==0
+   labels=await page.locator('#cr-order-summary dt').all_text_contents()
+   assert labels==(['Стекло','Замена','Подытог'] if purchase=='install' else ['Стекло','Только стекло'])
+   total=None if expected['price'] is None or (purchase=='install' and expected['service'] is None) else expected['price']+(expected['service'] if purchase=='install' else 0)
+   amount=await page.locator('#cr-order-summary .cr-total dd').inner_text()
+   assert (''.join(x for x in amount if x.isdigit())==str(total)) if total is not None else amount=='Уточнить цену'
   await open(PAGES[0])
   assert await page.locator('#cr-native-button').get_attribute('aria-disabled')=='true'
   await page.locator('#cr-native-glass-field').focus()
@@ -44,12 +59,13 @@ async def run(executable):
   await click('[data-brand-order="103436"]')
   assert await page.locator('#cr-order-dialog').is_visible()
   summary=await page.locator('#cr-order-summary').inner_text()
-  assert '103436' in summary and 'AUDI A3' in summary and 'Audi Q8' not in summary
-  assert 'AUDI A3' in await page.locator('#cr-order-form [name="car"]').input_value()
+  assert 'AUDI A3' in summary and 'Audi Q8' not in summary
+  await check_order('103436',brand=True)
   await page.keyboard.press('Escape')
   await click('[data-brand-order="105449"]')
   summary=await page.locator('#cr-order-summary').inner_text()
-  assert '105449' in summary and '22' in summary and '850' in summary
+  assert '22' in summary and '850' in summary
+  await check_order('105449',brand=True)
   await page.keyboard.press('Escape')
   await page.locator('#cr-directory-search').fill('ку8')
   assert await page.locator('.cr-tile:visible').count()==1
@@ -59,11 +75,12 @@ async def run(executable):
   assert await page.locator('.cr-native-benefits .product-similar-side-item').count()==3 and await page.locator('.cr-process').count()==1
   assert await page.locator('.cr-native-model-products .product-card').count()==10
   assert await page.locator('#cr-native-picker [data-native-field]').count()==5
-  await click('.cr-help [data-help]');assert await page.locator('#cr-order-dialog').is_visible();await page.keyboard.press('Escape')
+  await click('.cr-help [data-help]');assert await page.locator('#cr-help-dialog').is_visible();await page.keyboard.press('Escape')
   await page.goto(page.url.split('?')[0]+'?mode=glass',wait_until='load')
   await click('[data-order="92287"]')
   summary=await page.locator('#cr-order-summary').inner_text()
-  assert '92287' in summary and 'Стекло с установкой' in summary
+  assert 'Стекло с установкой' in summary
+  await check_order('92287')
   await page.keyboard.press('Escape')
   await page.get_by_role('link',name='5D RANGER (2018 - )',exact=True).click()
   await page.wait_for_url('**/5d-ranger-2018/index.html*')
@@ -94,7 +111,7 @@ async def run(executable):
   await click('[data-native-glass="side"]')
   assert 'не сохранён' in await page.locator('.cr-empty').inner_text()
   await click('.cr-empty [data-help]')
-  assert 'Боковое' in await page.locator('#cr-order-summary').inner_text()
+  assert 'Боковое' in await page.locator('#cr-help-summary').inner_text()
   await page.keyboard.press('Escape')
   await click('#catalogClear')
   await click('[data-native-option="hud"]')
@@ -102,29 +119,46 @@ async def run(executable):
   chosen=await cards.first.get_attribute('data-product')
   await click(f'.cr-native-card[data-product="{chosen}"] [data-order]')
   assert await page.locator('#cr-order-dialog').is_visible()
-  assert f'арт. {chosen}' in await page.locator('#cr-order-summary').inner_text()
+  await check_order(chosen)
   await page.locator('#cr-order-form [name="phone"]',).fill('123')
   await page.locator('#cr-order-form [name="consent"]').check()
   await click('#cr-form-submit')
   assert await page.locator('#cr-order-form [name="phone"]').get_attribute('aria-invalid')=='true'
   await page.locator('#cr-order-form [name="phone"]').fill('+7 (900) 123-45-67')
-  await page.locator('#cr-order-form [name="vin"]').fill('BADVIN')
-  await click('#cr-form-submit')
-  assert await page.locator('#cr-order-form [name="vin"]').get_attribute('aria-invalid')=='true'
-  await page.locator('#cr-order-form [name="vin"]').fill('WAUZZZ4M0JD000001')
-  await page.locator('#cr-order-form [name="photos"]').set_input_files({'name':'invalid.txt','mimeType':'text/plain','buffer':b'x'})
-  assert 'до 3 фото' in await page.locator('#cr-form-status').inner_text()
-  png=base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a6XQAAAAASUVORK5CYII=')
-  await page.locator('#cr-order-form [name="photos"]').set_input_files({'name':'mark.png','mimeType':'image/png','buffer':png})
-  assert await page.locator('#cr-photo-preview img').count()==1
-  await page.locator('#cr-order-form [name="center"]').select_option('gromova')
-  assert 'Громова' in await page.locator('#cr-order-summary').inner_text()
   before=len(requests);await click('#cr-form-submit')
   assert 'не отправлены' in await page.locator('#cr-form-status').inner_text()
+  assert len(requests)==before
+  await page.keyboard.press('Escape')
+  await click('.cr-help [data-help]')
+  assert await page.locator('#cr-help-dialog').is_visible()
+  assert await page.locator('#cr-help-title').evaluate("e=>e.tagName==='DIV'")
+  await page.locator('#cr-help-form [name="phone"]').fill('+7 (900) 123-45-67')
+  await page.locator('#cr-help-form [name="consent"]').check()
+  await page.locator('#cr-help-form [name="vin"]').fill('BADVIN')
+  await click('#cr-help-submit')
+  assert await page.locator('#cr-help-form [name="vin"]').get_attribute('aria-invalid')=='true'
+  await page.locator('#cr-help-form [name="vin"]').fill('WAUZZZ4M0JD000001')
+  await page.locator('#cr-help-form [name="photos"]').set_input_files({'name':'invalid.txt','mimeType':'text/plain','buffer':b'x'})
+  assert 'до 3 фото' in await page.locator('#cr-help-status').inner_text()
+  png=base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a6XQAAAAASUVORK5CYII=')
+  await page.locator('#cr-help-form [name="photos"]').set_input_files({'name':'mark.png','mimeType':'image/png','buffer':png})
+  assert await page.locator('#cr-photo-preview img').count()==1
+  await page.locator('#cr-help-form [name="center"]').select_option('gromova')
+  assert 'Громова' in await page.locator('#cr-help-summary').inner_text()
+  before=len(requests);await click('#cr-help-submit')
+  assert 'не отправлены' in await page.locator('#cr-help-status').inner_text()
   assert len(requests)==before
   assert '79001234567' not in await page.evaluate('JSON.stringify(sessionStorage)')
   assert 'WAUZZZ4M0JD000001' not in await page.evaluate('JSON.stringify(sessionStorage)')
   assert 'WAUZZZ4M0JD000001' not in page.url
+  await page.locator('#cr-help-form [name="vin"]').fill('BADVIN')
+  await click('#cr-help-submit')
+  assert await page.locator('#cr-help-form [name="vin"]').get_attribute('aria-invalid')=='true'
+  await page.keyboard.press('Escape')
+  await click(f'.cr-native-card[data-product="{chosen}"] [data-order]')
+  await check_order(chosen)
+  await click('#cr-form-submit')
+  assert 'не отправлены' in await page.locator('#cr-form-status').inner_text()
   await page.keyboard.press('Escape')
   await click('.cr-native-card[data-product="92644"] .product-card__title')
   await page.wait_for_url('**/product/**/index.html*')
@@ -133,7 +167,14 @@ async def run(executable):
   assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-total dd').inner_text() if x.isdigit())=='44650'
   await click('.cr-buy [data-order="92644"]')
   summary=await page.locator('#cr-order-summary').inner_text()
-  assert 'Только стекло' in summary and 'Громова' in summary and '6 000' not in summary
+  assert 'Стекло без установки' in summary and 'Громова' not in summary and '6 000' not in summary
+  await check_order('92644','glass')
+  await page.keyboard.press('Escape')
+  await click('.cr-native-product .--product-order[data-id="93869"]')
+  await check_order('93869')
+  await page.keyboard.press('Escape')
+  await click('.cr-native-product .--product-price[data-id="90075"]')
+  await check_order('90075')
   await page.keyboard.press('Escape')
   await page.go_back(wait_until='load')
   assert await page.locator('[data-native-option="hud"]').get_attribute('aria-checked')=='true'
