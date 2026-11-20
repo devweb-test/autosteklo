@@ -1,0 +1,19 @@
+/* Original product benefit cards, arranged across the catalogue container. */
+.cr-root .cr-native-benefits {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;font-size:16px;line-height:normal;color:#000}
+.cr-native-benefits .product-similar-side-item {border:1px solid #e2e2e2;border-radius:8px}
+.cr-native-benefits .product-similar-side__head {padding:28px 32px;display:flex;border-bottom:1px solid #e2e2e2;align-items:center}
+.cr-root .cr-native-benefits p {margin:0}
+.cr-native-benefits .product-similar-side__title {font-size:24px;line-height:30px;font-weight:700;color:#333}
+.cr-native-benefits .product-similar-side__icon {width:110px;height:43px;fill:#5a4c66;margin-right:23px}
+.cr-native-benefits .product-similar-side__content {padding:15px 32px 33px;font-size:18px;line-height:26px;color:#333}
+@media(max-width:1170px) {
+ .cr-root .cr-native-benefits {grid-template-columns:1fr;gap:20px}
+ .cr-native-benefits .product-similar-side__title {font-size:22px;line-height:26px}
+ .cr-native-benefits .product-similar-side__content {font-size:15px;line-height:19px;padding:15px 20px 20px}
+}
+@media(max-width:767px) {
+ .cr-native-benefits .product-similar-side__head {padding:15px 20px}
+ .cr-native-benefits .product-similar-side__title {font-size:18px;line-height:22px}
+ .cr-native-benefits .product-similar-side__icon {width:95px;height:31px;margin-right:15px}
+ .cr-native-benefits .product-similar-side__content {font-size:13px;line-height:19px}
+}

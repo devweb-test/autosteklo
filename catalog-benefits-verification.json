@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "footerRemovedFromAllFivePages": true,
+  "originalProductBenefitTextMatches": true,
+  "oldGuaranteeBlocksRemoved": true,
+  "benefitCardsPerPage": 3,
+  "layouts": [
+    {
+      "page": "catalog/index.html",
+      "width": 1440,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "width": 1440,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "width": 1440,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "width": 1440,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/index.html",
+      "width": 768,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "width": 768,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "width": 768,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "width": 768,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/index.html",
+      "width": 390,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "width": 390,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "width": 390,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "width": 390,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/index.html",
+      "width": 320,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/index.html",
+      "width": 320,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/q8/index.html",
+      "width": 320,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    },
+    {
+      "page": "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html",
+      "width": 320,
+      "nativeCardStylesMatch": true,
+      "iconsLoaded": true,
+      "overflow": false
+    }
+  ],
+  "javascriptErrors": [],
+  "generatorIdempotent": true,
+  "sharedSmokePassed": true,
+  "sharedLayoutsChecked": 20
+}

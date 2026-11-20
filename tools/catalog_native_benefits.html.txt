@@ -1,0 +1,35 @@
+<section aria-label="Преимущества" class="cr-section cr-native-benefits">
+<div class="product-similar-side-item">
+<div class="product-similar-side__head">
+<svg class="product-similar-side__icon">
+<use xlink:href="#offline-sprite-logo_mini"></use>
+</svg>
+<p class="product-similar-side__title">Экономия времени</p>
+</div>
+<p class="product-similar-side__content">
+                                У нас нет скрытых комиссий или накруток — Вы всегда знаете, за что и сколько платите. Являясь надежным партнером ведущих производителей автомобильного стекла, мы стабильно держим цены на приемлемом уровне
+                            </p>
+</div>
+<div class="product-similar-side-item">
+<div class="product-similar-side__head">
+<svg class="product-similar-side__icon">
+<use xlink:href="#offline-sprite-logo_mini"></use>
+</svg>
+<p class="product-similar-side__title">Заботимся о вашей безопасности</p>
+</div>
+<p class="product-similar-side__content">
+                                Используем герметики, соответствующие американскому стандарту FMVSS 212/208 (США)  — не снижают прочность кузова и выдерживают сработавшую подушку безопасности, в отличие от большинства аналогов. Автомобиль можно эксплуатировать сразу после установки стекла.
+                            </p>
+</div>
+<div class="product-similar-side-item">
+<div class="product-similar-side__head">
+<svg class="product-similar-side__icon">
+<use xlink:href="#offline-sprite-logo_mini"></use>
+</svg>
+<p class="product-similar-side__title">Расширенная гарантия</p>
+</div>
+<p class="product-similar-side__content">
+                                На стекла производства AGC действует расширенная гарантия (1 год): замените автостекло марки AGC, а при повторном обращении, второе получите бесплатно. Гарантия на работы от Автостекла до 3 лет
+                            </p>
+</div>
+</section>

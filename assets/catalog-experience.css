@@ -133,8 +133,6 @@
 .cr-specs dd {font-size:16px;line-height:24px;font-weight:400;overflow-wrap:anywhere}
 .cr-centers {display:grid;grid-template-columns:1fr 1fr;gap:30px}
 .cr-centers .cr-row {margin-top:25px;font-size:16px;line-height:24px}
-.cr-assurances {display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.cr-assurances a {font-size:16px;line-height:24px}
 .cr-process {display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .cr-process ol {padding-left:18px;margin:15px 0}
 .cr-process li {margin:10px 0}
@@ -142,7 +140,6 @@
 .cr-faq>details {border:1px solid var(--cr-line);border-radius:8px;padding:20px;margin-top:15px}
 .cr-faq summary {font-size:20px;line-height:26px;cursor:pointer;font-weight:700;color:#333}
 .cr-faq p {max-width:1000px;margin:15px 0 0}
-.cr-snapshot {font-size:14px;line-height:20px;color:#878787;margin:40px 0!important}
 .cr-dialog {border:0;border-radius:10px;padding:45px;color:#333;width:min(544px,calc(100% - 30px));max-height:calc(100dvh - 40px);margin:auto;font:var(--cr-body-size)/var(--cr-body-line) 'Source Sans Pro',sans-serif;overflow-y:auto;overscroll-behavior:contain}
 .cr-dialog::backdrop {background:rgba(0,0,0,.6)}
 .cr-dialog-head {position:relative;padding-right:20px;margin-bottom:25px}
@@ -209,7 +206,7 @@
   .cr-filters:not([open])>summary::-webkit-details-marker {display:none}
   .cr-filters form {display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
   .cr-filters form>p,.cr-filters form>.cr-check,.cr-filters form>.cr-btn,#cr-side-options {grid-column:1/-1}
-  .cr-assurances,.cr-centers {gap:20px}
+  .cr-centers {gap:20px}
   .cr-dialog {padding:35px}
   .cr-close {top:-20px;right:-20px}
 }
@@ -255,7 +252,7 @@
   .cr-specs {grid-template-columns:1fr;padding:5px 20px}
   .cr-specs>div:nth-last-child(-n+2) {border-bottom:1px solid var(--cr-line)}
   .cr-specs>div:last-child {border:0}
-  .cr-centers,.cr-assurances,.cr-process {grid-template-columns:1fr;gap:20px}
+  .cr-centers,.cr-process {grid-template-columns:1fr;gap:20px}
   .cr-card {padding:20px}
   .cr-process img {height:220px}
   .cr-faq summary {font-size:18px;line-height:24px}
