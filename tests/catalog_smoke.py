@@ -69,37 +69,44 @@ async def run(executable):
   await page.wait_for_url('**/catalog/audi/q8/index.html*')
   await page.get_by_role('link',name='5D RANGER (2018 - )',exact=True).click()
   await page.wait_for_url('**/5d-ranger-2018/index.html*')
-  assert await page.locator('.cr-glass-card').count()==6
+  assert await page.locator('.cr-native-card').count()==6
+  assert await page.locator('.cr-heading').evaluate("e=>e.nextElementSibling.classList.contains('cr-help')")
+  assert await page.locator('[data-native-option]').count()==6
+  await click('[data-native-option="hud"]');assert '24 ' in await page.locator('#cr-count').inner_text()
+  await click('[data-native-option="hud"]');assert '33 ' in await page.locator('#cr-count').inner_text()
+  await page.locator('#cr-extra-filter').evaluate('e=>e.open=true')
   await page.locator('[name="hud"]').select_option('yes')
   assert '24 ' in await page.locator('#cr-count').inner_text()
   await page.locator('[name="hud"]').select_option('no')
-  assert await page.locator('.cr-glass-card').count()==0
+  assert await page.locator('.cr-native-card').count()==0
   assert await page.locator('.cr-empty').is_visible()
   await page.locator('[name="hud"]').select_option('unknown')
   assert '33 ' in await page.locator('#cr-count').inner_text()
   await page.locator('[name="heating"]').select_option('yes')
   assert '2 ' in await page.locator('#cr-count').inner_text()
-  await click('#cr-filter-form [type="reset"]')
-  await page.locator('#cr-sort').select_option('price')
-  prices=await page.locator('.cr-glass-card .cr-estimate dd:first-of-type').all_text_contents()
-  first=await page.locator('.cr-glass-card').first.get_attribute('data-product')
+  await click('#catalogClear')
+  await click('[data-native-sort="price"]')
+  prices=await page.locator('.cr-native-card .product-card__prices__main').all_text_contents()
+  first=await page.locator('.cr-native-card').first.get_attribute('data-product')
   assert '11' in prices[0] and '300' in prices[0]
-  await click('#cr-more');assert await page.locator('.cr-glass-card').count()==12
+  await click('#cr-more');assert await page.locator('.cr-native-card').count()==12
   await page.set_viewport_size({'width':390,'height':844})
   assert await page.locator('#cr-sort').input_value()=='price'
-  assert await page.locator('.cr-glass-card').first.get_attribute('data-product')==first
+  assert await page.locator('.cr-native-card').first.get_attribute('data-product')==first
+  await click('#catalogFiltersOpen');assert await page.locator('#catalogFiltersBlock').get_attribute('role')=='dialog'
+  await page.keyboard.press('Escape');assert await page.evaluate('document.body.style.overflow')==''
   await page.set_viewport_size({'width':1440,'height':1000})
-  await page.locator('#cr-filter-form [name="glass"]').select_option('side')
+  await click('[data-native-glass="side"]')
   assert await page.locator('#cr-side-options').is_visible()
   assert 'не сохранён' in await page.locator('.cr-empty').inner_text()
   await page.locator('[name="side"]').select_option('right')
   await click('.cr-empty [data-help]')
   assert 'Боковое' in await page.locator('#cr-order-summary').inner_text()
   await page.keyboard.press('Escape')
-  await click('#cr-filter-form [type="reset"]')
+  await click('#catalogClear')
   await page.locator('[name="hud"]').select_option('yes')
   await page.locator('[name="stock"]').check()
-  cards=page.locator('.cr-glass-card');assert await cards.count()==4
+  cards=page.locator('.cr-native-card');assert await cards.count()==4
   ids=[await cards.nth(i).get_attribute('data-product') for i in range(4)]
   for product_id in ids[:3]:await click(f'[data-compare="{product_id}"]')
   await click(f'[data-compare="{ids[3]}"]')
@@ -137,7 +144,7 @@ async def run(executable):
   assert 'WAUZZZ4M0JD000001' not in page.url
   await page.keyboard.press('Escape')
   await click('[data-clear-compare]')
-  await click('.cr-glass-card[data-product="92644"] h3 a')
+  await click('.cr-native-card[data-product="92644"] .product-card__title')
   await page.wait_for_url('**/product/**/index.html*')
   assert ''.join(x for x in await page.locator('#cr-product-estimate .cr-total dd').inner_text() if x.isdigit())=='50650'
   await click('.cr-buy [data-mode="glass"]')

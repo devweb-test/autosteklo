@@ -1,0 +1,104 @@
+<div class="catalog-filters" id="catalogFiltersBlock"><form id="cr-filter-form">
+<a class="catalog-filters__back a-btn --mobile" href="#" id="catalogFiltersClose" role="button" tabindex="0">Назад</a>
+<div id="catalogYears">
+<div class="catalog-filters-type">
+<div class="catalog-filters-type-header first">
+        Поколение
+    </div>
+<div class="catalog-filters-type-items catalog-filters-generations" id="yearSelect">
+<input class="filter-block-typical1-item__input" id="yearInput" type="hidden" value="5d-ranger-2018"/>
+<div class="catalog-filters-generation active" data-value="5d-ranger-2018">5D RANGER (2018 - )</div>
+</div>
+</div>
+</div>
+<div class="catalog-filters-type last">
+<div class="catalog-filters-type-header">
+                    Тип стекла
+                </div>
+<div aria-label="Тип стекла" class="catalog-filters-type-items" id="glassSelect" role="radiogroup">
+<input class="filter-block-typical1-item__input" id="cr-glass" name="glass" type="hidden" value="windshield"/>
+<div aria-checked="false" class="catalog-filters-glass" data-native-glass="rear" data-value="zadnie-stekla" role="radio" tabindex="0">
+<div class="catalog-filters-glass-radio"></div>
+<p class="catalog-filters-glass__title">Задние стекла</p>
+</div>
+<div aria-checked="false" class="catalog-filters-glass" data-native-glass="side" data-value="bokovye-stekla" role="radio" tabindex="0">
+<div class="catalog-filters-glass-radio"></div>
+<p class="catalog-filters-glass__title">Боковые стекла</p>
+</div>
+<div aria-checked="true" class="catalog-filters-glass active" data-native-glass="windshield" data-value="lobovye-stekla" role="radio" tabindex="0">
+<div class="catalog-filters-glass-radio"></div>
+<p class="catalog-filters-glass__title">Лобовые стекла</p>
+</div>
+</div>
+</div>
+<div class="catalog-filters-main" id="catalogFilters">
+<div class="catalog-filters-type active options">
+<div aria-controls="optionSelect" aria-expanded="true" class="catalog-filters-type-header" id="optionHeader" role="button" tabindex="0">
+        Выбор опций
+        <svg class="catalog-filters-type-header__svg">
+<use xlink:href="#offline-sprite-arrow_down"></use>
+</svg>
+</div>
+<div class="catalog-filters-type-items active" id="optionSelect">
+<input class="filter-block-typical1-item__input" id="optionInput" type="hidden" value=""/>
+<div aria-checked="false" class="catalog-filters-option catalog-filters-option__option" data-native-option="rain" data-value="1" role="checkbox" tabindex="0">
+<div class="catalog-filters-option-check">
+<svg class="catalog-filters-option-check__svg">
+<use xlink:href="#offline-sprite-check"></use>
+</svg>
+</div>
+<p class="catalog-filters-option__title">Датчик дождя/света</p>
+</div>
+<div aria-checked="false" class="catalog-filters-option catalog-filters-option__option" data-native-option="hud" data-value="14" role="checkbox" tabindex="0">
+<div class="catalog-filters-option-check">
+<svg class="catalog-filters-option-check__svg">
+<use xlink:href="#offline-sprite-check"></use>
+</svg>
+</div>
+<p class="catalog-filters-option__title">H.U.D (проекционный экран)</p>
+</div>
+<div aria-checked="false" class="catalog-filters-option catalog-filters-option__option" data-native-option="camera" data-value="7" role="checkbox" tabindex="0">
+<div class="catalog-filters-option-check">
+<svg class="catalog-filters-option-check__svg">
+<use xlink:href="#offline-sprite-check"></use>
+</svg>
+</div>
+<p class="catalog-filters-option__title">Камера</p>
+</div>
+<div aria-checked="false" class="catalog-filters-option catalog-filters-option__option" data-native-option="heating" data-value="12" role="checkbox" tabindex="0">
+<div class="catalog-filters-option-check">
+<svg class="catalog-filters-option-check__svg">
+<use xlink:href="#offline-sprite-check"></use>
+</svg>
+</div>
+<p class="catalog-filters-option__title">Пленочный обогрев</p>
+</div>
+<div aria-checked="false" class="catalog-filters-option catalog-filters-option__option" data-native-option="vin" data-value="9" role="checkbox" tabindex="0">
+<div class="catalog-filters-option-check">
+<svg class="catalog-filters-option-check__svg">
+<use xlink:href="#offline-sprite-check"></use>
+</svg>
+</div>
+<p class="catalog-filters-option__title">Окно под VIN</p>
+</div>
+<div aria-checked="false" class="catalog-filters-option catalog-filters-option__option" data-native-option="athermal" data-value="8" role="checkbox" tabindex="0">
+<div class="catalog-filters-option-check">
+<svg class="catalog-filters-option-check__svg">
+<use xlink:href="#offline-sprite-check"></use>
+</svg>
+</div>
+<p class="catalog-filters-option__title">Обогрев</p>
+</div>
+</div>
+</div>
+</div>
+{{EXTRA_FILTERS}}<div class="catalog-filters-bottom">
+<div class="catalog-filters-bottom__apply a-btn a-btn-black" id="catalogApply" role="button" tabindex="0">
+                    Подобрать стекло
+                </div>
+<div class="catalog-filters-bottom__clear a-btn a-btn-outline" id="catalogClear" role="button" tabindex="0">
+                    Сбросить
+                </div>
+</div>
+</form></div>
+

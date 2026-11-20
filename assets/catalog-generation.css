@@ -1,0 +1,56 @@
+/* Native catalogue components retain the original site CSS. */
+.cr-native-generation {font-size:16px;line-height:normal;color:#000}
+.cr-native-generation .catalog-content {min-width:0}
+.cr-native-generation .catalog-filters form {margin:0}
+.cr-native-generation .filter-block-typical1-item__input {display:none}
+.cr-native-generation [role=button],.cr-native-generation [role=radio],.cr-native-generation [role=checkbox] {cursor:pointer}
+.cr-native-generation .catalog-sort {margin-bottom:20px}
+.cr-native-generation .cr-native-list-controls {display:flex;align-items:center;gap:15px}
+.cr-native-generation .cr-native-sort-select {max-width:280px;margin:0 0 15px}
+.cr-native-generation .cr-mode {margin:10px 0 15px}
+.cr-native-generation .cr-native-note {font-size:14px;line-height:20px;color:dimgray;margin:12px 0}
+.cr-native-generation .cr-chips:empty {display:none}
+.cr-native-generation .cr-empty {width:100%}
+.cr-native-generation #cr-products {margin-top:20px}
+.cr-native-generation .cr-extra-filter {padding:20px;border-top:1px solid #e2e2e2}
+.cr-native-generation .cr-extra-filter>summary {cursor:pointer;font-size:16px;font-weight:700;color:#5a4c66}
+.cr-native-generation .cr-extra-filter label {margin-top:16px}
+.cr-native-generation .cr-extra-filter select {height:42px;font-size:16px;line-height:24px;padding-left:15px}
+.cr-native-generation .cr-extra-filter .cr-small {font-size:13px;line-height:19px;margin:15px 0 0}
+.cr-native-generation .catalog-filters-bottom {position:static}
+.cr-native-generation .cr-native-tags {margin-top:15px}
+.cr-native-generation .cr-native-tags span {font-size:14px;line-height:20px;color:#5a4c66}
+.cr-native-generation .product-card-content .cr-native-note {font-size:13px;line-height:19px;margin:10px 0}
+.cr-native-generation .cr-card-details {font-size:14px;line-height:20px;margin-top:10px}
+.cr-native-generation .cr-card-details p {margin-top:10px}
+.cr-native-generation .cr-native-estimate {width:100%;margin:5px 0 12px}
+.cr-native-generation .cr-native-estimate .cr-total {padding-top:8px;margin-top:8px!important;align-items:center}
+.cr-native-generation .cr-native-estimate dt {font-size:14px;line-height:20px;text-align:left}
+.cr-native-generation .cr-native-estimate dd {font-size:22px;line-height:28px}
+.cr-native-generation .cr-compare-toggle {font-size:14px;line-height:20px;margin-top:6px}
+.cr-root[data-kind=generation] .cr-heading.catalog-header {margin-bottom:30px}
+@media(min-width:768px) and (max-width:1320px) {
+  .cr-native-generation .product-card__order {display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;align-items:center}
+  .cr-native-generation .product-card__prices {justify-self:start}
+  .cr-native-generation .product-card__replace {margin:0;justify-self:end}
+  .cr-native-generation .cr-native-estimate {margin:0}
+  .cr-native-generation .product-card__order__main-btn,.cr-native-generation .product-card__order__callback {justify-self:end;margin:0}
+  .cr-native-generation .cr-compare-toggle {grid-column:1/-1}
+}
+@media(min-width:1171px) {
+  .cr-native-generation .cr-native-list-controls {display:none}
+}
+@media(max-width:1170px) {
+  .cr-native-generation .cr-native-list-controls {flex-direction:column;align-items:stretch}
+  .cr-native-generation .cr-native-sort-select {max-width:none;font-size:14px;line-height:20px}
+  .cr-native-generation .cr-native-sort-select select {height:42px;margin-top:5px;padding-left:15px}
+  .cr-native-generation .catalog-filters__btn {width:100%;margin-bottom:0}
+  .cr-native-generation .catalog-filters.active {overflow-y:auto;overscroll-behavior:contain;padding-bottom:30px}
+}
+@media(max-width:767px) {
+  .cr-native-generation .cr-native-list-controls {gap:10px;margin-bottom:15px}
+  .cr-native-generation .cr-native-sort-select {margin:0;min-width:0}
+  .cr-native-generation .cr-mode {gap:8px}
+  .cr-native-generation .cr-mode .cr-btn {font-size:14px;padding:0 15px}
+  .cr-native-generation .cr-native-note {font-size:13px;line-height:19px}
+}

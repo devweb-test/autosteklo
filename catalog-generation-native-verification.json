@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "viewport": 1440,
+      "mismatches": [],
+      "nativeFilter": true,
+      "helpAfterH1": true,
+      "nativeCards": 6,
+      "newEstimateAndComparison": true,
+      "horizontalOverflow": false,
+      "mobileDrawer": false
+    },
+    {
+      "viewport": 1280,
+      "mismatches": [],
+      "nativeFilter": true,
+      "helpAfterH1": true,
+      "nativeCards": 6,
+      "newEstimateAndComparison": true,
+      "horizontalOverflow": false,
+      "mobileDrawer": false
+    },
+    {
+      "viewport": 768,
+      "mismatches": [],
+      "nativeFilter": true,
+      "helpAfterH1": true,
+      "nativeCards": 6,
+      "newEstimateAndComparison": true,
+      "horizontalOverflow": false,
+      "mobileDrawer": true
+    },
+    {
+      "viewport": 390,
+      "mismatches": [],
+      "nativeFilter": true,
+      "helpAfterH1": true,
+      "nativeCards": 6,
+      "newEstimateAndComparison": true,
+      "horizontalOverflow": false,
+      "mobileDrawer": true
+    },
+    {
+      "viewport": 320,
+      "mismatches": [],
+      "nativeFilter": true,
+      "helpAfterH1": true,
+      "nativeCards": 6,
+      "newEstimateAndComparison": true,
+      "horizontalOverflow": false,
+      "mobileDrawer": true
+    }
+  ],
+  "javascriptErrors": [],
+  "offlineRegression": {
+    "passed": true,
+    "layouts": 20,
+    "checks": [
+      "native five-field picker, keyboard and local generation navigation",
+      "Russian search and local navigation",
+      "positive, negative and unknown options",
+      "stable sorting and load more",
+      "side-glass empty state",
+      "comparison up to 3 products",
+      "context and price calculation",
+      "phone/VIN/photo validation",
+      "no form requests or PII storage",
+      "back navigation state",
+      "20 responsive page/viewport checks",
+      "mobile price bar and dialog focus"
+    ],
+    "javascriptErrors": []
+  },
+  "primaryOptionCounts": {
+    "rain": 33,
+    "hud": 24,
+    "camera": 33,
+    "heating": 2,
+    "vin": 33,
+    "heatingOther": 3
+  },
+  "allProducts": {
+    "allCardsRender": 33,
+    "uniqueCards": true,
+    "unknownPricesRemainUnknown": 26,
+    "glassModeTotalsCorrect": true,
+    "javascriptErrors": []
+  }
+}

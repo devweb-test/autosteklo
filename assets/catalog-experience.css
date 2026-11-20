@@ -19,9 +19,9 @@
 .cr-root button {cursor:pointer}
 .cr-root button:disabled {cursor:default;opacity:.5}
 .cr-root :focus-visible {outline:2px solid #5a4c66;outline-offset:3px}
-.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model):not(.filter-block-typical1-btn):not(.cr-native-brand-products a):not(:where(.cr-native-model-products a)) {color:var(--cr-red);text-decoration:none}
-.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model):not(.filter-block-typical1-btn):not(.cr-native-brand-products a):not(:where(.cr-native-model-products a)):hover {color:#e11408}
-.cr-root p:not(:where(.cr-native-brand-products p,.cr-native-model-products p)) {margin:0 0 16px}
+.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model):not(.filter-block-typical1-btn):not(.cr-native-brand-products a):not(:where(.cr-native-model-products a,.cr-native-generation a)) {color:var(--cr-red);text-decoration:none}
+.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model):not(.filter-block-typical1-btn):not(.cr-native-brand-products a):not(:where(.cr-native-model-products a,.cr-native-generation a)):hover {color:#e11408}
+.cr-root p:not(:where(.cr-native-brand-products p,.cr-native-model-products p,.cr-native-generation p,.catalog-header__count)) {margin:0 0 16px}
 .cr-native-brand-products,.cr-native-model-products {margin-top:0;font-size:16px;line-height:normal;color:#000}
 .cr-native-brand-products .product-card:first-child,.cr-native-model-products .product-card:first-child {margin-top:20px}
 #cr-generations {font-size:16px;line-height:normal}

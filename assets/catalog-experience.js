@@ -4,6 +4,7 @@
   const root = document.querySelector('.cr-root');
   if (!root || !window.CRO_DATA) return;
   const data = window.CRO_DATA, base = root.dataset.root, kind = root.dataset.kind;
+  const nativeGeneration = kind === 'generation' ? window.CRO_GENERATION : null;
   const $ = (selector, parent = root) => parent.querySelector(selector);
   const $$ = (selector, parent = root) => [...parent.querySelectorAll(selector)];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -11,14 +12,14 @@
   const read = key => { try { return JSON.parse(sessionStorage.getItem('cro:' + key)); } catch { return null; } };
   const save = (key, value) => { try { sessionStorage.setItem('cro:' + key, JSON.stringify(value)); } catch {} };
   const params = new URLSearchParams(location.search);
-  const defaults = {glass:'windshield',year:'',side:'any',door:'any',movement:'any',hud:'any',camera:'any',rain:'any',heating:'any',athermal:'any',brand:'',stock:false,sort:'recommended',limit:6};
+  const defaults = {glass:'windshield',year:'',side:'any',door:'any',movement:'any',hud:'any',camera:'any',rain:'any',heating:'any',athermal:'any',vin:'any',brand:'',stock:false,sort:'recommended',limit:6};
   const cached = read('filters') || {};
   const state = {...defaults, ...cached};
   for (const key of Object.keys(defaults)) if (params.has(key)) state[key] = params.get(key);
   state.stock = state.stock === true || state.stock === 'true';
   state.limit = Math.max(6, Math.min(36, Number(state.limit) || 6));
-  const enumValues = {glass:['windshield','rear','side'],side:['any','left','right'],door:['any','front','back'],movement:['any','moving','fixed'],sort:['recommended','price','price-desc','brand']};
-  for (const key of ['hud','camera','rain','heating','athermal']) enumValues[key] = ['any','yes','no','unknown'];
+  const enumValues = {glass:['windshield','rear','side'],side:['any','left','right'],door:['any','front','back'],movement:['any','moving','fixed'],sort:['recommended','price','price-desc','brand','stock']};
+  for (const key of ['hud','camera','rain','heating','athermal','vin']) enumValues[key] = ['any','yes','no','unknown'];
   for (const [key, values] of Object.entries(enumValues)) if (!values.includes(state[key])) state[key] = defaults[key];
   if (!data.products.some(p => p.brand === state.brand)) state.brand = '';
   if (state.year && !/^(201[89]|202[0-6])$/.test(state.year)) state.year = '';
@@ -30,7 +31,8 @@
   let compared = [...new Set(candidates)].filter(id => data.products.some(p => p.id === id)).slice(0,3);
   const get = id => data.products.find(p => p.id === String(id));
   const current = get('92644');
-  const labels = {hud:'HUD',camera:'Камера',rain:'Датчик дождя',heating:'Обогрев',athermal:'Атермальность'};
+  // The legacy URL key "athermal" maps to original option 8, labelled "Обогрев".
+  const labels = {hud:'HUD',camera:'Камера',rain:'Датчик дождя',heating:'Пленочный обогрев',athermal:'Обогрев',vin:'Окно VIN'};
   const optionText = value => value === true ? 'Есть по каталогу' : value === false ? 'Нет по каталогу' : 'Не подтверждено';
   const glassName = () => ({windshield:'Лобовое',rear:'Заднее',side:'Боковое'}[state.glass]);
   const total = p => p.price === null || (mode === 'install' && p.service === null) ? null : p.price + (mode === 'install' ? p.service : 0);
@@ -64,6 +66,7 @@
   }
   function actionLabel(p) { return p.price === null ? 'Уточнить цену и срок' : mode === 'install' ? 'Заявка на установку' : 'Заявка на стекло'; }
   function card(p) {
+    if (nativeGeneration) return nativeGeneration.card(p,{base,escape,money,link,mode,total:total(p),actionLabel:actionLabel(p),labels,selected:compared.includes(p.id),date:data.date});
     const selected = compared.includes(p.id);
     const tags = Object.entries(labels).filter(([key]) => p.options[key] === true).map(([,label]) => `<span>${label}</span>`).join('');
     return `<article class="cr-glass-card" data-product="${p.id}"><div class="cr-glass-info"><img class="cr-brand-logo" src="${base + escape(p.brandImage)}" alt="${escape(p.brand)}" width="120" height="50" loading="lazy"><h3 class="product-card__title">${p.path.endsWith('/' + data.productPage.split('/')[1] + '/') ? `<a href="${link(data.productPage)}">` : ''}Лобовое стекло Audi Q8 · ${escape(p.brand)}${p.id === '92644' ? '</a>' : ''}</h3><div class="cr-tags">${tags}</div><p class="cr-small cr-muted">${p.options.hud === null ? 'HUD не подтверждён. ' : ''}${p.options.heating === null ? 'Обогрев не подтверждён.' : ''}</p><p class="cr-small cr-code">Eurocode: ${escape(p.eurocode)}<br>OEM: ${escape(p.oem)}</p><p class="cr-small cr-stock">${p.stock ? 'Было в наличии в снимке' : 'Под заказ в снимке'} · ${data.date}<br>Срок и наличие в центре уточняются.</p><details class="cr-card-details"><summary>Все параметры</summary><p>${escape(p.title)}</p><p>Точную применимость проверяют по VIN.</p>${p.id !== '92644' ? `<a href="https://autosteklo.pro${escape(p.path)}" target="_blank" rel="noopener">Карточка на сайте онлайн</a>` : ''}</details></div><div class="cr-glass-buy"><div class="cr-estimate">${estimate(p)}</div><button type="button" class="cr-btn cr-full a-btn a-btn-red2" data-order="${p.id}">${actionLabel(p)}</button><button type="button" class="cr-compare-toggle" data-compare="${p.id}" aria-pressed="${selected}">${selected ? 'Убрать из сравнения' : 'Добавить в сравнение'}</button></div></article>`;
@@ -73,6 +76,7 @@
     const list = data.products.filter(p => (!state.brand || p.brand === state.brand) && (!state.stock || (p.stock && p.price !== null)) && Object.keys(labels).every(key => state[key] === 'yes' ? p.options[key] === true : state[key] === 'no' ? p.options[key] === false : true));
     return list.sort((a,b) => {
       if (state.sort === 'brand') return a.brand.localeCompare(b.brand,'ru') || Number(a.id)-Number(b.id);
+      if (state.sort === 'stock') return Number(b.stock)-Number(a.stock) || Number(a.id)-Number(b.id);
       if (a.price === null && b.price !== null) return 1;
       if (b.price === null && a.price !== null) return -1;
       if (state.sort === 'price' || state.sort === 'price-desc') return ((a.price ?? 0)-(b.price ?? 0)) * (state.sort === 'price' ? 1 : -1) || Number(a.id)-Number(b.id);
@@ -88,11 +92,12 @@
     $('#cr-side-options').hidden = state.glass !== 'side';
     if ($('#cr-glass')) $('#cr-glass').value=state.glass;
     if ($('#cr-year')) $('#cr-year').value=state.year;
+    nativeGeneration?.sync(state);
   }
   function renderProducts() {
     if (!$('#cr-products')) return;
     const records = matching();
-    $('#cr-count').textContent = `${records.length} ${records.length === 1 ? 'вариант' : 'вариантов'} по вашему подбору`;
+    $('#cr-count').textContent = nativeGeneration ? `Найдено ${records.length} товаров` : `${records.length} ${records.length === 1 ? 'вариант' : 'вариантов'} по вашему подбору`;
     $('#cr-products').innerHTML = records.length ? records.slice(0,state.limit).map(card).join('') : `<div class="cr-empty"><h3>${state.glass !== 'windshield' ? 'Этот тип стекла не сохранён в офлайн-каталоге' : 'Стёкла по этим условиям не найдены'}</h3><p>${state.glass !== 'windshield' ? 'Здесь доступны 33 лобовых стекла Audi Q8. Боковое или заднее стекло можно подобрать по VIN / фото.' : 'Попробуйте убрать один фильтр. «Нет» исключает товары, у которых отсутствие опции не подтверждено.'}</p><button type="button" class="cr-btn cr-outline a-btn a-btn-outline" data-reset>Сбросить фильтры</button> <button type="button" class="cr-btn a-btn a-btn-red2" data-help>Помочь с подбором</button></div>`;
     $('#cr-more').hidden = records.length <= state.limit;
     $('#cr-shown').textContent = records.length ? `Показано ${Math.min(records.length,state.limit)} из ${records.length}` : 'Выбранные условия сохранены.';
@@ -325,9 +330,10 @@
     });
     filterForm.addEventListener('reset',event => { event.preventDefault(); Object.assign(state,defaults); renderProducts(); persist(); });
     $('#cr-sort').addEventListener('change',event => { state.sort=event.target.value; state.limit=6; renderProducts(); persist(); });
-    $('#cr-more').addEventListener('click',() => { const previous=state.limit; state.limit+=6; renderProducts(); persist(); const added=$$('.cr-glass-card')[previous]; if(added) { added.tabIndex=-1;added.focus({preventScroll:true}); } });
-    if (matchMedia('(max-width: 1170px)').matches) $('#cr-filters').open=false;
+    $('#cr-more').addEventListener('click',() => { const previous=state.limit; state.limit+=6; renderProducts(); persist(); const added=$('#cr-products').children[previous]; if(added) { added.tabIndex=-1;added.focus({preventScroll:true}); } });
+    if ($('#cr-filters') && matchMedia('(max-width: 1170px)').matches) $('#cr-filters').open=false;
   }
+  nativeGeneration?.init({root,state,change:()=>{state.limit=6;renderProducts();persist();emit('filter_change');},reset:()=>{Object.assign(state,defaults);renderProducts();persist();}});
 
   const orderDialog=$('#cr-order-dialog'), compareDialog=$('#cr-compare-dialog'), orderForm=$('#cr-order-form');
   let ordered=null, previousFocus=null, objectUrls=[], assistance={glass:'Лобовое',year:'',details:[]};

@@ -1,0 +1,20 @@
+<div class="catalog-sort --desktop">
+<p class="catalog-sort__text wht">Сортировка:</p>
+<div class="catalog-sort-items" id="catalogSort">
+
+<a aria-pressed="true" class="catalog-sort__text catalog-sort-item active" data-native-sort="recommended" data-value="count_showing" href="#" role="button">По популярности</a>
+<a aria-pressed="false" class="catalog-sort__text catalog-sort-item" data-native-sort="price-desc" data-value="-price" href="#" role="button">
+                        По цене
+                        <svg class="catalog-sort-item__svg">
+<use xlink:href="#offline-sprite-s-top"></use>
+</svg>
+</a>
+<a aria-pressed="false" class="catalog-sort__text catalog-sort-item" data-native-sort="price" data-value="price" href="#" role="button">
+                        По цене
+                        <svg class="catalog-sort-item__svg r">
+<use xlink:href="#offline-sprite-s-top"></use>
+</svg>
+</a>
+<a aria-pressed="false" class="catalog-sort__text catalog-sort-item" data-native-sort="stock" data-value="-count" href="#" role="button">По наличию</a>
+</div>
+</div>
