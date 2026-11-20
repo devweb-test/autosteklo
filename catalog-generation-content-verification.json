@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "sourceTextMatches": true,
+  "textBlocks": 3,
+  "relatedModelLinks": 22,
+  "blockOrder": [
+    "Адреса центров",
+    "Тексты с изображениями",
+    "Другие типы стекол на Audi Q8",
+    "Другие модели Audi Q8",
+    "Стекла для других автомобилей"
+  ],
+  "productsRetained": 33,
+  "filtersWork": true,
+  "layouts": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "imagesLoaded": 3,
+      "sourceStyleDifferences": {
+        ".seo": {},
+        ".seo__item": {},
+        ".seo__image": {},
+        ".content-text p": {},
+        ".content-text h2": {},
+        ".different-categories-wrapper:nth-child(2) h2": {},
+        ".different-categories-wrapper:nth-child(2) .catalog-model": {}
+      }
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "imagesLoaded": 3,
+      "sourceStyleDifferences": {
+        ".seo": {},
+        ".seo__item": {},
+        ".seo__image": {},
+        ".content-text p": {},
+        ".content-text h2": {},
+        ".different-categories-wrapper:nth-child(2) h2": {},
+        ".different-categories-wrapper:nth-child(2) .catalog-model": {}
+      }
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "imagesLoaded": 3,
+      "sourceStyleDifferences": {
+        ".seo": {},
+        ".seo__item": {},
+        ".seo__image": {},
+        ".content-text p": {},
+        ".content-text h2": {},
+        ".different-categories-wrapper:nth-child(2) h2": {},
+        ".different-categories-wrapper:nth-child(2) .catalog-model": {}
+      }
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "imagesLoaded": 3,
+      "sourceStyleDifferences": {
+        ".seo": {},
+        ".seo__item": {},
+        ".seo__image": {},
+        ".content-text p": {},
+        ".content-text h2": {},
+        ".different-categories-wrapper:nth-child(2) h2": {},
+        ".different-categories-wrapper:nth-child(2) .catalog-model": {}
+      }
+    }
+  ],
+  "javascriptErrors": [],
+  "generatorIdempotent": true
+}

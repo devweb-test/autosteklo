@@ -185,7 +185,8 @@ for path,kind in ROUTES.items():
                     value=element.get(attr,'')
                     if value.startswith('../'):element[attr]=rel+value[3:]
             if kind=='generation':
-                native.select_one('.seo').parent.decompose()
+                generation_content=BeautifulSoup((ROOT/'tools/generation_native_content.html.txt').read_text().replace('{{ROOT}}',rel),'html.parser')
+                native.select_one('.seo').replace_with(generation_content.select_one('.seo'))
                 links=BeautifulSoup((ROOT/'tools/generation_native_links.html.txt').read_text(),'html.parser')
                 native.select_one('#catalog-original-blocks').append(links)
             else:
