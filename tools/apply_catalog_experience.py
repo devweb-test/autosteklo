@@ -110,7 +110,8 @@ for path,kind in ROUTES.items():
         item=f'<span class="breadcrumbs-item__text breadcrumbs-item__current" itemprop="name" aria-current="page">{h(label)}</span>' if last else f'<meta itemprop="name" content="{h(label)}"><a itemprop="item" class="breadcrumbs-item__text breadcrumbs-item__link" href="{rel+target}">{h(label)}</a>'
         crumbs+=f'<div class="breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">{item}<meta itemprop="position" content="{index+1}"></div>'
     title_class='product__title base__title' if kind=='product' else 'catalog__title' if kind=='generation' else 'catalog__title base__title'
-    content=f'<main id="main" class="cr-root" data-kind="{kind}" data-root="{rel}"><div class="cr-wrap base-container"><a class="cr-skip" href="#cr-content">Перейти к подбору</a><nav class="breadcrumbs cr-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList" aria-label="Хлебные крошки">{crumbs}</nav><div id="cr-content" class="cr-heading"><h1 class="{title_class}">{title}</h1><p>Ярославль · подбор, покупка и установка автостёкол</p></div>'
+    heading_title='Каталог автостекол Audi в Ярославле' if kind=='brand' else title
+    content=f'<main id="main" class="cr-root" data-kind="{kind}" data-root="{rel}"><div class="cr-wrap base-container"><a class="cr-skip" href="#cr-content">Перейти к подбору</a><nav class="breadcrumbs cr-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList" aria-label="Хлебные крошки">{crumbs}</nav><div id="cr-content" class="cr-heading"><h1 class="{title_class}">{heading_title}</h1><p>Ярославль · подбор, покупка и установка автостёкол</p></div>'
     if kind=='product':content+=product(rel)
     else:
         if kind in ['catalog','brand']:content+=picker(kind)+help_block()+directory_block(kind,rel)
