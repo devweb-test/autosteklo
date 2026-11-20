@@ -1,0 +1,69 @@
+<form action="#" class="filter-block-typical1-wrapper typ2 base-container typical__padding cr-native-picker" id="cr-native-picker">
+
+<p class="filter-block-typical1__title">{{PICKER_TITLE}}</p>
+<div class="filter-block-typical1-wrapper-items">
+<div aria-controls="cr-native-options-glass" aria-disabled="false" aria-expanded="false" aria-haspopup="listbox" aria-label="Тип стекла" class="filter-block-typical1-item glass cr-native-field" data-native-field="glass" id="cr-native-glass-field" role="combobox" tabindex="0">
+<input class="filter-block-typical1-item__input" id="cr-native-glass" name="glass" type="hidden"/>
+<p class="filter-block-typical1-item__text">Тип стекла</p>
+<div class="filter-block-typical1-item-arrow">
+<svg class="filter-block-typical1-item-arrow__icon">
+<use xlink:href="#offline-sprite-arrow_down"></use>
+</svg>
+</div>
+<div aria-label="Тип стекла" class="filter-block-typical1-item-children default" hidden="" id="cr-native-options-glass" role="listbox">
+<div class="filter-block-item-children__item" data-value="13608" role="option" tabindex="-1">
+                            Задние стекла
+                        </div>
+<div class="filter-block-item-children__item" data-value="13609" role="option" tabindex="-1">
+                            Боковые стекла
+                        </div>
+<div class="filter-block-item-children__item" data-value="13610" role="option" tabindex="-1">
+                            Лобовые стекла
+                        </div>
+</div>
+</div>
+<div aria-controls="cr-native-options-brand" aria-disabled="true" aria-expanded="false" aria-haspopup="listbox" aria-label="Марка" class="filter-block-typical1-item mark disabled cr-native-field" data-key="mark" data-native-field="brand" data-title="Марка" id="cr-native-brand-field" role="combobox" tabindex="-1">
+<input class="filter-block-typical1-item__input" id="cr-native-brand" name="carBrand" type="hidden"/>
+<p class="filter-block-typical1-item__text">Марка</p>
+<div class="filter-block-typical1-item-arrow">
+<svg class="filter-block-typical1-item-arrow__icon">
+<use xlink:href="#offline-sprite-arrow_down"></use>
+</svg>
+</div>
+<div aria-label="Марка" class="filter-block-typical1-item-children default" hidden="" id="cr-native-options-brand" role="listbox"></div>
+</div>
+<div aria-controls="cr-native-options-model" aria-disabled="true" aria-expanded="false" aria-haspopup="listbox" aria-label="Модель" class="filter-block-typical1-item model disabled cr-native-field" data-key="model" data-native-field="model" data-title="Модель" id="cr-native-model-field" role="combobox" tabindex="-1">
+<input class="filter-block-typical1-item__input" id="cr-native-model" name="carModel" type="hidden"/>
+<p class="filter-block-typical1-item__text">Модель</p>
+<div class="filter-block-typical1-item-arrow">
+<svg class="filter-block-typical1-item-arrow__icon">
+<use xlink:href="#offline-sprite-arrow_down"></use>
+</svg>
+</div>
+<div aria-label="Модель" class="filter-block-typical1-item-children default" hidden="" id="cr-native-options-model" role="listbox"></div>
+</div>
+<div aria-controls="cr-native-options-year" aria-disabled="true" aria-expanded="false" aria-haspopup="listbox" aria-label="Год выпуска" class="filter-block-typical1-item year disabled cr-native-field" data-key="year" data-native-field="year" data-title="Год выпуска" id="cr-native-year-field" role="combobox" tabindex="-1">
+<input class="filter-block-typical1-item__input" id="cr-native-year" name="year" type="hidden"/>
+<p class="filter-block-typical1-item__text">Год выпуска</p>
+<div class="filter-block-typical1-item-arrow">
+<svg class="filter-block-typical1-item-arrow__icon">
+<use xlink:href="#offline-sprite-calendar"></use>
+</svg>
+</div>
+<div aria-label="Год выпуска" class="filter-block-typical1-item-children default" hidden="" id="cr-native-options-year" role="listbox"></div>
+</div>
+<div aria-controls="cr-native-options-body" aria-disabled="true" aria-expanded="false" aria-haspopup="listbox" aria-label="Тип кузова" class="filter-block-typical1-item body disabled cr-native-field" data-key="body" data-native-field="body" data-title="Тип кузова" id="cr-native-body-field" role="combobox" tabindex="-1">
+<input class="filter-block-typical1-item__input" id="cr-native-body" name="body" type="hidden"/>
+<p class="filter-block-typical1-item__text">Тип кузова</p>
+<div class="filter-block-typical1-item-arrow">
+<svg class="filter-block-typical1-item-arrow__icon">
+<use xlink:href="#offline-sprite-arrow_down"></use>
+</svg>
+</div>
+<div aria-label="Тип кузова" class="filter-block-typical1-item-children default" hidden="" id="cr-native-options-body" role="listbox"></div>
+</div>
+<a aria-disabled="true" class="a-btn a-btn-black filter-block-typical1-btn disabled" href="#" id="cr-native-button">
+                Подобрать стекло
+            </a>
+</div>
+</form>

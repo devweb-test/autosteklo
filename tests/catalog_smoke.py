@@ -22,6 +22,16 @@ async def run(executable):
   async def click(selector):
    await page.locator(selector).click()
   await open(PAGES[0])
+  assert await page.locator('#cr-native-button').get_attribute('aria-disabled')=='true'
+  await page.locator('#cr-native-glass-field').focus()
+  await page.keyboard.press('ArrowDown');await page.keyboard.press('End');await page.keyboard.press('Enter')
+  assert await page.locator('#cr-native-glass').input_value()=='windshield'
+  for field,value in [('brand','AUDI'),('model','Q8'),('year','2020'),('body','5d-ranger-2018')]:
+   await click(f'[data-native-field="{field}"]')
+   await click(f'[data-native-field="{field}"] [data-native-value="{value}"]')
+  await click('#cr-native-button');await page.wait_for_url('**/5d-ranger-2018/index.html*')
+  assert await page.locator('#cr-year').input_value()=='2020'
+  await page.evaluate('sessionStorage.clear()');await open(PAGES[0])
   await page.locator('#cr-directory-search').fill('ауди')
   assert await page.locator('.cr-tile:visible').count()==1
   await click('.cr-tile:visible');await page.wait_for_url('**/catalog/audi/index.html*')
@@ -132,7 +142,7 @@ async def run(executable):
       await page.keyboard.press('Escape')
     layout.append({'page':route,'viewport':width,'overflow':False})
   assert not errors,errors
-  print(json.dumps({'passed':True,'offline':True,'products':33,'checks':['Russian search and local navigation','positive, negative and unknown options','stable sorting and load more','side-glass empty state','comparison up to 3 products','context and price calculation','phone/VIN/photo validation','no form requests or PII storage','back navigation state','20 responsive page/viewport checks','mobile price bar and dialog focus'],'layouts':layout,'javascriptErrors':errors},ensure_ascii=False,indent=2))
+  print(json.dumps({'passed':True,'offline':True,'products':33,'checks':['native five-field picker, keyboard and local generation navigation','Russian search and local navigation','positive, negative and unknown options','stable sorting and load more','side-glass empty state','comparison up to 3 products','context and price calculation','phone/VIN/photo validation','no form requests or PII storage','back navigation state','20 responsive page/viewport checks','mobile price bar and dialog focus'],'layouts':layout,'javascriptErrors':errors},ensure_ascii=False,indent=2))
   await browser.close()
 
 if __name__=='__main__':

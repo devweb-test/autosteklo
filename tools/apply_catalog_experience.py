@@ -44,6 +44,8 @@ def help_block():
 def picker(kind):
     brand='Audi' if kind!='catalog' else ''
     title='Подберите стекло для своего автомобиля'+(' в Ярославле' if kind=='catalog' else '')
+    if kind=='catalog':
+        return (ROOT/'tools/catalog_native_picker.html.txt').read_text().replace('{{PICKER_TITLE}}',h(title))
     return f'''<form id="cr-picker" class="cr-picker"><p class="filter-block-typical1__title">{title}</p><div class="cr-picker-fields">
     <label>Марка<select name="carBrand" id="cr-brand"><option value="">Выберите марку</option>{''.join(f'<option {"selected" if x["name"]=="AUDI" and brand else ""} value="{h(x["name"])}">{h(x["name"])}</option>' for x in data['brands'])}</select></label>
     <label>Модель<select name="carModel" id="cr-model"><option value="">Выберите модель</option></select></label>
@@ -61,12 +63,12 @@ def directory_block(kind,rel):
         if isbrand:
             links.append(f'<a class="cr-tile catalog-model" href="{h(url)}" data-directory-name="{h(x["name"])}"><p class="catalog-mark__title">{h(x["name"])}</p></a>')
         else:
-            links.append(f'<a class="cr-tile catalog-mark" href="{h(url)}" data-directory-name="{h(x["name"])}">{image}<span class="catalog-mark__title">{h(x["name"])}</span><small>{"Офлайн" if local else "Онлайн"}</small></a>')
-    online_note='' if isbrand else '<p class="cr-small cr-muted">Названия с отметкой «Онлайн» открываются на основном сайте и требуют интернета.</p>'
+            links.append(f'<a class="cr-tile catalog-mark" href="{h(url)}" data-directory-name="{h(x["name"])}">{image}<span class="catalog-mark__title">{h(x["name"])}</span></a>')
     tiles_class='catalog-items' if isbrand else 'cr-tiles'
     search_label='Поиск моделей Audi' if isbrand else 'Поиск марки автомобиля'
     search=f'''<label class="catalog-search" for="cr-directory-search"><span class="cr-sr">{search_label}</span><input class="catalog-search__input" id="cr-directory-search" type="search" placeholder="Начните вводить название" autocomplete="off"><span class="catalog-search-btn" aria-hidden="true"><svg class="catalog-search-btn__svg" focusable="false"><use href="#offline-sprite-search"></use></svg></span></label>'''
-    return f'''<section class="cr-section" aria-labelledby="cr-directory-title"><div class="cr-row cr-between"><h2 id="cr-directory-title">{'Модели Audi' if isbrand else 'Все марки'}</h2>{search}</div>{online_note}<p id="cr-directory-count" class="cr-small" role="status"></p><div class="{tiles_class}" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
+    header=f'<div class="cr-row cr-between"><h2 id="cr-directory-title">Модели Audi</h2>{search}</div>' if isbrand else f'<div class="catalog__description" id="cr-directory-title">Выберите марку вашего автомобиля</div>{search}'
+    return f'''<section class="cr-section" aria-labelledby="cr-directory-title">{header}<p id="cr-directory-count" class="cr-small" role="status"></p><div class="{tiles_class}" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
 def generation_block(rel):
     return f'''<nav class="catalog-items" id="cr-generations" aria-label="Поколения Audi Q8"><a class="catalog-model generation" href="{rel}catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html"><p class="catalog-mark__title">5D RANGER (2018 - )</p></a></nav>'''
@@ -94,7 +96,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=picker-paragraph-20261120' if kind!='product' else ''
+    asset_version='?v=catalog-native-picker-20261120' if kind=='catalog' else '?v=picker-paragraph-20261120' if kind!='product' else ''
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     for name in ['catalog-experience-data.js','catalog-experience.js']:
         t=soup.new_tag('script',src=rel+'assets/'+name+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)

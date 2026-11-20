@@ -200,6 +200,120 @@
       }
     });
   }
+  const nativePicker = $('#cr-native-picker');
+  if (nativePicker) {
+    const keys = ['glass','brand','model','year','body'];
+    const values = Object.fromEntries(keys.map(key => [key,'']));
+    const fields = Object.fromEntries(keys.map(key => [key,$(`[data-native-field="${key}"]`,nativePicker)]));
+    const captions = Object.fromEntries(keys.map(key => [key,fields[key].getAttribute('aria-label')]));
+    const action = $('#cr-native-button',nativePicker);
+    function optionsFor(key) {
+      if (key === 'glass') return [{value:'rear',label:'Задние стекла'},{value:'side',label:'Боковые стекла'},{value:'windshield',label:'Лобовые стекла'}];
+      if (key === 'brand') return values.glass ? data.brands.map(b => ({value:b.name,label:b.name})) : [];
+      if (key === 'model') return values.brand === 'AUDI' ? data.models.map(m => ({value:m.name,label:m.name})) : [];
+      if (values.brand !== 'AUDI' || values.model !== 'Q8') return [];
+      if (key === 'year') return [{value:'unknown',label:'Не знаю'},...Array.from({length:9},(_,i) => ({value:String(2026-i),label:String(2026-i)}))];
+      return values.year ? [{value:'5d-ranger-2018',label:'5D RANGER (2018 - )'}] : [];
+    }
+    function destination() {
+      if (!values.glass || !values.brand) return null;
+      if (values.brand === 'AUDI') {
+        if (values.model === 'Q8') return {path:values.body && values.glass === 'windshield' ? 'catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html' : 'catalog/audi/q8/index.html'};
+        if (!values.model) return {path:'catalog/audi/index.html'};
+        return {url:data.models.find(m => m.name === values.model)?.url};
+      }
+      return {url:data.brands.find(b => b.name === values.brand)?.url};
+    }
+    function targetUrl(target) {
+      if (!target?.path) return target?.url || '#';
+      const url = new URL(link(target.path));
+      values.glass === defaults.glass ? url.searchParams.delete('glass') : url.searchParams.set('glass',values.glass);
+      /^202[0-6]$|^201[89]$/.test(values.year) ? url.searchParams.set('year',values.year) : url.searchParams.delete('year');
+      return url.href;
+    }
+    function closeFields() {
+      for (const field of Object.values(fields)) {
+        field.classList.remove('active');field.setAttribute('aria-expanded','false');
+        field.querySelector('[role="listbox"]').hidden = true;
+      }
+    }
+    function refresh() {
+      for (const key of keys) {
+        const field = fields[key], options = optionsFor(key);
+        if (!options.some(o => o.value === values[key])) values[key] = '';
+        const disabled = !options.length;
+        field.classList.toggle('disabled',disabled);field.setAttribute('aria-disabled',String(disabled));field.tabIndex = disabled ? -1 : 0;
+        field.querySelector('input').value = values[key];
+        const text = options.find(o => o.value === values[key])?.label || captions[key];
+        field.querySelector('p').textContent = text;field.querySelector('p').title = text;
+        field.querySelector('[role="listbox"]').innerHTML = options.map((o,i) => `<div class="filter-block-item-children__item" role="option" tabindex="-1" id="cr-native-${key}-option-${i}" data-native-value="${escape(o.value)}" aria-selected="${o.value === values[key]}">${escape(o.label)}</div>`).join('');
+      }
+      const target = destination(), ready = Boolean(target?.path || target?.url);
+      action.classList.toggle('disabled',!ready);action.setAttribute('aria-disabled',String(!ready));action.href = targetUrl(target);
+      save('native-picker',values);
+    }
+    function openField(field,focusOption=false) {
+      if (field.getAttribute('aria-disabled') === 'true') return;
+      closeFields();field.classList.add('active');field.setAttribute('aria-expanded','true');
+      const list = field.querySelector('[role="listbox"]');list.hidden = false;
+      if (focusOption) (list.querySelector('[aria-selected="true"]') || list.firstElementChild)?.focus();
+    }
+    function choose(field,option) {
+      const key = field.dataset.nativeField, value = option.dataset.nativeValue;
+      if (values[key] !== value) {
+        values[key] = value;
+        keys.slice(keys.indexOf(key)+1).forEach(next => values[next] = '');
+      }
+      refresh();closeFields();field.focus();
+    }
+    nativePicker.addEventListener('click',event => {
+      const field = event.target.closest('[data-native-field]');
+      if (!field || field.getAttribute('aria-disabled') === 'true') return;
+      event.preventDefault();event.stopPropagation();
+      const option = event.target.closest('[role="option"]');
+      if (option) choose(field,option);
+      else if (field.classList.contains('active')) closeFields();
+      else openField(field);
+    });
+    document.addEventListener('click',event => { if (!nativePicker.contains(event.target)) closeFields(); });
+    let typed = '', typedAt = 0;
+    nativePicker.addEventListener('keydown',event => {
+      const field = event.target.closest('[data-native-field]');
+      if (!field || field.getAttribute('aria-disabled') === 'true') return;
+      const option = event.target.closest('[role="option"]');
+      if (event.key === 'Tab') { closeFields();return; }
+      if (event.key === 'Escape') { closeFields();field.focus();event.preventDefault();return; }
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();event.stopPropagation();
+        option ? choose(field,option) : openField(field,true);return;
+      }
+      if (['ArrowDown','ArrowUp','Home','End'].includes(event.key)) {
+        event.preventDefault();
+        if (!field.classList.contains('active')) { openField(field,true);return; }
+        const options = [...field.querySelectorAll('[role="option"]')], index = options.indexOf(option);
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? options.length-1 : (index + (event.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length;
+        options[next]?.focus();return;
+      }
+      if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
+        event.preventDefault();typed = Date.now()-typedAt > 700 ? event.key : typed+event.key;typedAt = Date.now();
+        openField(field);
+        const match = [...field.querySelectorAll('[role="option"]')].find(o => [o.textContent,...(aliases[o.dataset.nativeValue] || '').split(' ')].some(text => transliterate(text).startsWith(transliterate(typed))));
+        match?.focus();
+      }
+    });
+    function prepareNavigation() {
+      const target = destination();
+      if (!target) { fields[values.glass ? 'brand' : 'glass'].focus();toast('Выберите тип стекла и марку автомобиля.');return null; }
+      state.glass = values.glass;state.year = /^202[0-6]$|^201[89]$/.test(values.year) ? values.year : '';state.limit = 6;
+      save('picker',{brand:values.brand,model:values.model});persist();action.href = targetUrl(target);return action.href;
+    }
+    action.addEventListener('click',event => { if (!prepareNavigation()) event.preventDefault(); });
+    nativePicker.addEventListener('submit',event => { event.preventDefault();const url = prepareNavigation();if (url) location.href = url; });
+    const previous = read('picker');
+    const remembered = read('native-picker') || (previous ? {glass:state.glass,brand:previous.brand,model:previous.model,year:state.year || 'unknown'} : null);
+    if (remembered && typeof remembered === 'object') keys.forEach(key => { if (typeof remembered[key] === 'string') values[key] = remembered[key]; });
+    refresh();
+  }
   const filterForm = $('#cr-filter-form');
   if (filterForm) {
     filterForm.addEventListener('change',event => {

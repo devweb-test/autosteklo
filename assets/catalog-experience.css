@@ -19,9 +19,14 @@
 .cr-root button {cursor:pointer}
 .cr-root button:disabled {cursor:default;opacity:.5}
 .cr-root :focus-visible {outline:2px solid #5a4c66;outline-offset:3px}
-.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model) {color:var(--cr-red);text-decoration:none}
-.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model):hover {color:#e11408}
+.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model):not(.filter-block-typical1-btn) {color:var(--cr-red);text-decoration:none}
+.cr-root a:not(.breadcrumbs-item__text):not(.catalog-mark):not(.catalog-model):not(.filter-block-typical1-btn):hover {color:#e11408}
 .cr-root p {margin:0 0 16px}
+.cr-native-picker {max-width:100%;font-size:16px;line-height:normal;color:#000}
+.cr-native-picker p {margin:0}
+.cr-native-picker .filter-block-typical1-item__text {max-width:calc(100% - 46px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cr-native-picker .filter-block-typical1-item-children {max-height:290px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.cr-native-picker [role=option][aria-selected=true] {color:var(--cr-red)}
 .cr-root h2.base__title {text-align:left;margin-bottom:20px}
 .cr-root h3:not(.product-card__title) {font-size:20px;line-height:26px;font-weight:700;margin:0 0 15px;color:#333}
 .cr-heading {margin:0 0 40px}
@@ -42,7 +47,7 @@
 .cr-btn.cr-outline:hover {background:var(--cr-red);border-color:var(--cr-red);color:#fff}
 .cr-full {width:100%}
 .cr-root label {display:block;font-size:16px;line-height:24px;font-weight:400;color:#333}
-.cr-root input:not([type=checkbox]):not([type=file]):not(.catalog-search__input),.cr-root select {
+.cr-root input:not([type=checkbox]):not([type=file]):not(.catalog-search__input):not(.filter-block-typical1-item__input),.cr-root select {
   display:block;width:100%;min-width:0;height:53px;margin-top:8px;padding:0 24px;
   border:1px solid var(--cr-line);border-radius:180px;background:#fff;color:#333;
   font-size:16px;line-height:24px;font-weight:400;
@@ -63,7 +68,8 @@
 .cr-tiles {display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:30px;margin-top:30px}
 .cr-root .cr-tile.catalog-mark {width:100%;margin:0;display:flex;flex-direction:column;align-items:center;color:#333;text-decoration:none;overflow:hidden}
 .cr-tile .catalog-mark__img {display:block;width:100%;object-fit:contain}
-.cr-tile small {display:block;font-size:13px;line-height:20px;color:#878787;margin:-18px 0 12px}
+.cr-root[data-kind=catalog] .catalog-mark[data-directory-name=AUDI] {background:#f4f2f6}
+.cr-root[data-kind=catalog] .catalog-mark[data-directory-name=AUDI] .catalog-mark__img {mix-blend-mode:multiply}
 .cr-card {border:1px solid var(--cr-line);border-radius:8px;padding:25px;background:#fff}
 .cr-badge {display:inline-block;font-size:15px;line-height:24px;color:#878787}
 .cr-list-layout {display:grid;grid-template-columns:320px minmax(0,1fr);gap:30px;align-items:start}
@@ -207,7 +213,7 @@
 @media(max-width:979px) {.cr-tiles {grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:767px) {
   .cr-root label {font-size:14px;line-height:20px}
-  .cr-root input:not([type=checkbox]):not([type=file]):not(.catalog-search__input),.cr-root select {height:42px;padding-left:20px;font-size:16px;line-height:20px}
+  .cr-root input:not([type=checkbox]):not([type=file]):not(.catalog-search__input):not(.filter-block-typical1-item__input),.cr-root select {height:42px;padding-left:20px;font-size:16px;line-height:20px}
   .cr-root .cr-dialog input.form-group__input {font-size:16px;line-height:20px;height:42px}
   .cr-heading {margin:0 0 25px}
   .cr-heading>p {font-size:16px;line-height:20px;text-align:center;margin-top:12px}
@@ -221,7 +227,6 @@
   .cr-section {margin-top:30px}
   .cr-small {font-size:13px;line-height:20px}
   .cr-tiles {gap:15px;margin-top:25px}
-  .cr-tile small {font-size:12px;line-height:16px;margin:-5px 0 10px}
   .cr-filters {padding:20px}
   .cr-filters .cr-small {font-size:13px;line-height:20px}
   .cr-list-head {gap:15px}

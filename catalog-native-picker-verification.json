@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "viewport": 1440,
+      "nativeFormStylesMatch": true,
+      "fields": 5,
+      "nativeFormWorks": true,
+      "localGenerationNavigation": true,
+      "cascadingFieldsReset": true,
+      "externalBrandLink": true,
+      "stateRestored": true,
+      "keyboardWorks": true,
+      "annotationsRemoved": true,
+      "audiBackground": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 390,
+      "nativeFormStylesMatch": true,
+      "fields": 5,
+      "nativeFormWorks": true,
+      "localGenerationNavigation": true,
+      "cascadingFieldsReset": true,
+      "externalBrandLink": true,
+      "stateRestored": true,
+      "keyboardWorks": true,
+      "annotationsRemoved": true,
+      "audiBackground": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": 320,
+      "nativeFormStylesMatch": true,
+      "fields": 5,
+      "nativeFormWorks": true,
+      "localGenerationNavigation": true,
+      "cascadingFieldsReset": true,
+      "externalBrandLink": true,
+      "stateRestored": true,
+      "keyboardWorks": true,
+      "annotationsRemoved": true,
+      "audiBackground": true,
+      "searchWorks": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "javascriptErrors": []
+}
