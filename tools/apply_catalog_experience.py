@@ -54,7 +54,7 @@ def button(text,attrs='',secondary=False):
     return f'<button type="button" class="cr-btn{ " cr-outline" if secondary else ""}" {attrs}>{text}</button>'
 
 def help_block():
-    return '<aside class="cr-help"><div><div class="base__title">Не знаете, какое стекло выбрать?</div><p>Подберите по VIN или фото маркировки и зоны камеры. Контакты не нужны для просмотра каталога.</p></div>'+button('Подобрать по VIN / фото','data-help')+'</aside>'
+    return '<aside class="cr-help"><div><div class="base__title">Не знаете, какое стекло выбрать?</div><p>Подберите по VIN или фото маркировки и зоны камеры.</p></div>'+button('Подобрать по VIN / фото','data-help')+'</aside>'
 
 def picker(kind):
     brand='Audi' if kind!='catalog' else ''
