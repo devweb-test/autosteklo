@@ -5,6 +5,7 @@ from html import escape as h
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
+PAGE_METADATA = json.loads((ROOT/'tools/native_page_metadata.json').read_text())
 raw = (ROOT/'offline-catalog-data.js').read_text()
 source = json.loads(raw[raw.index('=')+1:-1])
 PRODUCT = 'product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html'
@@ -212,7 +213,14 @@ for path,kind in ROUTES.items():
     # Keep the original chrome, while correcting unusable tel formatting.
     for a in soup.select('a[href]'):
         if a['href'].startswith('tel:') and '707' in a['href']:a['href']='tel:+78007073772'
-    soup.title.string=title+' — Автостёкла, Ярославль (офлайн)'
+    # Preserve the source site's metadata when regenerating the saved pages.
+    metadata=PAGE_METADATA[path]
+    soup.title.string=metadata['title']
+    description=soup.find('meta',attrs={'name':'description'})
+    if description is None:
+        description=soup.new_tag('meta',attrs={'name':'description'})
+        soup.head.append(description)
+    description['content']=metadata['description']
     f.write_text(str(soup))
 
 print('Updated',len(ROUTES),'pages;',len(products),'products;',len(data['brands']),'brands')

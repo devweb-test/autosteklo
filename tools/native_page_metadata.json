@@ -1,0 +1,47 @@
+{
+  "index.html": {
+    "source": "https://autosteklo.pro/",
+    "title": "Замена и ремонт автомобильных стекол в Ярославле | Сеть установочных центров «Автостекла»",
+    "description": "Сеть установочных центров «Автостекла» занимается профессиональным ремонтом и заменой стекол в Ярославле на легковых, грузовых автомобилях и технике специального назначения"
+  },
+  "catalog/index.html": {
+    "source": "https://autosteklo.pro/catalog/",
+    "title": "Каталог автостекол | «Автостекла» Ярославль",
+    "description": "Каталог автостекол. Подробнее узнавайте на сайте или по телефону."
+  },
+  "blog/index.html": {
+    "source": "https://autosteklo.pro/blog/",
+    "title": "Блог | «Автостекла» Ярославль",
+    "description": "Блог. Подробнее узнавайте на сайте или по телефону."
+  },
+  "catalog/audi/index.html": {
+    "source": "https://autosteklo.pro/catalog/audi/",
+    "title": "Купить автостекла Audi в Ярославле | Замена стекол AUDI по привлекательной цене",
+    "description": "В установочном центре «Автостекла» вы можете купить автостекла Audi в Ярославле от ведущих мировых производителей. Произвести его замену вы можете в нашем сервисе в любое удобное для вас время."
+  },
+  "catalog/audi/q8/index.html": {
+    "source": "https://autosteklo.pro/catalog/audi/q8/",
+    "title": "Купить автостекла Audi Q8 в Ярославле | Замена стекол AUDI по привлекательной цене",
+    "description": "В установочном центре «Автостекла» вы можете купить автостекла Audi Q8 в Ярославле от ведущих мировых производителей. Произвести его замену вы можете в нашем сервисе в любое удобное для вас время."
+  },
+  "catalog/audi/q8/lobovye-stekla/5d-ranger-2018/index.html": {
+    "source": "https://autosteklo.pro/catalog/audi/q8/lobovye-stekla/5d-ranger-2018/",
+    "title": "Купить лобовые стекла Audi Q8 5D RANGER (2018 - ) в Ярославле",
+    "description": "Лобовые стекла для Audi Q8 5D RANGER (2018 - ) купить в Ярославле. В наличии и под заказ автостекла по выгодной цене. Услуга по установке с гарантией."
+  },
+  "blog/kak-vybrat-lobovoe-steklo-dlya-avtomobilya-i-prove/index.html": {
+    "source": "https://autosteklo.pro/blog/kak-vybrat-lobovoe-steklo-dlya-avtomobilya-i-prove/",
+    "title": "Как выбрать лобовое стекло для автомобиля и проверить его качество | «Автостекла» Ярославль",
+    "description": "Как выбрать лобовое стекло для автомобиля и проверить его качество. Подробнее узнавайте на сайте или по телефону."
+  },
+  "blog/broneplenka-ili-keramika-na-avto-chto-vybrat/index.html": {
+    "source": "https://autosteklo.pro/blog/broneplenka-ili-keramika-na-avto-chto-vybrat/",
+    "title": "Бронепленка или керамика на авто – что выбрать | «Автостекла» Ярославль",
+    "description": "Бронепленка или керамика на авто – что выбрать. Подробнее узнавайте на сайте или по телефону."
+  },
+  "product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/index.html": {
+    "source": "https://autosteklo.pro/product/audi-q8-5d-suv-2018-steklo-vetrovoe-datchik-dozhdia-kamera-hud-vin-3/",
+    "title": "AUDI Q8 5D SUV 2018- стекло ветровое, датчик дождя, камера, HUD, VIN от AGC | Ярославль Eurocode 8645AGACMUVZ1B",
+    "description": "AUDI Q8 5D SUV 2018- стекло ветровое, датчик дождя, камера, HUD, VIN от AGC. Подробнее узнавайте на сайте или по телефону."
+  }
+}
