@@ -106,8 +106,7 @@
 </div>
 </div>
 <div class="product-content-info-prices" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer"><meta content="RUB" itemprop="priceCurrency"/><link href="https://schema.org/InStock" itemprop="availability"/><meta content="44650" itemprop="price"/></div>
-</div>
-</div><div class="product-content-info-attrs">
+<div class="product-content-info-attrs">
 <div class="product-content-info-attrs-header">
                         Характеристики
                     </div>
@@ -135,6 +134,7 @@
 <div class="product-content-info-attrs-row__group">Комплектация</div>
 <div class="product-content-info-attrs-row__value">Камера, Датчик дождя/света, Окно под VIN, H.U.D (проекционный экран)</div>
 </div>
+</div></div>
 </div>
 <div class="product-similar">
 <p class="product-similar__title base__title">Похожее стекло от других производителей</p>
