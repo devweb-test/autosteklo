@@ -33,7 +33,7 @@
   const labels = {hud:'HUD',camera:'Камера',rain:'Датчик дождя',heating:'Обогрев',athermal:'Атермальность'};
   const optionText = value => value === true ? 'Есть по каталогу' : value === false ? 'Нет по каталогу' : 'Не подтверждено';
   const glassName = () => ({windshield:'Лобовое',rear:'Заднее',side:'Боковое'}[state.glass]);
-  const total = p => p.price === null ? null : p.price + (mode === 'install' ? p.service : 0);
+  const total = p => p.price === null || (mode === 'install' && p.service === null) ? null : p.price + (mode === 'install' ? p.service : 0);
   const emit = (event, product) => document.dispatchEvent(new CustomEvent('catalog:interaction', {detail:{event, ...(product ? {productId:product.id} : {}), mode, city:'Ярославль'}}));
   let toastTimer;
   function toast(message) {
@@ -343,15 +343,16 @@
     dialog.addEventListener('click',event => { if(event.target===dialog) { const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close(); } });
   });
   function orderSummary() {
-    const car=ordered ? `Audi Q8 · ${ordered.brand} · арт. ${ordered.id}` : (orderForm.elements.car.value || 'Подбор по VIN / фото');
+    const car=ordered ? ordered.native ? `${ordered.title} · арт. ${ordered.id}` : `Audi Q8 · ${ordered.brand} · арт. ${ordered.id}` : (orderForm.elements.car.value || 'Подбор по VIN / фото');
     const options=ordered ? Object.entries(labels).filter(([key])=>ordered.options[key]===true).map(([,label])=>label).join(' · ') : `${assistance.glass} стекло · ${assistance.year || 'год уточняется'}${assistance.details.length ? ' · '+assistance.details.join(' · ') : ''}`;
     $('#cr-order-summary').innerHTML=`<strong>${escape(car)}</strong><p>${escape(options)}</p><p>Ярославль · ${escape(centers[center] || 'центр выберем с менеджером')}</p><p>${mode === 'install' ? 'Стекло с установкой' : 'Только стекло'}</p>${ordered ? '<div class="cr-estimate">'+estimate(ordered)+'</div><p class="cr-small">Калибровка, молдинги и другие работы согласуются после проверки.</p>' : '<p class="cr-small">Стоимость рассчитают после подбора стекла.</p>'}`;
   }
   function openOrder(p=null) {
     ordered=p;
     $('#cr-order-title').textContent=p ? actionLabel(p) : 'Подбор по VIN или фото';
-    const selectedBrand=$('#cr-brand')?.value || (kind==='product'?'Audi':''), selectedModel=$('#cr-model')?.value || (kind==='product'?'Q8':'');
-    assistance={glass:({windshield:'Лобовое',rear:'Заднее',side:'Боковое'}[$('#cr-glass')?.value || state.glass]),year:$('#cr-year')?.value || state.year,details:[]};
+    const selectedBrand=$('#cr-brand')?.value || $('#cr-native-brand')?.value || (kind==='product'?'Audi':''), selectedModel=$('#cr-model')?.value || $('#cr-native-model')?.value || (kind==='product'?'Q8':'');
+    const nativeYear=$('#cr-native-year')?.value;
+    assistance={glass:({windshield:'Лобовое',rear:'Заднее',side:'Боковое'}[$('#cr-glass')?.value || $('#cr-native-glass')?.value || state.glass]),year:$('#cr-year')?.value || (nativeYear!=='unknown' ? nativeYear : '') || state.year,details:[]};
     if(filterForm) {
       for(const [key,label] of Object.entries(labels))if(state[key]!=='any')assistance.details.push(`${label}: ${{yes:'есть',no:'нет',unknown:'не знаю'}[state[key]]}`);
       if(state.glass==='side') {
@@ -360,7 +361,7 @@
         if(state.movement!=='any')assistance.details.push(state.movement==='moving'?'опускное':'неподвижное');
       }
     }
-    orderForm.elements.car.value=p ? `Audi Q8, ${state.year || '2018–'}, лобовое стекло` : [selectedBrand,selectedModel,assistance.year,assistance.glass.toLowerCase()+' стекло'].filter(Boolean).join(' ');
+    orderForm.elements.car.value=p ? p.native ? p.car : `Audi Q8, ${state.year || '2018–'}, лобовое стекло` : [selectedBrand,selectedModel,assistance.year,assistance.glass.toLowerCase()+' стекло'].filter(Boolean).join(' ');
     orderForm.elements.center.value=center;
     $('#cr-form-status').textContent=''; orderSummary(); openDialog(orderDialog);
     emit(p?'order_open':'vin_help_open',p);
@@ -396,6 +397,7 @@
     if(el.matches('[data-mode]')) {mode=el.dataset.mode;refresh();emit('purchase_mode_change');}
     else if(el.matches('[data-help]'))openOrder();
     else if(el.matches('[data-order]'))openOrder(get(el.dataset.order));
+    else if(el.matches('[data-brand-order]'))openOrder(data.brandProducts.find(p=>p.id===el.dataset.brandOrder));
     else if(el.matches('[data-close]'))el.closest('dialog').close();
     else if(el.matches('[data-center]')) {center=el.dataset.center;updateCenter();persist();toast('Выбран центр: '+centers[center]+'.');emit('center_select');}
     else if(el.matches('[data-reset]')) {Object.assign(state,defaults);renderProducts();persist();}

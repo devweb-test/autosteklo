@@ -33,6 +33,20 @@ for p in source['products']:
         'brandImage':'assets/'+Path(s.select_one('.product-card-content-brand img')['src']).name})
 data={'date':'19.11.2026','products':products,'brands':directory('catalog/'),
       'models':directory('catalog/audi/'),'productPage':PRODUCT}
+brand_listing_template=(ROOT/'tools/audi_native_products.html.txt').read_text()
+brand_products=[]
+for card in BeautifulSoup(brand_listing_template,'html.parser').select('.product-card'):
+    def amount(selector):
+        node=card.select_one(selector)
+        value=re.sub(r'\D','',node.get_text()) if node else ''
+        return int(value) if value else None
+    title=card.select_one('.product-card__title').get_text(' ',strip=True)
+    logo=card.select_one('.product-card-content-brand img')
+    brand_products.append({'id':card.select_one('[data-brand-order]')['data-brand-order'],
+        'title':title,'car':title,'brand':logo.get('alt','') if logo else '',
+        'price':amount('.product-card__prices__main'),'service':amount('.product-card__replace'),
+        'options':{},'native':True})
+data['brandProducts']=brand_products
 (ROOT/'assets/catalog-experience-data.js').write_text('window.CRO_DATA='+json.dumps(data,ensure_ascii=False)+';\n')
 
 def button(text,attrs='',secondary=False):
@@ -44,7 +58,7 @@ def help_block():
 def picker(kind):
     brand='Audi' if kind!='catalog' else ''
     title='Подберите стекло для своего автомобиля'+(' в Ярославле' if kind=='catalog' else '')
-    if kind=='catalog':
+    if kind in ['catalog','brand']:
         return (ROOT/'tools/catalog_native_picker.html.txt').read_text().replace('{{PICKER_TITLE}}',h(title))
     return f'''<form id="cr-picker" class="cr-picker"><p class="filter-block-typical1__title">{title}</p><div class="cr-picker-fields">
     <label>Марка<select name="carBrand" id="cr-brand"><option value="">Выберите марку</option>{''.join(f'<option {"selected" if x["name"]=="AUDI" and brand else ""} value="{h(x["name"])}">{h(x["name"])}</option>' for x in data['brands'])}</select></label>
@@ -67,7 +81,7 @@ def directory_block(kind,rel):
     tiles_class='catalog-items' if isbrand else 'cr-tiles'
     search_label='Поиск моделей Audi' if isbrand else 'Поиск марки автомобиля'
     search=f'''<label class="catalog-search" for="cr-directory-search"><span class="cr-sr">{search_label}</span><input class="catalog-search__input" id="cr-directory-search" type="search" placeholder="Начните вводить название" autocomplete="off"><span class="catalog-search-btn" aria-hidden="true"><svg class="catalog-search-btn__svg" focusable="false"><use href="#offline-sprite-search"></use></svg></span></label>'''
-    header=f'<div class="cr-row cr-between"><h2 id="cr-directory-title">Модели Audi</h2>{search}</div>' if isbrand else f'<div class="catalog__description" id="cr-directory-title">Выберите марку вашего автомобиля</div>{search}'
+    header=f'<div class="catalog__description" id="cr-directory-title">Выберите марку вашего автомобиля</div>{search}'
     return f'''<section class="cr-section" aria-labelledby="cr-directory-title">{header}<p id="cr-directory-count" class="cr-small" role="status"></p><div class="{tiles_class}" id="cr-directory">{''.join(links)}</div><div id="cr-directory-empty" class="cr-card" hidden><h3>Ничего не нашли</h3><p>Попробуйте другое название или подберите стекло по VIN / фото.</p>{button('Помочь с подбором','data-help')}</div></section>'''
 
 def generation_block(rel):
@@ -96,7 +110,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=catalog-native-picker-20261120' if kind=='catalog' else '?v=picker-paragraph-20261120' if kind!='product' else ''
+    asset_version='?v=audi-native-catalog-20261120' if kind=='brand' else '?v=catalog-native-picker-20261120' if kind=='catalog' else '?v=picker-paragraph-20261120' if kind!='product' else ''
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     for name in ['catalog-experience-data.js','catalog-experience.js']:
         t=soup.new_tag('script',src=rel+'assets/'+name+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
@@ -117,7 +131,9 @@ for path,kind in ROUTES.items():
     content=f'<main id="main" class="cr-root" data-kind="{kind}" data-root="{rel}"><div class="cr-wrap base-container"><a class="cr-skip" href="#cr-content">Перейти к подбору</a><nav class="breadcrumbs cr-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList" aria-label="Хлебные крошки">{crumbs}</nav><div id="cr-content" class="cr-heading"><h1 class="{title_class}">{heading_title}</h1>{heading_subtitle}</div>'
     if kind=='product':content+=product(rel)
     else:
-        if kind in ['catalog','brand']:content+=picker(kind)+help_block()+directory_block(kind,rel)
+        if kind in ['catalog','brand']:
+            content+=picker(kind)+help_block()+directory_block(kind,rel)
+            if kind=='brand':content+=brand_listing_template.replace('{{ROOT}}',rel)
         else:
             content+=picker(kind)+'<p class="cr-inline-help"><button type="button" class="cr-text-button" data-help>Не уверены в комплектации? Подберём по VIN / фото</button></p>'
             if kind=='model':content+=generation_block(rel)

@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "viewport": 1440,
+      "mismatches": [],
+      "horizontalOverflow": false,
+      "nativeFormAndSearchWork": true,
+      "cards": 10,
+      "productOrderCorrect": true,
+      "localGenerationNavigation": true
+    },
+    {
+      "viewport": 390,
+      "mismatches": [],
+      "horizontalOverflow": false,
+      "nativeFormAndSearchWork": true,
+      "cards": 10,
+      "productOrderCorrect": true,
+      "localGenerationNavigation": true
+    },
+    {
+      "viewport": 320,
+      "mismatches": [],
+      "horizontalOverflow": false,
+      "nativeFormAndSearchWork": true,
+      "cards": 10,
+      "productOrderCorrect": true,
+      "localGenerationNavigation": true
+    }
+  ],
+  "javascriptErrors": [],
+  "offlineRegression": {
+    "passed": true,
+    "checks": [
+      "native five-field picker, keyboard and local generation navigation",
+      "Russian search and local navigation",
+      "positive, negative and unknown options",
+      "stable sorting and load more",
+      "side-glass empty state",
+      "comparison up to 3 products",
+      "context and price calculation",
+      "phone/VIN/photo validation",
+      "no form requests or PII storage",
+      "back navigation state",
+      "20 responsive page/viewport checks",
+      "mobile price bar and dialog focus"
+    ],
+    "layouts": 20,
+    "javascriptErrors": []
+  },
+  "preexistingStyleMismatch": {
+    "viewport": 1920,
+    "page": "product",
+    "nativePhoneStyle": {
+      "fontSize": "20px",
+      "lineHeight": "30px"
+    },
+    "baselinePhoneStyle": {
+      "fontSize": "16px",
+      "lineHeight": "24px"
+    },
+    "currentPhoneStyle": {
+      "fontSize": "16px",
+      "lineHeight": "24px"
+    },
+    "unchangedByThisTask": true
+  }
+}

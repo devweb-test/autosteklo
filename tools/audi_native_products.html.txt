@@ -1,0 +1,594 @@
+<section aria-label="Автостекла Audi" class="cr-section cr-native-brand-products"><div class="catalog-items"><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI A3 1996-2003  СТ ВЕТР ЗЛЗЛ+VIN+УО от AGC" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-a3-1996-2003-st-vetr-zlzl-vin-uo-2/">
+<div class="product-card-guarantee">
+<div class="product-card-guarantee__inner">1 год гарантия</div>
+</div>
+<img alt="AUDI A3 1996-2003  СТ ВЕТР ЗЛЗЛ+VIN+УО от AGC" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI A3 1996-2003  СТ ВЕТР ЗЛЗЛ+VIN+УО от AGC"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available">
+                
+                    Под заказ
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-a3-1996-2003-st-vetr-zlzl-vin-uo-2/">
+            AUDI A3 1996-2003  СТ ВЕТР ЗЛЗЛ+VIN+УО от AGC
+        </a>
+<div>
+<div class="product-card-content-attr">
+<p class="product-card-content-attr__title">Производитель:</p>
+<div class="product-card-content-brand">
+<img alt="AGC" class="product-card-content-brand__img" loading="eager" src="{{ROOT}}assets/AGC__------f51985ab0dd4.jpg"/>
+</div>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8554AGNGNVW</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">8L0845099B</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="Цена по запросу" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<p class="product-card__prices__none">Цена по запросу</p>
+</div>
+<button class="product-card__order__callback a-btn a-btn-outline" data-brand-order="103436" data-id="103436" type="button">
+                Узнать стоимость стекла
+            </button>
+<p class="product-card__replace">Услуга по замене: 3 000 ₽</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI A6 C7 2011- лобовое стекло, антибликовое покрытие, камера, круглый датчик дождя, VIN от Pilkington" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-a6-s7-s4-e5-2012-2018-steklo-antiblikovoe-dd-kamera-dvizheniia-po-polose-ot-pilkington/">
+<img alt="AUDI A6 C7 2011- лобовое стекло, антибликовое покрытие, камера, круглый датчик дождя, VIN от Pilkington" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI A6 C7 2011- лобовое стекло, антибликовое покрытие, камера, круглый датчик дождя, VIN от Pilkington"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available active">
+                
+                    В наличии
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-a6-s7-s4-e5-2012-2018-steklo-antiblikovoe-dd-kamera-dvizheniia-po-polose-ot-pilkington/">
+            AUDI A6 C7 2011- лобовое стекло, антибликовое покрытие, камера, круглый датчик дождя, VIN от Pilkington
+        </a>
+<div>
+<div class="product-card-content-attr">
+<p class="product-card-content-attr__title">Производитель:</p>
+<div class="product-card-content-brand">
+<img alt="Pilkington" class="product-card-content-brand__img" loading="eager" src="{{ROOT}}assets/Pilkington-bc294273406b.png"/>
+</div>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8611ACDCMVWZ95</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">4G0845099JNVB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="45150.0" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<div class="product-card__prices__main">
+                45 150 ₽
+            </div>
+<div class="product-card__prices__old">
+                        49 665 ₽
+                    </div>
+</div>
+<button class="product-card__order__main-btn a-btn a-btn-red2" data-brand-order="87653" data-id="87653" type="button">
+            Заказать стекло
+            <span class="product-card__order__main-btn__description">+ с установкой</span>
+</button>
+<p class="product-card__replace">Услуга по замене: 4 000 ₽</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI TT КУП 1998-2006  СТ ПЕР ДВ ОП ЛВ ЗЛ от Saint Gobain" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-tt-kup-1998-2006-st-per-dv-op-lv-zl/">
+<img alt="AUDI TT КУП 1998-2006  СТ ПЕР ДВ ОП ЛВ ЗЛ от Saint Gobain" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI TT КУП 1998-2006  СТ ПЕР ДВ ОП ЛВ ЗЛ от Saint Gobain"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available">
+                
+                    Под заказ
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-tt-kup-1998-2006-st-per-dv-op-lv-zl/">
+            AUDI TT КУП 1998-2006  СТ ПЕР ДВ ОП ЛВ ЗЛ от Saint Gobain
+        </a>
+<div>
+<div class="product-card-content-attr">
+<p class="product-card-content-attr__title">Производитель:</p>
+<div class="product-card-content-brand">
+<img alt="Saint Gobain" class="product-card-content-brand__img" loading="eager" src="{{ROOT}}assets/0891a71ed7c1a10ac8e6ef04bcd98018-52a2befa6b02.png"/>
+</div>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8561LGNC2FD</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">8N8845201A</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="Цена по запросу" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<p class="product-card__prices__none">Цена по запросу</p>
+</div>
+<button class="product-card__order__callback a-btn a-btn-outline" data-brand-order="86932" data-id="86932" type="button">
+                Узнать стоимость стекла
+            </button>
+<p class="product-card__replace">Услуга по замене: 4 000 ₽</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI Q7 5D 2019- лобовое стекло,антибликовое с высокой степенью теплопоглащения, акустическое, камера, пленочный обогрев, датчи от Бор завод" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-q7-5d-2019-lobovoe-steklo-antiblikovoe-s-vysokoi-stepeniu-teplopoglashcheniia-akusticheskoe-kamera-plenochnyi-obogrev-datchi-4/">
+<img alt="AUDI Q7 5D 2019- лобовое стекло,антибликовое с высокой степенью теплопоглащения, акустическое, камера, пленочный обогрев, датчи от Бор завод" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI Q7 5D 2019- лобовое стекло,антибликовое с высокой степенью теплопоглащения, акустическое, камера, пленочный обогрев, датчи от Бор завод"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available">
+                
+                    Под заказ
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-q7-5d-2019-lobovoe-steklo-antiblikovoe-s-vysokoi-stepeniu-teplopoglashcheniia-akusticheskoe-kamera-plenochnyi-obogrev-datchi-4/">
+            AUDI Q7 5D 2019- лобовое стекло,антибликовое с высокой степенью теплопоглащения, акустическое, камера, пленочный обогрев, датчи от Бор завод
+        </a>
+<div>
+<div class="product-card-content-attr">
+<p class="product-card-content-attr__title">Производитель:</p>
+<div class="product-card-content-brand">
+<img alt="Бор завод" class="product-card-content-brand__img" loading="eager" src="{{ROOT}}assets/bor-b748e09fc323.png"/>
+</div>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8623ACKCKMVZ1L</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">4M0845099ARNVB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="Цена по запросу" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<p class="product-card__prices__none">Цена по запросу</p>
+</div>
+<button class="product-card__order__callback a-btn a-btn-outline" data-brand-order="95934" data-id="95934" type="button">
+                Узнать стоимость стекла
+            </button>
+<p class="product-card__replace">Услуга по замене: Цена по запросу</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="Лобовое стекло для AUDI A3 3D/5D HBK 2012-серая с/з полоса, крепление датчика дождя, окно под Vin от NordGlass" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-a3-2012-lobovoe-steklo-seraia-s-z-polosa-datchik-dozhdia-vin/">
+<img alt="Лобовое стекло для AUDI A3 3D/5D HBK 2012-серая с/з полоса, крепление датчика дождя, окно под Vin от NordGlass" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="Лобовое стекло для AUDI A3 3D/5D HBK 2012-серая с/з полоса, крепление датчика дождя, окно под Vin от NordGlass"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available">
+                
+                    Под заказ
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-a3-2012-lobovoe-steklo-seraia-s-z-polosa-datchik-dozhdia-vin/">
+            Лобовое стекло для AUDI A3 3D/5D HBK 2012-серая с/з полоса, крепление датчика дождя, окно под Vin от NordGlass
+        </a>
+<div>
+<div class="product-card-content-attr">
+<p class="product-card-content-attr__title">Производитель:</p>
+<div class="product-card-content-brand">
+<img alt="NordGlass" class="product-card-content-brand__img" loading="eager" src="{{ROOT}}assets/brand_nordglass_-d5bef838b3ba.webp"/>
+</div>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8616AGSGYMVWZ</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">8V3845099D</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="Цена по запросу" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<p class="product-card__prices__none">Цена по запросу</p>
+</div>
+<button class="product-card__order__callback a-btn a-btn-outline" data-brand-order="103462" data-id="103462" type="button">
+                Узнать стоимость стекла
+            </button>
+<p class="product-card__replace">Услуга по замене: 3 500 ₽</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI A4 B8 4D SEDAN 2008-2016 стекло боковое, левое заднее кузовное" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-a4-2007-steklo-bokovoe/">
+<img alt="AUDI A4 B8 4D SEDAN 2008-2016 стекло боковое, левое заднее кузовное" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI A4 B8 4D SEDAN 2008-2016 стекло боковое, левое заднее кузовное"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available">
+                
+                    Под заказ
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-a4-2007-steklo-bokovoe/">
+            AUDI A4 B8 4D SEDAN 2008-2016 стекло боковое, левое заднее кузовное
+        </a>
+<div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8589LGSS4RQZ1M</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">8K5845299GNVB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="Цена по запросу" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<p class="product-card__prices__none">Цена по запросу</p>
+</div>
+<button class="product-card__order__callback a-btn a-btn-outline" data-brand-order="87394" data-id="87394" type="button">
+                Узнать стоимость стекла
+            </button>
+<p class="product-card__replace">Услуга по замене: 3 000 ₽</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI A6 2004-, СТЕКЛО БОКОВОЕ,*" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-a6-2004-steklo-bokovoe/">
+<img alt="AUDI A6 2004-, СТЕКЛО БОКОВОЕ,*" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI A6 2004-, СТЕКЛО БОКОВОЕ,*"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available">
+                
+                    Под заказ
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-a6-2004-steklo-bokovoe/">
+            AUDI A6 2004-, СТЕКЛО БОКОВОЕ,*
+        </a>
+<div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8582RGSE5RQAJ1Z</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">4F9845300FNVB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="Цена по запросу" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<p class="product-card__prices__none">Цена по запросу</p>
+</div>
+<button class="product-card__order__callback a-btn a-btn-outline" data-brand-order="87265" data-id="87265" type="button">
+                Узнать стоимость стекла
+            </button>
+<p class="product-card__replace">Услуга по замене: 3 000 ₽</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI A4 (B6/B7) 4D SEDAN/5D EST AVANT 2000-2008 лобовое стекло, VIN, без молдинга от Guardian" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-a4-b6-b7-4d-sedan-5d-est-avant-2000-2008-lobovoe-steklo-vin-bez-moldinga-13/">
+<img alt="AUDI A4 (B6/B7) 4D SEDAN/5D EST AVANT 2000-2008 лобовое стекло, VIN, без молдинга от Guardian" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI A4 (B6/B7) 4D SEDAN/5D EST AVANT 2000-2008 лобовое стекло, VIN, без молдинга от Guardian"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available">
+                
+                    Под заказ
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-a4-b6-b7-4d-sedan-5d-est-avant-2000-2008-lobovoe-steklo-vin-bez-moldinga-13/">
+            AUDI A4 (B6/B7) 4D SEDAN/5D EST AVANT 2000-2008 лобовое стекло, VIN, без молдинга от Guardian
+        </a>
+<div>
+<div class="product-card-content-attr">
+<p class="product-card-content-attr__title">Производитель:</p>
+<div class="product-card-content-brand">
+<img alt="Guardian" class="product-card-content-brand__img" loading="eager" src="{{ROOT}}assets/Guardian_Glass_Horse_and_Knight_in_G_Blue_CMYK-0c97837dcdd1.png"/>
+</div>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8572AGSV1B</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">8E0845099AFNVB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="Цена по запросу" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<p class="product-card__prices__none">Цена по запросу</p>
+</div>
+<button class="product-card__order__callback a-btn a-btn-outline" data-brand-order="97201" data-id="97201" type="button">
+                Узнать стоимость стекла
+            </button>
+<p class="product-card__replace">Услуга по замене: Цена по запросу</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI Q7 5D MVP 2020- лобовое стекло, камера (измен камеры), пленочный обогрев, датчик дождя, Head-Up Display, VIN от Pilkington" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-q7-5d-mvp-2020-lobovoe-steklo-kamera-izmen-kamery-plenochnyi-obogrev-datchik-dozhdia-head-up-display-vin-10/">
+<img alt="AUDI Q7 5D MVP 2020- лобовое стекло, камера (измен камеры), пленочный обогрев, датчик дождя, Head-Up Display, VIN от Pilkington" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI Q7 5D MVP 2020- лобовое стекло, камера (измен камеры), пленочный обогрев, датчик дождя, Head-Up Display, VIN от Pilkington"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available">
+                
+                    Под заказ
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-q7-5d-mvp-2020-lobovoe-steklo-kamera-izmen-kamery-plenochnyi-obogrev-datchik-dozhdia-head-up-display-vin-10/">
+            AUDI Q7 5D MVP 2020- лобовое стекло, камера (измен камеры), пленочный обогрев, датчик дождя, Head-Up Display, VIN от Pilkington
+        </a>
+<div>
+<div class="product-card-content-attr">
+<p class="product-card-content-attr__title">Производитель:</p>
+<div class="product-card-content-brand">
+<img alt="Pilkington" class="product-card-content-brand__img" loading="eager" src="{{ROOT}}assets/Pilkington-bc294273406b.png"/>
+</div>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8623ACKCKMUVZ1L</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">4M0845099ASNVB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="Цена по запросу" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<p class="product-card__prices__none">Цена по запросу</p>
+</div>
+<button class="product-card__order__callback a-btn a-btn-outline" data-brand-order="94571" data-id="94571" type="button">
+                Узнать стоимость стекла
+            </button>
+<p class="product-card__replace">Услуга по замене: Цена по запросу</p>
+</div>
+</div><div class="product-card" itemscope="" itemtype="https://schema.org/Product">
+<meta content="AUDI A4 2015-СТЕКЛО ВЕТРОВОЕ ЗЕЛЕНОЕ-ШУМОИЗОЛЯЦИЯ-ДАТЧИК ДОЖДЯ-VIN ОКНО-ИНКАПСУЛЯЦИЯ от MGC" itemprop="name"/>
+<meta content="More information on site" itemprop="description"/>
+<div class="product-card-main">
+<a class="product-card-image" href="https://autosteklo.pro/product/audi-a4-2015-steklo-vetrovoe-zelenoe-shumoizoliatsiia-datchik-dozhdia-vin-okno-inkapsuliatsiia-4/">
+<img alt="AUDI A4 2015-СТЕКЛО ВЕТРОВОЕ ЗЕЛЕНОЕ-ШУМОИЗОЛЯЦИЯ-ДАТЧИК ДОЖДЯ-VIN ОКНО-ИНКАПСУЛЯЦИЯ от MGC" class="product-card-image__img" loading="eager" src="{{ROOT}}assets/ph-05c7eb3402ec.png" title="AUDI A4 2015-СТЕКЛО ВЕТРОВОЕ ЗЕЛЕНОЕ-ШУМОИЗОЛЯЦИЯ-ДАТЧИК ДОЖДЯ-VIN ОКНО-ИНКАПСУЛЯЦИЯ от MGC"/>
+</a>
+<div class="product-card-content">
+<div class="product-card-content__top">
+<p class="product-card-content-available active">
+                
+                    В наличии
+                
+            </p>
+<div class="product-card__question">
+<svg class="product-card__question__icon">
+<use xlink:href="#offline-sprite-question"></use>
+</svg>
+<div class="product-card__question__inner">
+<div class="product-card__question__content">
+                        При замене стекла могут потребоваться дополнительные крепления и материалы.
+                        Точную стоимость стекла с установкой, уточняйте у менеджера по телефону или оставьте заявку на сайте
+                    </div>
+</div>
+</div>
+</div>
+<a class="product-card__title" href="https://autosteklo.pro/product/audi-a4-2015-steklo-vetrovoe-zelenoe-shumoizoliatsiia-datchik-dozhdia-vin-okno-inkapsuliatsiia-4/">
+            AUDI A4 2015-СТЕКЛО ВЕТРОВОЕ ЗЕЛЕНОЕ-ШУМОИЗОЛЯЦИЯ-ДАТЧИК ДОЖДЯ-VIN ОКНО-ИНКАПСУЛЯЦИЯ от MGC
+        </a>
+<div>
+<div class="product-card-content-attr">
+<p class="product-card-content-attr__title">Производитель:</p>
+<div class="product-card-content-brand">
+<img alt="MGC" class="product-card-content-brand__img" loading="eager" src="{{ROOT}}assets/3a61b5ba-7f54-4282-bc66-f4f43b4a6eb0_1-719015b93f1d.png"/>
+</div>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Eurocode:</p>
+<p class="product-card-content-eurocode">8631AGAMVZ</p>
+</div>
+<div class="product-card-content-attr euro">
+<p class="product-card-content-attr__title">Каталожный номер:</p>
+<p class="product-card-content-eurocode">8W0845099ABNVB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="product-card__order" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+<meta content="18850.0" itemprop="price"/>
+<meta content="RUB" itemprop="priceCurrency"/>
+<link href="https://schema.org/InStock" itemprop="availability"/>
+<div class="product-card__prices">
+<div class="product-card__prices__main">
+                18 850 ₽
+            </div>
+<div class="product-card__prices__old">
+                        20 735 ₽
+                    </div>
+</div>
+<button class="product-card__order__main-btn a-btn a-btn-red2" data-brand-order="105449" data-id="105449" type="button">
+            Заказать стекло
+            <span class="product-card__order__main-btn__description">+ с установкой</span>
+</button>
+<p class="product-card__replace">Услуга по замене: 4 000 ₽</p>
+</div>
+</div></div></section>

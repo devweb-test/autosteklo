@@ -35,6 +35,19 @@ async def run(executable):
   await page.locator('#cr-directory-search').fill('ауди')
   assert await page.locator('.cr-tile:visible').count()==1
   await click('.cr-tile:visible');await page.wait_for_url('**/catalog/audi/index.html*')
+  assert await page.locator('#cr-native-picker [data-native-field]').count()==5
+  assert await page.locator('#cr-directory-title').inner_text()=='Выберите марку вашего автомобиля'
+  assert await page.locator('.cr-native-brand-products .product-card').count()==10
+  await click('[data-brand-order="103436"]')
+  assert await page.locator('#cr-order-dialog').is_visible()
+  summary=await page.locator('#cr-order-summary').inner_text()
+  assert '103436' in summary and 'AUDI A3' in summary and 'Audi Q8' not in summary
+  assert 'AUDI A3' in await page.locator('#cr-order-form [name="car"]').input_value()
+  await page.keyboard.press('Escape')
+  await click('[data-brand-order="105449"]')
+  summary=await page.locator('#cr-order-summary').inner_text()
+  assert '105449' in summary and '22' in summary and '850' in summary
+  await page.keyboard.press('Escape')
   await page.locator('#cr-directory-search').fill('ку8')
   assert await page.locator('.cr-tile:visible').count()==1
   await click('.cr-tile:visible');await page.wait_for_url('**/catalog/audi/q8/index.html*')
