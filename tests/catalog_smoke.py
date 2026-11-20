@@ -26,10 +26,11 @@ async def run(executable):
    assert await page.locator('#cr-order-dialog').is_visible()
    assert await page.locator('#cr-order-title').evaluate("e=>e.tagName==='DIV'")
    assert await page.locator('#cr-order-title').inner_text()==('Заказать стекло с установкой' if purchase=='install' else 'Заказать стекло без установки')
+   assert await page.locator('#cr-form-submit').inner_text()=='Отправить заявку'
    assert ' '.join((await page.locator('#cr-order-summary>strong').inner_text()).split())==' '.join(expected['title'].split())
    summary=await page.locator('#cr-order-summary').inner_text()
    assert 'арт.' not in summary and 'центр' not in summary and 'Калибровка' not in summary
-   assert await page.locator('#cr-order-form').evaluate("f=>[...f.elements].filter(e=>e.name).map(e=>e.name).join(',')")=='phone,customerName,consent'
+   assert await page.locator('#cr-order-form').evaluate("f=>[...f.elements].filter(e=>e.name).map(e=>e.name).join(',')")=='customerName,phone,consent'
    assert await page.locator('#cr-order-form a[href^="tel:"]').count()==0
    labels=await page.locator('#cr-order-summary dt').all_text_contents()
    assert labels==(['Стекло','Замена','Подытог'] if purchase=='install' else ['Стекло','Только стекло'])
@@ -111,7 +112,9 @@ async def run(executable):
   await click('[data-native-glass="side"]')
   assert 'не сохранён' in await page.locator('.cr-empty').inner_text()
   await click('.cr-empty [data-help]')
-  assert 'Боковое' in await page.locator('#cr-help-summary').inner_text()
+  assert await page.locator('#cr-help-dialog').is_visible()
+  assert await page.locator('#cr-help-summary').count()==0
+  assert await page.locator('#cr-help-form [name="car"],#cr-help-form [name="center"]').count()==0
   await page.keyboard.press('Escape')
   await click('#catalogClear')
   await click('[data-native-option="hud"]')
@@ -120,11 +123,13 @@ async def run(executable):
   await click(f'.cr-native-card[data-product="{chosen}"] [data-order]')
   assert await page.locator('#cr-order-dialog').is_visible()
   await check_order(chosen)
+  assert await page.locator('#cr-form-submit').get_attribute('data-ready')=='false'
   await page.locator('#cr-order-form [name="phone"]',).fill('123')
   await page.locator('#cr-order-form [name="consent"]').check()
   await click('#cr-form-submit')
   assert await page.locator('#cr-order-form [name="phone"]').get_attribute('aria-invalid')=='true'
   await page.locator('#cr-order-form [name="phone"]').fill('+7 (900) 123-45-67')
+  assert await page.locator('#cr-form-submit').get_attribute('data-ready')=='true'
   before=len(requests);await click('#cr-form-submit')
   assert 'не отправлены' in await page.locator('#cr-form-status').inner_text()
   assert len(requests)==before
@@ -137,14 +142,15 @@ async def run(executable):
   await page.locator('#cr-help-form [name="vin"]').fill('BADVIN')
   await click('#cr-help-submit')
   assert await page.locator('#cr-help-form [name="vin"]').get_attribute('aria-invalid')=='true'
+  assert await page.locator('#cr-help-submit').get_attribute('data-ready')=='false'
   await page.locator('#cr-help-form [name="vin"]').fill('WAUZZZ4M0JD000001')
+  assert await page.locator('#cr-help-submit').get_attribute('data-ready')=='true'
   await page.locator('#cr-help-form [name="photos"]').set_input_files({'name':'invalid.txt','mimeType':'text/plain','buffer':b'x'})
   assert 'до 3 фото' in await page.locator('#cr-help-status').inner_text()
   png=base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a6XQAAAAASUVORK5CYII=')
   await page.locator('#cr-help-form [name="photos"]').set_input_files({'name':'mark.png','mimeType':'image/png','buffer':png})
   assert await page.locator('#cr-photo-preview img').count()==1
-  await page.locator('#cr-help-form [name="center"]').select_option('gromova')
-  assert 'Громова' in await page.locator('#cr-help-summary').inner_text()
+  assert await page.locator('#cr-help-form a[href^="tel:"]').count()==0
   before=len(requests);await click('#cr-help-submit')
   assert 'не отправлены' in await page.locator('#cr-help-status').inner_text()
   assert len(requests)==before

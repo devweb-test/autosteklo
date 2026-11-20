@@ -112,7 +112,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=order-forms-20261120'
+    asset_version='?v=native-form-style-20261120'
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     if kind=='generation':
         css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-generation.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
@@ -120,6 +120,7 @@ for path,kind in ROUTES.items():
         css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/product-native.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     if kind!='product':
         css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-benefits.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
+    css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-forms.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     script_paths=['assets/catalog-experience-data.js','assets/catalog-experience.js']
     if kind=='generation':script_paths[1:1]=['offline-catalog-data.js','assets/catalog-generation.js']
     if kind=='product':script_paths=['assets/product-bundle-db4a78c8a435.js']+script_paths+['assets/product-native.js']

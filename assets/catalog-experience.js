@@ -346,7 +346,7 @@
 
   const orderDialog=$('#cr-order-dialog'), helpDialog=$('#cr-help-dialog'), compareDialog=$('#cr-compare-dialog');
   const orderForm=$('#cr-order-form'), helpForm=$('#cr-help-form');
-  let ordered=null, previousFocus=null, objectUrls=[], assistance={glass:'Лобовое',year:'',details:[]};
+  let ordered=null, previousFocus=null, objectUrls=[];
   function openDialog(dialog) {
     $$('dialog[open]').forEach(open => { if (open !== dialog) open.close(); });
     previousFocus=document.activeElement; dialog.showModal(); document.body.classList.add('cr-dialog-open');
@@ -369,27 +369,8 @@
     $('#cr-form-status').textContent='';orderSummary();openDialog(orderDialog);
     emit('order_open',p);
   }
-  function helpSummary() {
-    const car=helpForm.elements.car.value || 'Подбор по VIN / фото';
-    const options=`${assistance.glass} стекло · ${assistance.year || 'год уточняется'}${assistance.details.length ? ' · '+assistance.details.join(' · ') : ''}`;
-    $('#cr-help-summary').innerHTML=`<strong>${escape(car)}</strong><p>${escape(options)}</p><p>Ярославль · ${escape(centers[center] || 'центр выберем с менеджером')}</p><p class="cr-small">Стоимость рассчитают после подбора стекла.</p>`;
-  }
   function openHelp() {
-    const q8Page=['model','generation','product'].includes(kind);
-    const selectedBrand=$('#cr-brand')?.value || $('#cr-native-brand')?.value || (q8Page?'Audi':''), selectedModel=$('#cr-model')?.value || $('#cr-native-model')?.value || (q8Page?'Q8':'');
-    const nativeYear=$('#cr-native-year')?.value;
-    assistance={glass:({windshield:'Лобовое',rear:'Заднее',side:'Боковое'}[$('#cr-glass')?.value || $('#cr-native-glass')?.value || state.glass]),year:$('#cr-year')?.value || (nativeYear!=='unknown' ? nativeYear : '') || state.year,details:[]};
-    if(filterForm) {
-      for(const [key,label] of Object.entries(labels))if(state[key]!=='any')assistance.details.push(`${label}: ${{yes:'есть',no:'нет',unknown:'не знаю'}[state[key]]}`);
-      if(state.glass==='side') {
-        if(state.side!=='any')assistance.details.push(state.side==='right'?'правая сторона':'левая сторона');
-        if(state.door!=='any')assistance.details.push(state.door==='front'?'передняя дверь':'задняя дверь');
-        if(state.movement!=='any')assistance.details.push(state.movement==='moving'?'опускное':'неподвижное');
-      }
-    }
-    helpForm.elements.car.value=[selectedBrand,selectedModel,assistance.year,assistance.glass.toLowerCase()+' стекло'].filter(Boolean).join(' ');
-    helpForm.elements.center.value=center;
-    $('#cr-help-status').textContent='';helpSummary();openDialog(helpDialog);
+    $('#cr-help-status').textContent='';openDialog(helpDialog);
     emit('vin_help_open');
   }
   if (nativeProduct) root.addEventListener('catalog:product-order',event => {
@@ -397,7 +378,6 @@
     if (event.detail.mode === 'install') {mode='install';refresh();}
     openOrder(product);
   });
-  helpForm.elements.center.addEventListener('change',event => { center=event.target.value;updateCenter();persist();helpSummary(); });
   helpForm.elements.photos.addEventListener('change',event => {
     objectUrls.forEach(URL.revokeObjectURL);objectUrls=[];$('#cr-photo-preview').replaceChildren();
     const files=[...event.target.files];
@@ -408,9 +388,15 @@
   });
   [orderForm,helpForm].forEach(form => {
     const status=$('#'+form.dataset.status);
+    const syncButton=() => {
+      const phone=form.elements.phone,vin=form.elements.vin;
+      const ready=/^[78]\d{10}$/.test(phone.value.replace(/\D/g,'')) && form.elements.consent.checked && (!vin?.value || /^[A-HJ-NPR-Z0-9]{17}$/i.test(vin.value));
+      form.querySelector('[type="submit"]').dataset.ready=String(ready);
+    };
+    syncButton();form.addEventListener('change',syncButton);
     form.addEventListener('input',event => {
       event.target.setCustomValidity?.('');event.target.removeAttribute('aria-invalid');status.textContent='';
-      if(form===helpForm && event.target.name==='car')helpSummary();
+      syncButton();
     });
     form.addEventListener('submit',event => {
       event.preventDefault();event.stopImmediatePropagation();

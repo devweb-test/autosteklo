@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "comparisons": 132,
+  "cases": [
+    {
+      "width": 1920,
+      "form": "order",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 1920,
+      "form": "help",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 1440,
+      "form": "order",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 1440,
+      "form": "help",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 1280,
+      "form": "order",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 1280,
+      "form": "help",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 768,
+      "form": "order",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 768,
+      "form": "help",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 390,
+      "form": "order",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 390,
+      "form": "help",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 320,
+      "form": "order",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    },
+    {
+      "width": 320,
+      "form": "help",
+      "nativeComponentsMatched": 11,
+      "inactiveAndActiveButtonColors": true
+    }
+  ]
+}
