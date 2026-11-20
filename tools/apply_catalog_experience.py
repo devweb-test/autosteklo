@@ -44,7 +44,7 @@ def help_block():
 def picker(kind):
     brand='Audi' if kind!='catalog' else ''
     title='Подберите стекло для своего автомобиля'+(' в Ярославле' if kind=='catalog' else '')
-    return f'''<form id="cr-picker" class="cr-picker"><h2>{title}</h2><div class="cr-picker-fields">
+    return f'''<form id="cr-picker" class="cr-picker"><p class="filter-block-typical1__title">{title}</p><div class="cr-picker-fields">
     <label>Марка<select name="carBrand" id="cr-brand"><option value="">Выберите марку</option>{''.join(f'<option {"selected" if x["name"]=="AUDI" and brand else ""} value="{h(x["name"])}">{h(x["name"])}</option>' for x in data['brands'])}</select></label>
     <label>Модель<select name="carModel" id="cr-model"><option value="">Выберите модель</option></select></label>
     <label>Год выпуска<select name="year" id="cr-year"><option value="">Не знаю</option>{''.join(f'<option>{y}</option>' for y in range(2026,2017,-1))}</select></label>
@@ -91,7 +91,7 @@ for path,kind in ROUTES.items():
     for tag in soup.select('script[src]'):
         if 'offline-catalog' in tag['src'] or re.search(r'/(catalog(?:_\d)?|product)-bundle-',tag['src']):tag.decompose()
     for tag in soup.select('[data-cro-resource]'):tag.decompose()
-    asset_version='?v=catalog-search-20261120' if kind=='catalog' else '?v=audi-search-20261120' if kind=='brand' else ''
+    asset_version='?v=picker-paragraph-20261120' if kind!='product' else ''
     css=soup.new_tag('link',rel='stylesheet',href=rel+'assets/catalog-experience.css'+asset_version,attrs={'data-cro-resource':'true'});soup.head.append(css)
     for name in ['catalog-experience-data.js','catalog-experience.js']:
         t=soup.new_tag('script',src=rel+'assets/'+name+asset_version,attrs={'defer':'','data-cro-resource':'true'});soup.head.append(t)
@@ -127,7 +127,6 @@ for path,kind in ROUTES.items():
     picker_form=fragment.select_one('#cr-picker')
     if picker_form:
         picker_form['class']+=['filter-block-typical1-wrapper','typ2']
-        picker_form.h2['class']=['filter-block-typical1__title']
     for heading in fragment.select('h2'):
         if heading.find_parent('dialog'):heading['class']=['modal-typical__header']
         elif heading.find_parent('form',id='cr-picker') is None:heading['class']=['base__title']

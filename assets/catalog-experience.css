@@ -50,7 +50,7 @@
 .cr-root select {appearance:none;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke='%23333' stroke-width='1.5' d='m1 1 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 20px center}
 .cr-root select:disabled {opacity:.6}
 .cr-picker.filter-block-typical1-wrapper {width:100%;padding:30px 40px;align-items:stretch;background-color:#c92323;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAAB8CAYAAACVF3m1AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAVlSURBVHgB7d1tax1FGMbxiS0GpYWCUolYDAqCL/z+30QhUEgxnGBpaaBBSbGkc/VM6GYzZ+dhZx9m9v+Dw5HY7DmwFzP33Du7MQYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwOzKYze3t7VP79rV9XR8dHd2YDSBgM7DBOrZvP9vXU/ejD/Z1bkP23jSOgE3MjVq/2tcjz//+24bstWkYAZuQDdeP9u0k8M8ubch2plEEbAI2WI/t2y/my5QY0mzICFhhrt76zeyL+RRNhuwrg2JsuL63b7+b9HDJiZtSJ6Hg29epmRkBK8SFQyvFRybfJCFzCw0Ff/ZVK1PkSK7e+sm+vjPlFJsu7ff7wey/3yIrVgI2gqu31IL4xpQ3OmT2+72wb8/ta2ePdWkWQMAyjSjmU2SFrLeKXSxcQsAyBJqnpSWFrBf8RcMlBCxRp6aZU1TI7Hd7Zt9OzT74i4dLCFiCyM78VAZD1vtuqwiXELBIC4frzoOVoGcVu5pwyWODINegTGlDqN+kGujYlKNjXnV/4FlovFlTuIQRLCAjXJ9HEPt7Ouk6+SVC9o895oW5/736Cw2F65VZGQJ2QGYDVXu83naOMTZk/5t97dWfFvsLjVWGSwiYhwuXghHbQFUQXtmTfOU5Vm7ItOP1pT3mf73v1Q/9asMlBKwnM1xn3SB4jpkasn/NPlwfOsfwXTVYdbiEgHVkhEujzFk3CAPHjg1ZTL0lqw+XELAOeyJ1Ep9F/nONXH/FhKtz/FDIfG0IX3ukinAJAXMSV4vBaXHgc3whO1RvaftPP/Cr6nOFEDBzb9dBrD9zwtX5vG7IDtVbvgvpVYVLNh+wjA79vVbEiM9VPaUR86093sfOz7UrVivF/oX06sIlmw5YRrgmPckDI2mV4ZLNXipyI8UqwuW5MXeWz53DJgNmT+i3Zn9CY72bMFwK1anxb1ys/sbczQWs07CMpRXeJC2BwBRdpNZb2qYC1mmkxm5zvmukfjQFBW7MVQtEq8pr04CtjWCaFlP20J+nNFJjBKbE7P7aWm0mYG46iu3Sy670KBLYbh192akmmwiY26uesmIsWtTfhp9V0WS4pPmAuaL+RcKv6GRfmEICU6Kok1+8zluLLYxgWjGm1F0vS40kEZeg3tjXRavhkqYD5uqulLuudyUK7EDj9M6DbTktajZg7iSn1F03JeouV8jrc4duyq26O5+iyYB1+l0pzswIA9trutSGuGihgRqr1RFMI0hK3bUbU3dFFPLyYM/XFjQXMDc1puzt0onPut7nRq2TiM9rtg0R0uIIljo1Xuas4iJHLXln9nccNbtSHNJUwNyqMWVqvEmth9wIqW58zFWBzRTzhzQTsIxVo0SffDcdPnev0GObNlfMH9LSCJbzYJLgM0sTgyWbLOYPaSJgbvRKfUbq+6GiOyNYn49p9uHaZL3l08oIlrI79Y43NG63q+qrlGDJJjrzqaoPmA2ERq7Yv6jRdex+V1tydDlJwXqScayDz6VAA3cV2ZD8YaZ9EO+QB/c04r6qR7DO319cAlNihNqnyCUeadnUnvmpVRswt3LMqb3G0CrxnCkxXs0j2Jyjl/dJgwirMmDuuQ4pN3CMwag1Qq0jmMI19V/ZYNQqoNaAlfzLZj6MWoVUF7CJi3suUhdW4wj2xExDf6blNdcRy6oxYKVHL6bDCW05YArWjobptKoKmGtPjL00RLBmVNsINqY1QbAWUFvAUgtwrQrVx6J4X0hVAVNI7DSpkWioDtOWZe3NumK0Wl51+8FcHaa7erRBUP+tve8KlfZmXbMaBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/T2ArO2wDR9zJAAAAAElFTkSuQmCC);background-repeat:space;border-radius:45px;border:1px solid transparent;display:flex;flex-direction:column}
-.cr-picker h2 {margin:0 0 25px}
+.cr-picker .filter-block-typical1__title {margin:0 0 25px}
 .cr-picker-fields {display:grid;grid-template-columns:1.1fr 1fr .8fr 1fr auto;gap:15px;align-items:end}
 .cr-picker label {color:#fff}
 .cr-picker select {height:calc(40px + (100vw - 320px) * .008125);font-size:calc(14px + (100vw - 320px) * .00125);line-height:calc(22px + (100vw - 320px) * .00125);padding-left:39px}
@@ -176,7 +176,7 @@
 .cr-inline-help {margin:10px 0!important}
 .cr-inline-help+.cr-section {margin-top:20px}
 .cr-root[data-kind=model] .cr-picker,.cr-root[data-kind=generation] .cr-picker {padding:20px 25px}
-.cr-root[data-kind=model] .cr-picker>h2,.cr-root[data-kind=generation] .cr-picker>h2,.cr-root[data-kind=model] #cr-picker-note,.cr-root[data-kind=generation] #cr-picker-note {position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}
+.cr-root[data-kind=model] .cr-picker>.filter-block-typical1__title,.cr-root[data-kind=generation] .cr-picker>.filter-block-typical1__title,.cr-root[data-kind=model] #cr-picker-note,.cr-root[data-kind=generation] #cr-picker-note {position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}
 @media(max-width:1800px) {.cr-tiles {grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1600px) {.cr-tiles {grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(max-width:1320px) {.cr-glass-card {grid-template-columns:1fr}.cr-glass-buy {border-top:1px solid var(--cr-line);padding-top:15px}}
@@ -212,7 +212,7 @@
   .cr-heading {margin:0 0 25px}
   .cr-heading>p {font-size:16px;line-height:20px;text-align:center;margin-top:12px}
   .cr-picker.filter-block-typical1-wrapper {padding:25px 16px;border-radius:25px}
-  .cr-picker h2 {margin-bottom:20px}
+  .cr-picker .filter-block-typical1__title {margin-bottom:20px}
   .cr-picker-fields {gap:12px}
   .cr-picker select {font-size:14px;line-height:22px}
   .cr-picker .cr-btn {font-size:13px;line-height:19px}
